@@ -18,7 +18,7 @@ Please check the official laravel installation guide for server requirements bef
 
 Alternative installation is possible without local dependencies relying on [Docker](#docker). 
 
-Requirements: COMPOSER, PHP8, NODEJS (If no existing xampp, install composer from getcomposer.org first then install the xampp version 8)
+Requirements:  PHP8, COMPOSER, NODEJS (If no existing xampp,  install the xampp version 8 then install composer from getcomposer.org)
 
 Clone the repository
 
