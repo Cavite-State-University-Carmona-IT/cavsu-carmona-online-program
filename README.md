@@ -20,7 +20,7 @@ Alternative installation is possible without local dependencies relying on [Dock
 
 Clone the repository
 
-    git clone git@github.com:Cavite-State-University-Carmona-IT/cavsu-carmona-online-program.git
+    git clone https://github.com/Cavite-State-University-Carmona-IT/cavsu-carmona-online-program.git
 
 Switch to the repo folder
 
