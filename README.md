@@ -26,7 +26,7 @@ Clone the repository
 
 Switch to the repo folder
 
-    cd cavsu-online-program
+    cd cavsu-carmona-online-program
 
 Install all the dependencies using composer
 
