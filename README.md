@@ -18,6 +18,8 @@ Please check the official laravel installation guide for server requirements bef
 
 Alternative installation is possible without local dependencies relying on [Docker](#docker). 
 
+Requirements: COMPOSER, PHP8, NODEJS (If no existing xampp, install composer from getcomposer.org first then install the xampp version 8)
+
 Clone the repository
 
     git clone https://github.com/Cavite-State-University-Carmona-IT/cavsu-carmona-online-program.git
@@ -48,6 +50,7 @@ Start the local development server
 
 You can now access the server at http://localhost:8000
 
+If you encounter an error "No application encryption key has been specified. Your app key is missing". Please click the "Generate App Key" button.
 
 ## About the Developer
 
