@@ -14,9 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->check()) {
+        return redirect('/home');
+    }
+    else {
+        return redirect('/guest');
+    }
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+// GUEST
+
+// LIVEWIRE
+Route::group(['namespace' => 'App\Http\Livewire'], function() {
+    Route::get('guest', Participant\HomeGuest::class)->name('guest');
+});
