@@ -22,14 +22,25 @@ Route::get('/', function () {
     }
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-
-// GUEST
 
 // LIVEWIRE
 Route::group(['namespace' => 'App\Http\Livewire'], function() {
-    Route::get('guest', Participant\HomeGuest::class)->name('guest');
+
+    // GUEST
+    Route::get('guest', Participant\HomeGuest\HomeGuest::class)->name('guest');
+
+    // AUTH USER
+    Route::group(['auth:sanctum', 'verified'], function () {
+        Route::get('home', Participant\HomeUser\HomeUser::class)->name('home');
+    });
+
 });
+
+
+
+
+//
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
