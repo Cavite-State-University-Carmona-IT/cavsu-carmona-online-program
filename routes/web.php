@@ -13,25 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    if(auth()->check()) {
-        return redirect('/home');
-    }
-    else {
-        return redirect('/guest');
-    }
-});
-
 
 // LIVEWIRE
 Route::group(['namespace' => 'App\Http\Livewire'], function() {
 
-    // GUEST
-    Route::get('guest', Participant\HomeGuest\HomeGuest::class)->name('guest');
+    Route::get('/', Participant\Home::class);
 
-    // AUTH USER
-    Route::group(['auth:sanctum', 'verified'], function () {
-        Route::get('home', Participant\HomeUser\HomeUser::class)->name('home');
+    // AUTH USER;
+    Route::group(['middleware' => 'auth'], function () {
+
     });
 
 });
