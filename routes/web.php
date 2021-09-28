@@ -13,23 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    if(auth()->check()) {
-        return redirect('/home');
-    }
-    else {
-        return redirect('/guest');
-    }
+
+// LIVEWIRE
+Route::group(['namespace' => 'App\Http\Livewire'], function() {
+
+    Route::get('/', Participant\Home::class);
+
+    // AUTH USER;
+    Route::group(['middleware' => 'auth'], function () {
+
+    });
+
 });
+
+
+
+
+//
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-
-
-// GUEST
-
-// LIVEWIRE
-Route::group(['namespace' => 'App\Http\Livewire'], function() {
-    Route::get('guest', Participant\HomeGuest::class)->name('guest');
-});

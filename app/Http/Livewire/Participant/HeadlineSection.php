@@ -4,11 +4,10 @@ namespace App\Http\Livewire\Participant;
 
 use Livewire\Component;
 
-class Home extends Component
+class HeadlineSection extends Component
 {
     public function render()
     {
-        return view('livewire.participant.home')
-        ->layout('layouts.app');
+        return view('livewire.participant.headline-section');
     }
 }
