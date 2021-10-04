@@ -15,7 +15,13 @@ class CreateExtensionServiceTable extends Migration
     {
         Schema::create('extension_service', function (Blueprint $table) {
             $table->id();
+            $table->integer('extension_service_id')->unsigned();
+            $table->string('name')->nullable();
+            $table->tinyInteger('deparment_id')->unsigned();
+            $table->string('image')->nullable();
+            $table->string('details')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
