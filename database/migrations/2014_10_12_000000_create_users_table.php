@@ -19,10 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
             $table->string('gender')->nullable();
+            /** 0 - male/ 1- female / 3-null*/
+
             $table->date('birth_date')->nullable();
-            $table->string('address')->nullable();
+            $table->text('address')->nullable();
             $table->string('marital_status')->nullable();
-            $table->string('employment_status')->nullable();
+            $table->tinyInteger('employment_status')->nullable();
+            /** 0 - employed/ 1- student */
+
             $table->string('username')->unique;
             $table->string('email')->unique;
             $table->timestamp('email_verified_at');
@@ -30,11 +34,14 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('highest_eduactional_attainment')->nullable();
-            $table->string('income')->nullable();
-            $table->string('status')->nullable();
+            /** 0 - higschool/ 1- bachelor's degree/ 3- etc. */
+
+            $table->integer('income')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
             $table->softDeletes();
+
             
         });
     }
