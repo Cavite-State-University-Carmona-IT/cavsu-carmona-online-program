@@ -145,9 +145,9 @@
                             <i class="fas fa-tachometer-alt w-8 ml-2"></i>
                             <span>Dashboard</span>
                         </a>
-                        <a href="{{ route('program-coordinator.collection') }}" class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent {{ $menu=='collection' ? 'border-green-400 text-green-500': 'transition-colors hover:border-green-200 hover:text-green-400' }}">
+                        <a href="{{ route('program-coordinator.webinar') }}" class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent {{ $menu=='webinar' ? 'border-green-400 text-green-500': 'transition-colors hover:border-green-200 hover:text-green-400' }}">
                             <i class="fas fa-play w-8 ml-2"></i>
-                            <span>Collection</span>
+                            <span>Webinar</span>
                         </a>
                         <a href="{{ route('program-coordinator.report') }}"     class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent {{ $menu=='report' ? 'border-green-400 text-green-500': 'transition-colors hover:border-green-200 hover:text-green-400' }}">
                             <i class="far fa-file-alt  w-8 ml-2"></i>
