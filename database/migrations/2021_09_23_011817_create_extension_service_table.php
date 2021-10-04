@@ -21,6 +21,7 @@ class CreateExtensionServiceTable extends Migration
             $table->string('image')->nullable();
             $table->string('details')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
