@@ -24,7 +24,7 @@
             <div class="hidden sm:col-span-2 sm:flex sm:justify-end"> <!-- SM TO LG -->
                <div class="flex items-center ">
                         <div class="text-sm text-gray-500">
-                            <a href="">My Learning</a>
+                            <a href="">Completed</a>
                         </div>
                         <!-- Teams Dropdown -->
                         @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -130,7 +130,7 @@
                             </div>
                         </div>
 
-                      
+
                     </div>
                       <!-- Hamburger -->
                     <div class="flex items-center justify-end sm:hidden">
@@ -145,7 +145,7 @@
 
             <!-- MOBILE NAV -->
             <div class="mobile-menu max-w-full sm:hidden">
-              
+
                 <div class="w-full pt-8">
                     <div class="text-sm text-gray-500 ml-3">
                         <a href="">My Learning</a>
@@ -202,10 +202,10 @@
 
                         <!-- Settings Dropdown -->
                         <div class="max-w-full py-2">
-                           
+
                             <x-jet-dropdown align="right" width="100">
                                 <x-slot name="trigger">
-                                    
+
                                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                         <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                             <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
@@ -281,7 +281,7 @@
                             </div>
                         </div>
                 </div>
-                <div class="w-full"> 
+                <div class="w-full">
                     <div class="relative m-1 text-gray-600">
                         @livewire('participant.search-dropdown')
                         <div class="absolute right-0 top-0 pt-2 mr-3 ">

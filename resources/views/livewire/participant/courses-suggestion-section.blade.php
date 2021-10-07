@@ -2,9 +2,9 @@
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
     <section class="max-w-full px-4 sm:px-4">
         <article >
-            <h2 class="text-2xl text-gray-900 font-semibold py-5">OUR COURSES</h2>
+            <h2 class="text-2xl text-gray-900 font-semibold py-5">OUR WEBINARS</h2>
             <section class="w-full space-y-4 sm:space-y-0 sm:grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
-              
+
                <!-- ARTICLES -->
                 <article class="bg-white overflow-hidden border">
                     <div class="relative w-full h-80 md:h-64 lg:h-44">
