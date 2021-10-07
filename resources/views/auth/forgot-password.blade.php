@@ -1,7 +1,9 @@
+
+
 <x-guest-layout>
     <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+        <x-slot name="logo" class="max-w-full">
+            <img src="{{asset('images/cvsulogo.png')}}" alt="" class="h-32 w-32">
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">

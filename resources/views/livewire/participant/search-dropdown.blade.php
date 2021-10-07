@@ -1,14 +1,43 @@
-<div>
+<div class="max-w-full relative">
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-    <input class="border-1 border-gray-200 bg-white h-10 px-5 pr-16 rounded-sm text-sm hover:border-gray-300 focus:outline-none focus:border-gray-300 focus:ring-gray-300 focus:ring-opacity-50 focus:ring-1"
-        type="text" name="search" placeholder="Search" wire:model="navSearchBar" autocomplete="off">
-    <div class="absolute right-0 top-0 mt-5 mr-4">
-        <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-        viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
-        width="512px" height="512px">
-        <path
-            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-        </svg>
+    <input class="w-full border-1 border-gray-200  bg-white h-10 px-5 pr-16 rounded-full text-sm hover:border-gray-300 focus:outline-none focus:border-gray-300 focus:ring-gray-300 focus:ring-opacity-50 focus:ring-1"
+        type="text" name="search" placeholder="Search ..." wire:model="navSearchBar" autocomplete="off">
+    <div class="absolute w-full mt-2">
+        <div class="w-full border border-gray-300  py-3 px-3 bg-white">
+            <div class="w-full grid grid-cols-5">
+                <div class="flex justify-center items-center">
+                    <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg"
+                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                        class="w-18 h-14 object-center object-cover">
+                </div>
+                <div class="col-span-3 flex items-center justify-center pl-3">
+                    <h3 class="text-sm"> Lorem Ipsum is simply dummy text of the ....</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w-full border border-gray-300  py-3 px-3 bg-white">
+            <div class="w-full grid grid-cols-5">
+                <div class="flex justify-center items-center">
+                    <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg"
+                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                        class="w-18 h-14 object-center object-cover">
+                </div>
+                <div class="col-span-3 flex items-center justify-center pl-3">
+                    <h3 class="text-sm"> Lorem Ipsum is simply dummy text of the ....</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w-full border border-gray-300  py-3 px-3 bg-white">
+            <div class="w-full grid grid-cols-5">
+                <div class="flex justify-center items-center">
+                    <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg"
+                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
+                        class="w-18 h-14 object-center object-cover">
+                </div>
+                <div class="col-span-3 flex items-center justify-center pl-3">
+                    <h3 class="text-sm"> Lorem Ipsum is simply dummy text of the ....</h3>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
