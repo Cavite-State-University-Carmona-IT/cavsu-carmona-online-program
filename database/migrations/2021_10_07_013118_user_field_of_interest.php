@@ -14,8 +14,8 @@ class UserFieldOfInterest extends Migration
     public function up()
     {
         Schema::create('user_field_of_interest', function (Blueprint $table) {
-            $table->tinyInteger('field_of_interst_id')->unsigned();
-            $table->tinyInteger('user_id')->nullable()->unsigned();
+            $table->bignteger('field_of_interest_id')->unsigned()->nullable();
+            $table->bigInteger('user_id')->nullable()->unsigned()->nullable();
             $table->timestamps();
         });
     }
