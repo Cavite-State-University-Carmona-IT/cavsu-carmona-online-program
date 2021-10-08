@@ -15,9 +15,10 @@ class CreateUserWebinarsTable extends Migration
     {
         Schema::create('user_webinars', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->integer('webinar_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->integer('webinar_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
