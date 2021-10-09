@@ -15,8 +15,8 @@ class Presenter extends Migration
     {
         Schema::create('presenter', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('user_id')->unsigned();
-            $table->tinyInteger('webinar_id')->unsigned()->nullable();
+            $table->biGInteger('user_id')->unsigned()->nullable();
+            $table->integer('webinar_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
