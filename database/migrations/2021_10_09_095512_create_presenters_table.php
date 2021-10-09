@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UserFieldOfInterest extends Migration
+class CreatePresentersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class UserFieldOfInterest extends Migration
      */
     public function up()
     {
-        Schema::create('user_field_of_interest', function (Blueprint $table) {
-            $table->bignteger('field_of_interest_id')->unsigned()->nullable();
-            $table->bigInteger('user_id')->nullable()->unsigned()->nullable();
+        Schema::create('presenters', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->integer('webinar_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,6 @@ class UserFieldOfInterest extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_field_of_interest');
+        Schema::dropIfExists('presenters');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Presenter extends Migration
+class CreateFieldOfInterestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class Presenter extends Migration
      */
     public function up()
     {
-        Schema::create('presenter', function (Blueprint $table) {
+        Schema::create('field_of_interests', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('user_id')->unsigned()->nullable();
-            $table->tinyInteger('course_id')->unsigned()->nullable();
+            $table->string('name')->nullable();
+            $table->tinyInteger('extension_service_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,6 @@ class Presenter extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presenter');
+        Schema::dropIfExists('field_of_interests');
     }
 }

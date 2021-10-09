@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ExtensionServices extends Migration
+class CreateExtensionServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,10 +16,11 @@ class ExtensionServices extends Migration
         Schema::create('extension_services', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->tinyInteger('department_id')->unsigned();
-            $table->string('image')->nullable();
+            $table->tinyInteger('department_id')->unsigned()->nullable();
             $table->string('details')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
