@@ -18,7 +18,6 @@
 
         <form method="POST" action="{{ route('password.email') }}">
             @csrf
-
             <div class="block">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
@@ -30,5 +29,6 @@
                 </x-jet-button>
             </div>
         </form>
+
     </x-jet-authentication-card>
 </x-guest-layout>
