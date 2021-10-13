@@ -51,3 +51,6 @@
     // header("Pragma: no-cache");
     // header("Expires: 0");
 ?>
+
+{{-- paaayos nlng layout
+    tas uncomment mo na tong header kapag gusto mo na madl yung excel file --}}
