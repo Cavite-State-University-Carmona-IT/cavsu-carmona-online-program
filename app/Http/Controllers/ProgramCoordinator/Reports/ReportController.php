@@ -50,7 +50,7 @@ class ReportController extends Controller
             ->select(
                 'extension_services.name as extension_service_name',
                 'webinars.title as webinar_title',
-                'webinar_users.date_completed as date_completed',
+                'webinar_user.date_completed as date_completed',
                 'webinars.*',
                 'users.*'
             )

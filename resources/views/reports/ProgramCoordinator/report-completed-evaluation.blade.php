@@ -36,7 +36,7 @@
                 {{-- dito yung users --}}
                 @foreach($webinar as $user)
                 <tr>
-                    <td>{{ $user->date_completed . ', ' . $user->first_name . ' ' . $user->middle_name[0] }}</td>
+                    <td>{{ $user->last_name . ', ' . $user->first_name . ' ' . $user->middle_name[0] }}</td>
                 </tr>
                 @endforeach
             @endforeach
