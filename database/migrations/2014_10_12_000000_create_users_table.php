@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->text('address')->nullable();
             $table->tinyInteger('marital_status')->nullable()->comment('ex. 1-single, 2-married, etc.');
             $table->tinyInteger('employment_status')->nullable()->comment('ex. 0-employed, 1-student, etc.');
-            $table->string('username')->unique();
+            $table->string('username')->nullable();
             $table->tinyInteger('highest_educational_attainment')->nullable()->comment('ex. 1 - high school, 2- bachelor, etc.');
             $table->integer('income')->nullable();
             $table->tinyInteger('status')->nullable();
