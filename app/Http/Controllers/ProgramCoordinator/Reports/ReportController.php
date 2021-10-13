@@ -60,14 +60,14 @@ class ReportController extends Controller
             })
             ->where(function($query) use ($start_date, $end_date, $date) {
                 if($date != null) {
-                    return $query->whereDate('date', $date);
+                    return $query->whereDate('webinar_users.date_completed', $date);
                 } else {
                     if ($start_date && $end_date) {
-                        return $query->whereBetween('date', [$start_date, $end_date]);
+                        return $query->whereBetween('webinar_users.date_completed', [$start_date, $end_date]);
                     } elseif ($start_date) {
-                        return $query->whereDate('date', '>=', $start_date);
+                        return $query->whereDate('webinar_users.date_completed', '>=', $start_date);
                     } elseif ($end_date) {
-                        return $query->whereDate('date', '<=', $end_date);
+                        return $query->whereDate('webinar_users.date_completed', '<=', $end_date);
                     }
                 }
             })
