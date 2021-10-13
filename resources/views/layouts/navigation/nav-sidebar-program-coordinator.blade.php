@@ -141,15 +141,15 @@
 
                     <!-- Links -->
                     <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto text-sm tracking-wider text-gray-500 font-semibold">
-                        <a href="{{ route('program-coordinator.dashboard') }}"  class="flex items-center w-full space-x-2 p-2   border-l-2 border-transparent {{ $menu=='dashboard' ? 'border-green-400 text-green-500': 'transition-colors hover:border-green-200 hover:text-green-400' }}">
+                        <a href="{{ route('program-coordinator.dashboard') }}"  class="flex items-center w-full space-x-2 p-2   border-l-2 border-transparent ">
                             <i class="fas fa-tachometer-alt w-8 ml-2"></i>
                             <span>Dashboard</span>
                         </a>
-                        <a href="{{ route('program-coordinator.webinar') }}" class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent {{ $menu=='webinar' ? 'border-green-400 text-green-500': 'transition-colors hover:border-green-200 hover:text-green-400' }}">
+                        <a href="{{ route('program-coordinator.webinar') }}" class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent ">
                             <i class="fas fa-play w-8 ml-2"></i>
                             <span>Webinar</span>
                         </a>
-                        <a href="{{ route('program-coordinator.report') }}"     class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent {{ $menu=='report' ? 'border-green-400 text-green-500': 'transition-colors hover:border-green-200 hover:text-green-400' }}">
+                        <a href=""     class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent ">
                             <i class="far fa-file-alt  w-8 ml-2"></i>
                             <span>Reports</span>
                         </a>
@@ -249,7 +249,7 @@
             </header>
 
             <!-- Main -->
-            <main class="flex items-center justify-center h-full ">
+            <main class="flex justify-center h-full ">
                 <!-- Content -->
                 {{ $slot }}
             </main>
