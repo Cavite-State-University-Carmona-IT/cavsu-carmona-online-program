@@ -10,7 +10,6 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -20,7 +19,6 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -62,4 +60,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getFullNameLNfirst()
+    {
+        return $this->last_name . ", " .$this->first_name . " " . $this->middle_name[0];
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . " " . $this->middle_name[0] ." ". $this->last_name;
+    }
 }

@@ -38,13 +38,33 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
                         Route::get('dashboard', Dashboard\DashboardIndex::class)->name('dashboard');
                         Route::get('collection', Collection\CollectionIndex::class)->name('collection');
                         Route::get('webinar', Webinar\WebinarIndex::class)->name('webinar');
-                        Route::get('report', Report\ReportIndex::class)->name('report');
 
                     });
                 });
             });
         });
     });
+
+});
+
+
+Route::group(['namespace' => 'App\Http\Controllers'], function() {
+
+    // AUTH USER;
+    Route::group(['middleware' => 'auth'], function () {
+
+        // PROGRAM COORDINATOR
+        Route::group(['middleware' => ['role:program_coordinator']], function() {
+            Route::get('program-coordinator/reports','ProgramCoordinator\Reports\ReportController@index')->name('program-coordinator.reports');
+            Route::get('program-coordinator/reports/registered-users', 'ProgramCoordinator\Reports\ReportController@download_registered_users');
+            Route::get('program-coordinator/reports/active-inactive-users', 'ProgramCoordinator\Reports\ReportController@download_active_inactive_users');
+            Route::get('program-coordinator/reports/completed-evaluation', 'ProgramCoordinator\Reports\ReportController@download_completed_evaluation');
+        });
+    });
+
+    // FETCH DATA
+    Route::get('fetch_published_webinars/{id}', 'FetchController@getPublishedWebinarsFromExtensionServiceID');
+    Route::get('fetch_extension_services/', 'FetchController@getExtensionServices');
 
 });
 
