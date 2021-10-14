@@ -9,6 +9,7 @@
     <div class="max-w-full">
         <div class="w-full">
             <div class=" overflow-hidden">
+
                 {{-- HEADLINE --}}
                 @livewire('participant.headline-section')
 
@@ -28,7 +29,7 @@
 
                 {{-- FEATURED TOPICS --}}
                 @livewire('participant.featured-topics-section')
-              
+
             </div>
         </div>
     </div>
