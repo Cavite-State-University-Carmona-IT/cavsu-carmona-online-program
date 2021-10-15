@@ -17,12 +17,12 @@
 
             <div>
                 
-                <label for="email" value="{{ __('Email') }}" />
+                <label for="email" value="{{ __('Email') }}" class="text-gray-500 text-left font-bold">Email </label>
                 <input id="email" type="email" name="email" :value="old('email')" required autofocus class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" />
             </div>
 
             <div class="mt-4">
-                <label for="password" value="{{ __('Password') }}" />
+                <label for="password" value="{{ __('Password') }}" class="text-gray-500 text-left font-bold">Password</label>
                 <input id="password" type="password" name="password" required autocomplete="current-password" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" />
             </div>
 
