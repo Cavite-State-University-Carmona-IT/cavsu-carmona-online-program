@@ -142,15 +142,15 @@
                     <!-- Links -->
                     <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto text-sm tracking-wider text-gray-500 font-semibold">
                         <a href="{{ route('program-coordinator.dashboard') }}"  class="flex items-center w-full space-x-2 p-2   border-l-2 border-transparent ">
-                            <i class="fas fa-tachometer-alt w-8 ml-2"></i>
+                        <img class="h-5 w-auto"  src="{{ asset('storage/image/icons/dashboard.png') }}" />
                             <span>Dashboard</span>
                         </a>
                         <a href="{{ route('program-coordinator.webinar') }}" class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent ">
-                            <i class="fas fa-play w-8 ml-2"></i>
-                            <span>Webinar</span>
+                        <img class="h-5 w-auto"  src="{{ asset('storage/image/icons/webinar.gif') }}" />
+                            <span>  Webinar</span>
                         </a>
                         <a href=""     class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent ">
-                            <i class="far fa-file-alt  w-8 ml-2"></i>
+                        <img class="h-5 w-auto"  src="{{ asset('storage/image/icons/reports.gif') }}" />
                             <span>Reports</span>
                         </a>
                     </div>
