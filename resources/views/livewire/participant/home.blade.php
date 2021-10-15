@@ -6,8 +6,8 @@
         @include('layouts.navigation.nav-guest-component')
     @endif
 
-    <div class="py-5">
-        <div class="max-w-7xl mx-auto sm:px-4 lg:px-4">
+    <div class="max-w-full">
+        <div class="w-full">
             <div class=" overflow-hidden">
                 {{-- HEADLINE --}}
                 @livewire('participant.headline-section')
@@ -28,8 +28,17 @@
 
                 {{-- FEATURED TOPICS --}}
                 @livewire('participant.featured-topics-section')
-
+              
             </div>
         </div>
     </div>
+    <script>
+            console.log('dsajdksjadka')
+            const btn = document.querySelector('button.mobile-menu-button')
+            const menu = document.querySelector('.mobile-menu')
+
+            btn.addEventListener("click",()=>{
+            menu.classList.toggle("hidden");
+             })
+    </script>
 </div>

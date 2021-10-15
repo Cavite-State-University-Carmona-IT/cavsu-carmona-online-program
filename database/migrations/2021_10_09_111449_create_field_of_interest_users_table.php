@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExtensionServiceTable extends Migration
+class CreateFieldOfInterestUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateExtensionServiceTable extends Migration
      */
     public function up()
     {
-        Schema::create('extension_service', function (Blueprint $table) {
-            $table->id();
+        Schema::create('field_of_interest_users', function (Blueprint $table) {
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->integer('field_of_interest_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateExtensionServiceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('extension_service');
+        Schema::dropIfExists('field_of_interest_users');
     }
 }
