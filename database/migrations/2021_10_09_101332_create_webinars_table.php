@@ -16,6 +16,7 @@ class CreateWebinarsTable extends Migration
         Schema::create('webinars', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->string('image')->nullable();
             $table->text('about')->nullable();
             $table->tinyInteger('extension_service_id')->unsigned()->nullable();
             $table->string('speaker')->nullable();
