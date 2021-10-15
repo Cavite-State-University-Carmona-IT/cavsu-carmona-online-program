@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
-          
+
             $table->string('last_name')->nullable();
             $table->string('first_name')->nullable();
             $table->string('middle_name')->nullable();
@@ -32,8 +32,8 @@ class CreateUsersTable extends Migration
             $table->text('address')->nullable();
             $table->tinyInteger('marital_status')->nullable()->comment('ex. 1-single, 2-married, etc.');
             $table->tinyInteger('employment_status')->nullable()->comment('ex. 0-employed, 1-student, etc.');
-            $table->string('username')->unique();
-            $table->tinyInteger('highest_eduactional_attainment')->nullable()->comment('ex. 1 - high school, 2- bachelor, etc.');
+            $table->string('username')->nullable();
+            $table->tinyInteger('highest_educational_attainment')->nullable()->comment('ex. 1 - high school, 2- bachelor, etc.');
             $table->integer('income')->nullable();
             $table->tinyInteger('status')->nullable();
 
