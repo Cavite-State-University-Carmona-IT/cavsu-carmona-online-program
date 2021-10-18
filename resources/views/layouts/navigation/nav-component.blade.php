@@ -107,6 +107,18 @@
                                         {{ __('Profile') }}
                                     </x-jet-dropdown-link>
 
+                                    <div class="border-t border-gray-100"></div>
+
+                                    <x-jet-dropdown-link href="#">
+                                        {{ __('Program Coordinator') }}
+                                    </x-jet-dropdown-link>
+
+                                    <div class="border-t border-gray-100"></div>
+
+                                    <x-jet-dropdown-link href="#">
+                                        {{ __('My Learning') }}
+                                    </x-jet-dropdown-link>
+
                                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                         <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                             {{ __('API Tokens') }}
