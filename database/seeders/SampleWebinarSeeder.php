@@ -20,6 +20,7 @@ class SampleWebinarSeeder extends Seeder
         $data = [
             [
                 'title' => 'Leveraging Cloud and AI for Exceptional In-Home Video QoE',
+                'image' => "web1.jpg",
                 'extension_service_id' => 1,
                 'speaker' => 'Adam Hotchkiss, Co-founder & Vice President, Customer Solutions and Integrations, Plume',
                 'status' => 1,
@@ -40,6 +41,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'Why VCs say  no - How to secure investment for your startup',
+                'image' => "web2.jpg",
                 'extension_service_id' => 2,
                 'speaker' => 'Zoë Chambers, Principal, Octopus Ventures | Camilla Mazzolini, Principal, Firstminute Capital | Dave Rosenberg, Oracle',
                 'status' => 1,
@@ -66,6 +68,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'Finance in 2021 and beyond: Planning for the Future',
+                'image' => "web3.jpg",
                 'extension_service_id' => 3,
                 'speaker' => 'Jason Balk, CFO, Adtegrity | Dan Rosenthal, CFO, Root Insurance | Jill Schiefelbein, Business communication expert',
                 'status' => 1,
@@ -90,6 +93,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'Stay SaaSy: How to sell SaaS in a crowded market',
+                'image' => "web4.jpg",
                 'extension_service_id' => 4,
                 'speaker' => 'Amy Lewin | Òscar Carbonell Dolz | Itxaso del Palacio | Dave Rosenberg',
                 'status' => 1,
@@ -103,6 +107,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'VISIONARIES: Leading Practices for Developing the New Hybrid Workplace',
+                'image' => "web5.jpg",
                 'extension_service_id' => 5,
                 'speaker' => 'Entrust with special guest Dion Hinchcliffe',
                 'status' => 1,
@@ -117,6 +122,7 @@ class SampleWebinarSeeder extends Seeder
             // unpublished
             [
                 'title' => 'LinkedIn fmr Product Lead on Leadership Skills Learned from Mythology',
+                'image' => "web6.jpg",
                 'extension_service_id' => 1,
                 'speaker' => 'Prasad Gune',
                 'status' => 2,
@@ -132,6 +138,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'Moving Fast and Saving Lives!',
+                'image' => "web7.jpg",
                 'extension_service_id' => 2,
                 'speaker' => 'Vidya Venkatesh',
                 'status' => 2,
@@ -145,6 +152,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'How Remote Sensing Powers Agriculture',
+                'image' => "web8.jpg",
                 'extension_service_id' => 3,
                 'speaker' => 'Billy Cripe, VP Marketing at CIBO',
                 'status' => 2,
@@ -158,6 +166,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'Applying Data Science to Agriculture',
+                'image' => "web9.jpg",
                 'extension_service_id' => 4,
                 'speaker' => 'Billy Cripe',
                 'status' => 2,
@@ -171,6 +180,7 @@ class SampleWebinarSeeder extends Seeder
             ],
             [
                 'title' => 'ThoughtWorks Tech. Radar Vol. 23 Sneak Peek',
+                'image' => "web10.jpg",
                 'extension_service_id' => 5,
                 'speaker' => 'Mike Mason, CTO, ThoughtWorks, Zhamak Dehghani, ThoughtWorks, Cassie Shum, ThoughtWorks',
                 'status' => 2,
