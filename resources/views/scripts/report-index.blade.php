@@ -58,7 +58,7 @@
             }
 
         });
-        
+
         $("#registeredUserDate").change(function() {
             if($(this).val() != "") {
                 $(this).removeClass('border-2 border-red-200');
@@ -79,40 +79,39 @@
 
 
 
-              // Active & Inactive Users script
-              $("#userActivityCheckboxSpecificDate").change(function(){
-            if($(this).is(':checked')) {
-                $("#userActivitySpecificDate").css({ display: "" });
-                $("#userActivityBetweenDate").css({ display: "none" });
-                console.log("specific date");
-            } else {
-                $("#userActivityBetweenDate").css({ display: "" });
-                $("#userActivitySpecificDate").css({ display: "none" });
-                console.log("between date");
-            }
+        // Active & Inactive Users script
+            $("#userActivityCheckboxSpecificDate").change(function(){
+                if($(this).is(':checked')) {
+                    $("#userActivitySpecificDate").css({ display: "" });
+                    $("#userActivityBetweenDate").css({ display: "none" });
+                    console.log("specific date");
+                } else {
+                    $("#userActivityBetweenDate").css({ display: "" });
+                    $("#userActivitySpecificDate").css({ display: "none" });
+                    console.log("between date");
+                }
+            });
 
-        });
-
-        $("#userActivityDate").change(function() {
-            if($(this).val() != "") {
-                $(this).removeClass('border-2 border-red-200');
-            }
-        });
-        $("#userActivityStartDate").change(function() {
-            if($(this).val() != "") {
-                $(this).removeClass('border-2 border-red-200');
-            }
-        });
-        $("#userActivityEndDate").change(function() {
-            if($(this).val() != "") {
-                $(this).removeClass('border-2 border-red-200');
-            }
-        });
-
+            $("#userActivityDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+            $("#userActivityStartDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+            $("#userActivityEndDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
 
 
 
-            // completed evaluation script
+
+        // completed evaluation script
             $("#completedEvaluationCheckboxSpecificDate").change(function(){
                 if($(this).is(':checked')) {
                     $("#divCESpecificDate").css({ display: "" });
@@ -152,79 +151,79 @@
         // Download Buttons Functions
 
             // Registered Users
-           function download_report_registeredUser_evaluation() {
-            var specific_date = $("#registeredUserDate").val();
-            var start_date = $("#registeredUserStartDate").val();
-            var end_date = $("#registeredUserEndDate").val();
-          
-            var dateNotNull = true;
+            function download_report_registeredUser_evaluation() {
+                var specific_date = $("#registeredUserDate").val();
+                var start_date = $("#registeredUserStartDate").val();
+                var end_date = $("#registeredUserEndDate").val();
 
-            if($("#registeredUserCheckboxSpecificDate").is(':checked')) {
-                var date = 'date='+specific_date;
-                if(specific_date != "") {
-                    var dateNotNull = false;
-                }
-            } else {
-                var date = 'start_date='+start_date+'&end_date='+end_date;
-                if(start_date != "" || end_date != "") {
-                    var dateNotNull = false;
-                }
-            }
+                var dateNotNull = true;
 
-            if(dateNotNull == true) {
-                if(dateNotNull == true) {
-                    $("#registeredUserDate").addClass('border-2 border-red-200');
-                    $("#registeredUserStartDate").addClass('border-2 border-red-200');
-                    $("#registeredUserEndDate").addClass('border-2 border-red-200');
+                if($("#registeredUserCheckboxSpecificDate").is(':checked')) {
+                    var date = 'date='+specific_date;
+                    if(specific_date != "") {
+                        var dateNotNull = false;
+                    }
                 } else {
-                    $("#registeredUserDate").removeClass('border-2 border-red-200');
-                    $("#registeredUserStartDate").removeClass('border-2 border-red-200');
-                    $("#registeredUserEndDate").removeClass('border-2 border-red-200');
+                    var date = 'start_date='+start_date+'&end_date='+end_date;
+                    if(start_date != "" || end_date != "") {
+                        var dateNotNull = false;
+                    }
                 }
-                alert('Please provide all necessary information.');
-            } else {
-                location.href='/program-coordinator/reports/registered-users/?' +date;
-            }
-        }
 
-
-
-        // User Activity Report
-        function download_report_userActivity_evaluation() {
-            var specific_date = $("#userActivityDate").val();
-            var start_date = $("#userActivityStartDate").val();
-            var end_date = $("#userActivityEndDate").val();
-
-
-            var dateNotNull = true;
-
-            if($("#userActivityCheckboxSpecificDate").is(':checked')) {
-                var date = 'date='+specific_date;
-                if(specific_date != "") {
-                    var dateNotNull = false;
-                }
-            } else {
-                var date = 'start_date='+start_date+'&end_date='+end_date;
-                if(start_date != "" || end_date != "") {
-                    var dateNotNull = false;
-                }
-            }
-
-            if(dateNotNull == true) {
                 if(dateNotNull == true) {
-                    $("#userActivityDate").addClass('border-2 border-red-200');
-                    $("#userActivityStartDate").addClass('border-2 border-red-200');
-                    $("#userActivityEndDate").addClass('border-2 border-red-200');
+                    if(dateNotNull == true) {
+                        $("#registeredUserDate").addClass('border-2 border-red-200');
+                        $("#registeredUserStartDate").addClass('border-2 border-red-200');
+                        $("#registeredUserEndDate").addClass('border-2 border-red-200');
+                    } else {
+                        $("#registeredUserDate").removeClass('border-2 border-red-200');
+                        $("#registeredUserStartDate").removeClass('border-2 border-red-200');
+                        $("#registeredUserEndDate").removeClass('border-2 border-red-200');
+                    }
+                    alert('Please provide all necessary information.');
                 } else {
-                    $("#userActivityDate").removeClass('border-2 border-red-200');
-                    $("#userActivityStartDate").removeClass('border-2 border-red-200');
-                    $("#userActivityEndDate").removeClass('border-2 border-red-200');
+                    location.href='/program-coordinator/reports/registered-users/?date=' +date;
                 }
-                alert('Please provide all necessary information.');
-            } else {
-                location.href='/program-coordinator/reports/active-inactive-users/?' +date;
             }
-        }
+
+
+
+            // User Activity Report
+            function download_report_userActivity_evaluation() {
+                var specific_date = $("#userActivityDate").val();
+                var start_date = $("#userActivityStartDate").val();
+                var end_date = $("#userActivityEndDate").val();
+
+
+                var dateNotNull = true;
+
+                if($("#userActivityCheckboxSpecificDate").is(':checked')) {
+                    var date = 'date='+specific_date;
+                    if(specific_date != "") {
+                        var dateNotNull = false;
+                    }
+                } else {
+                    var date = 'start_date='+start_date+'&end_date='+end_date;
+                    if(start_date != "" || end_date != "") {
+                        var dateNotNull = false;
+                    }
+                }
+
+                if(dateNotNull == true) {
+                    if(dateNotNull == true) {
+                        $("#userActivityDate").addClass('border-2 border-red-200');
+                        $("#userActivityStartDate").addClass('border-2 border-red-200');
+                        $("#userActivityEndDate").addClass('border-2 border-red-200');
+                    } else {
+                        $("#userActivityDate").removeClass('border-2 border-red-200');
+                        $("#userActivityStartDate").removeClass('border-2 border-red-200');
+                        $("#userActivityEndDate").removeClass('border-2 border-red-200');
+                    }
+                    alert('Please provide all necessary information.');
+                } else {
+                    location.href='/program-coordinator/reports/active-inactive-users/?date=' +date;
+                }
+            }
 
             // Completed Evaluation Report
             function download_report_completed_evaluation() {

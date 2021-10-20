@@ -36,97 +36,97 @@
         <div class="w-2/3 p-5">
             <div class="h-full bg-white w-full shadow-sm rounded-xl p-10 px-14">
 
-     {{-- Registered User --}}
-     <div id="divRegisteredUser" class="w-full h-full">
-        <div class="text-gray-500 text-left font-bold">Registered User</div>
-        <hr class="my-4">
-        <div class="text-gray-600">
+                {{-- Registered User --}}
+                <div id="divRegisteredUser" class="w-full h-full">
+                    <div class="text-gray-500 text-left font-bold">Registered User</div>
+                    <hr class="my-4">
+                    <div class="text-gray-600">
 
-            {{-- start date and end date --}}
-            <div id="registeredUserBetweenDate" class="flex mb-4">
-                <div class="w-1/2 mx-3">
-                    <label for="registeredUserStartDate" class="block text-sm font-medium">Start Date</label>
-                    <input type="date" id="registeredUserStartDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
-                </div>
-                <div class="w-1/2 mx-3">
-                    <label for="registeredUserEndDate" class="block text-sm font-medium">End Date</label>
-                    <input type="date" id="registeredUserEndDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
-                </div>
-            </div>
+                        {{-- start date and end date --}}
+                        <div id="registeredUserBetweenDate" class="flex mb-4">
+                            <div class="w-1/2 mx-3">
+                                <label for="registeredUserStartDate" class="block text-sm font-medium">Start Date</label>
+                                <input type="date" id="registeredUserStartDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
+                            </div>
+                            <div class="w-1/2 mx-3">
+                                <label for="registeredUserEndDate" class="block text-sm font-medium">End Date</label>
+                                <input type="date" id="registeredUserEndDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
+                            </div>
+                        </div>
 
-               {{-- date --}}
-            <div id="registeredUserSpecificDate" style="display: none" class="flex mb-4">
-                <div class="mx-3 w-full">
-                    <label for="registeredUserDate" class="block text-sm font-medium">Date</label>
-                    <input type="date" id="registeredUserDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
-                </div>
-            </div>
-                  {{-- checkbox specific date --}}
-            <div class="flex place-items-center mb-4 mx-3">
-                <div class="flex items-center h-5">
-                    <input id="registeredUserCheckboxSpecificDate" name="registeredUserCheckboxSpecificDate" type="checkbox"
-                        class="focus:ring-1 focus:ring-gray-200 h-4 w-4 text-green-500 border-gray-300 rounded ring-0">
-                </div>
-                <div class="ml-3 text-sm">
-                    <label for="registeredUserCheckboxSpecificDate" class="font-regular text-gray-700">Specific Date</label>
-                </div>
-            </div>
+                        {{-- date --}}
+                        <div id="registeredUserSpecificDate" style="display: none" class="flex mb-4">
+                            <div class="mx-3 w-full">
+                                <label for="registeredUserDate" class="block text-sm font-medium">Date</label>
+                                <input type="date" id="registeredUserDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
+                            </div>
+                        </div>
+                            {{-- checkbox specific date --}}
+                        <div class="flex place-items-center mb-4 mx-3">
+                            <div class="flex items-center h-5">
+                                <input id="registeredUserCheckboxSpecificDate" name="registeredUserCheckboxSpecificDate" type="checkbox"
+                                    class="focus:ring-1 focus:ring-gray-200 h-4 w-4 text-green-500 border-gray-300 rounded ring-0">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="registeredUserCheckboxSpecificDate" class="font-regular text-gray-700">Specific Date</label>
+                            </div>
+                        </div>
 
-                {{-- download button --}}
-                <div class="flex">
-                <div class="mx-3 w-full flow-root">
-                    <button onclick="download_report_registeredUser_evaluation();" class="float-right px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700 focus:ring-gray-300">Download</button>
+                            {{-- download button --}}
+                            <div class="flex">
+                            <div class="mx-3 w-full flow-root">
+                                <button onclick="download_report_registeredUser_evaluation();" class="float-right px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700 focus:ring-gray-300">Download</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
 
-    {{-- active inactive user --}}
-    <div id="divActiveInactiveUser" hidden class="w-full h-full">
-        <div class="text-gray-500 text-left font-bold">Active & Inactive User</div>
-        <hr class="my-4">
-        <div class="text-gray-600">
+                {{-- active inactive user --}}
+                <div id="divActiveInactiveUser" hidden class="w-full h-full">
+                    <div class="text-gray-500 text-left font-bold">Active & Inactive User</div>
+                    <hr class="my-4">
+                    <div class="text-gray-600">
 
-            {{-- start date and end date --}}
-            <div id="userActivityBetweenDate" class="flex mb-4">
-                <div class="w-1/2 mx-3">
-                    <label for="userActivityStartDate" class="block text-sm font-medium">Start Date</label>
-                    <input type="date" id="userActivityStartDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
-                </div>
-                <div class="w-1/2 mx-3">
-                    <label for="userActivityEndDate" class="block text-sm font-medium">End Date</label>
-                    <input type="date" id="userActivityEndDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
-                </div>
-            </div>
+                        {{-- start date and end date --}}
+                        <div id="userActivityBetweenDate" class="flex mb-4">
+                            <div class="w-1/2 mx-3">
+                                <label for="userActivityStartDate" class="block text-sm font-medium">Start Date</label>
+                                <input type="date" id="userActivityStartDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
+                            </div>
+                            <div class="w-1/2 mx-3">
+                                <label for="userActivityEndDate" class="block text-sm font-medium">End Date</label>
+                                <input type="date" id="userActivityEndDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
+                            </div>
+                        </div>
 
-                {{-- date --}}
-            <div id="userActivitySpecificDate" class="flex mb-4" style="display: none">
-                <div class="mx-3 w-full">
-                    <label for="userActivityDate" class="block text-sm font-medium">Date</label>
-                    <input type="date" id="userActivityDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
-                </div>
-            </div>
+                            {{-- date --}}
+                        <div id="userActivitySpecificDate" class="flex mb-4" style="display: none">
+                            <div class="mx-3 w-full">
+                                <label for="userActivityDate" class="block text-sm font-medium">Date</label>
+                                <input type="date" id="userActivityDate" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm"/>
+                            </div>
+                        </div>
 
-                {{-- checkbox specific date --}}
-            <div class="flex place-items-center mb-4 mx-3">
-                <div class="flex items-center h-5">
-                    <input id="userActivityCheckboxSpecificDate" name="registeredUserCheckboxSpecificDate" type="checkbox"
-                        class="focus:ring-1 focus:ring-gray-200 h-4 w-4 text-green-500 border-gray-300 rounded ring-0">
-                </div>
-                <div class="ml-3 text-sm">
-                    <label for="userActivityCheckboxSpecificDate" class="font-regular text-gray-700">Specific Date</label>
-                </div>
-            </div>
+                            {{-- checkbox specific date --}}
+                        <div class="flex place-items-center mb-4 mx-3">
+                            <div class="flex items-center h-5">
+                                <input id="userActivityCheckboxSpecificDate" name="registeredUserCheckboxSpecificDate" type="checkbox"
+                                    class="focus:ring-1 focus:ring-gray-200 h-4 w-4 text-green-500 border-gray-300 rounded ring-0">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="userActivityCheckboxSpecificDate" class="font-regular text-gray-700">Specific Date</label>
+                            </div>
+                        </div>
 
-                {{-- download button --}}
-                <div class="flex">
-                <div class="mx-3 w-full flow-root">
-                    <button onclick="download_report_userActivity_evaluation();" class="float-right px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700 focus:ring-gray-300">Download</button>
+                            {{-- download button --}}
+                            <div class="flex">
+                            <div class="mx-3 w-full flow-root">
+                                <button onclick="download_report_userActivity_evaluation();" class="float-right px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700 focus:ring-gray-300">Download</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
 
                 {{-- completed evaluation --}}
@@ -189,6 +189,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
