@@ -45,44 +45,188 @@
             $("#lineCompletedEvaluation").addClass(activeLineClass);
         });
 
-
-        // completed evaluation script
-
-        $("#completedEvaluationCheckboxSpecificDate").change(function(){
+        // Registered Users script
+        $("#registeredUserCheckboxSpecificDate").change(function(){
             if($(this).is(':checked')) {
-                $("#divCESpecificDate").css({ display: "" });
-                $("#divCEBetweenDates").css({ display: "none" });
+                $("#registeredUserSpecificDate").css({ display: "" });
+                $("#registeredUserBetweenDate").css({ display: "none" });
                 console.log("specific date");
             } else {
-                $("#divCEBetweenDates").css({ display: "" });
-                $("#divCESpecificDate").css({ display: "none" });
+                $("#registeredUserBetweenDate").css({ display: "" });
+                $("#registeredUserSpecificDate").css({ display: "none" });
                 console.log("between date");
             }
 
         });
 
-        $("#completedEvaluationExtensionService").change(function(){
-            getWebinars($(this).val());
-        });
-
-        $("#completedEvaluationDate").change(function() {
+        $("#registeredUserDate").change(function() {
             if($(this).val() != "") {
                 $(this).removeClass('border-2 border-red-200');
             }
         });
-        $("#completedEvaluationStartDate").change(function() {
+        $("#registeredUserStartDate").change(function() {
             if($(this).val() != "") {
                 $(this).removeClass('border-2 border-red-200');
             }
         });
-        $("#completedEvaluationEndDate").change(function() {
+        $("#registeredUserEndDate").change(function() {
             if($(this).val() != "") {
                 $(this).removeClass('border-2 border-red-200');
             }
         });
 
 
-        function download_report_completed_evaluation() {
+
+
+
+        // Active & Inactive Users script
+            $("#userActivityCheckboxSpecificDate").change(function(){
+                if($(this).is(':checked')) {
+                    $("#userActivitySpecificDate").css({ display: "" });
+                    $("#userActivityBetweenDate").css({ display: "none" });
+                    console.log("specific date");
+                } else {
+                    $("#userActivityBetweenDate").css({ display: "" });
+                    $("#userActivitySpecificDate").css({ display: "none" });
+                    console.log("between date");
+                }
+            });
+
+            $("#userActivityDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+            $("#userActivityStartDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+            $("#userActivityEndDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+
+
+
+
+        // completed evaluation script
+            $("#completedEvaluationCheckboxSpecificDate").change(function(){
+                if($(this).is(':checked')) {
+                    $("#divCESpecificDate").css({ display: "" });
+                    $("#divCEBetweenDates").css({ display: "none" });
+                    console.log("specific date");
+                } else {
+                    $("#divCEBetweenDates").css({ display: "" });
+                    $("#divCESpecificDate").css({ display: "none" });
+                    console.log("between date");
+                }
+
+            });
+
+            $("#completedEvaluationExtensionService").change(function(){
+                getWebinars($(this).val());
+            });
+
+            $("#completedEvaluationDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+            $("#completedEvaluationStartDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+            $("#completedEvaluationEndDate").change(function() {
+                if($(this).val() != "") {
+                    $(this).removeClass('border-2 border-red-200');
+                }
+            });
+
+
+
+
+        // Download Buttons Functions
+
+            // Registered Users
+            function download_report_registeredUser_evaluation() {
+                var specific_date = $("#registeredUserDate").val();
+                var start_date = $("#registeredUserStartDate").val();
+                var end_date = $("#registeredUserEndDate").val();
+
+                var dateNotNull = true;
+
+                if($("#registeredUserCheckboxSpecificDate").is(':checked')) {
+                    var date = 'date='+specific_date;
+                    if(specific_date != "") {
+                        var dateNotNull = false;
+                    }
+                } else {
+                    var date = 'start_date='+start_date+'&end_date='+end_date;
+                    if(start_date != "" || end_date != "") {
+                        var dateNotNull = false;
+                    }
+                }
+
+                if(dateNotNull == true) {
+                    if(dateNotNull == true) {
+                        $("#registeredUserDate").addClass('border-2 border-red-200');
+                        $("#registeredUserStartDate").addClass('border-2 border-red-200');
+                        $("#registeredUserEndDate").addClass('border-2 border-red-200');
+                    } else {
+                        $("#registeredUserDate").removeClass('border-2 border-red-200');
+                        $("#registeredUserStartDate").removeClass('border-2 border-red-200');
+                        $("#registeredUserEndDate").removeClass('border-2 border-red-200');
+                    }
+                    alert('Please provide all necessary information.');
+                } else {
+                    location.href='/program-coordinator/reports/registered-users/?date=' +date;
+                }
+            }
+
+
+
+            // User Activity Report
+            function download_report_userActivity_evaluation() {
+                var specific_date = $("#userActivityDate").val();
+                var start_date = $("#userActivityStartDate").val();
+                var end_date = $("#userActivityEndDate").val();
+
+
+                var dateNotNull = true;
+
+                if($("#userActivityCheckboxSpecificDate").is(':checked')) {
+                    var date = 'date='+specific_date;
+                    if(specific_date != "") {
+                        var dateNotNull = false;
+                    }
+                } else {
+                    var date = 'start_date='+start_date+'&end_date='+end_date;
+                    if(start_date != "" || end_date != "") {
+                        var dateNotNull = false;
+                    }
+                }
+
+                if(dateNotNull == true) {
+                    if(dateNotNull == true) {
+                        $("#userActivityDate").addClass('border-2 border-red-200');
+                        $("#userActivityStartDate").addClass('border-2 border-red-200');
+                        $("#userActivityEndDate").addClass('border-2 border-red-200');
+                    } else {
+                        $("#userActivityDate").removeClass('border-2 border-red-200');
+                        $("#userActivityStartDate").removeClass('border-2 border-red-200');
+                        $("#userActivityEndDate").removeClass('border-2 border-red-200');
+                    }
+                    alert('Please provide all necessary information.');
+                } else {
+                    location.href='/program-coordinator/reports/active-inactive-users/?date=' +date;
+                }
+            }
+
+            // Completed Evaluation Report
+            function download_report_completed_evaluation() {
             var specific_date = $("#completedEvaluationDate").val();
             var start_date = $("#completedEvaluationStartDate").val();
             var end_date = $("#completedEvaluationEndDate").val();
@@ -118,7 +262,6 @@
                 location.href='/program-coordinator/reports/completed-evaluation/?' +date+'&extension_service_id='+extension_service_id+'&webinar_id='+webinar_id;
             }
         }
-
 
 
         // fetch data
