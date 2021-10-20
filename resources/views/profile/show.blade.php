@@ -1,4 +1,17 @@
 <x-app-layout>
+
+    {{-- user profile --}}
+
+
+    {{-- webinars completed --}}
+    @livewire('participant.user.webinar-completed')
+
+    {{-- webinars in progress --}}
+    @livewire('participant.user.webinar-in-progress')
+
+
+
+    {{-- end --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Profile') }}
