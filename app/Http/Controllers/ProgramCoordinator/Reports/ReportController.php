@@ -16,14 +16,14 @@ class ReportController extends Controller
         return view('reports.ProgramCoordinator.report-index')->with('extension_services', $extension_services);
     }
 
-    public function download_registered_users(Request $request)
+    public function download_report_registeredUser_evaluation(Request $request)
     {
-        //ani
+        dd($request->date);
     }
 
-    public function download_active_inactive_users(Request $request)
+    public function download_report_userActivity_evaluation(Request $request)
     {
-        //carl
+        dd($request->date);
     }
 
     public function download_completed_evaluation(Request $request)
