@@ -1,7 +1,7 @@
 <x-app-layout>
 
     {{-- user profile --}}
-
+    @livewire('profile.user-profile')
 
     {{-- webinars completed --}}
     @livewire('participant.user.webinar-completed')
