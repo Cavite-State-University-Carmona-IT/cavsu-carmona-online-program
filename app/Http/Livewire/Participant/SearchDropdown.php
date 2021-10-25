@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 use App\Models\Webinar;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SearchDropdown extends Component
 {
@@ -15,16 +16,22 @@ class SearchDropdown extends Component
     public function render()
     {
        $searchResults = [];
-        
+       $search = $this->search;$search = $this->search;
         if (strlen($this->search) >= 2) {
-            $searchResults = DB::table('webinars')
-                ->get('webinars'.$this->search)
-                ->json()['results'];
+            $searchResults = Webinar::query()
+            ->where(function ($query) use ($search) {
+                return $query->where('title', 'like', '%'. $search .'%');
+                    // /->orWhere('first_name', 'like', '%'. $search .'%')
+                   
+            }) ->take(7)
+                ->get();
+                // ->json()['results'];
         }
          //dump($searchResults);
 
         return view('livewire.participant.search-dropdown', [
-            'searchResults' => collect ($searchResults)->take(7),
+            'searchResults' =>  $searchResults,
+            // 'searchResults' => collect ($searchResults)->take(7),
         ]);
     }
 }
