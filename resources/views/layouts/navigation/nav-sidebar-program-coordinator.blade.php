@@ -149,7 +149,7 @@
                         <img class="h-5 w-auto"  src="{{ asset('storage/image/icons/webinar.gif') }}" />
                             <span>Webinar</span>
                         </a>
-                        <a href="" class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent ">
+                        <a href="{{ route('program-coordinator.advertisement') }}" class="flex items-center w-full space-x-2  p-2  border-l-2 border-transparent ">
                         <img class="h-5 w-auto"  src="{{ asset('storage/image/icons/advertisement.gif') }}" />
                             <span>Advertisement</span>
                         </a>
