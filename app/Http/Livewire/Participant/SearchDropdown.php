@@ -17,8 +17,8 @@ class SearchDropdown extends Component
        $searchResults = [];
         
         if (strlen($this->search) >= 2) {
-            $searchResults = Http::withToken(config('services.run'))
-                ->get('webinar'.$this->search)
+            $searchResults = DB::table('webinars')
+                ->get('webinars'.$this->search)
                 ->json()['results'];
         }
          //dump($searchResults);
