@@ -7,12 +7,20 @@ use Illuminate\Support\Facades\Http;
 use App\Models\Webinar;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Resources;
 
 class SearchDropdown extends Component
 {
     public $search = ''; 
 
-
+    public function mount()
+    {
+        $this->reset();
+    }
+    public function reset()
+    {
+        $this->$search = '';
+    }
     public function render()
     {
        $searchResults = [];
