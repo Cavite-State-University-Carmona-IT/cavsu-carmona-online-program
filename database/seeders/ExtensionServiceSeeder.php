@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\ExtensionService;
+use Illuminate\Support\Facades\DB;
 
 class ExtensionServiceSeeder extends Seeder
 {
@@ -14,6 +15,7 @@ class ExtensionServiceSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('extension_services')->delete();
         $data = [
             [
                 'name' => 'BARANGAY ENTREPRENYUR',
