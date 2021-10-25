@@ -1,7 +1,7 @@
 <div class="max-w-full relative">
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
     <input class="w-full border-1 border-gray-200  bg-white h-15 px-5 pr-16 rounded-full text-sm hover:border-gray-300 focus:outline-none focus:border-gray-300 focus:ring-gray-300 focus:ring-opacity-50 focus:ring-1"
-        type="text" name="search" placeholder="Search ..." wire:model.debounce.500ms="search" autocomplete="off"
+        type="text" name="search" placeholder="Search ..." wire:model.debounce.500ms="search" 
         @keydown.window="
             if (event.keyCode === 191) {
                 event.preventDefault();
@@ -12,48 +12,37 @@
         @keydown="isOpen = true"
         @keydown.escape.window="isOpen = false"
         @keydown.shift.tab="isOpen = false"
+        autocomplete="off"
         >
     <div wire:loading class="spinner top-0 right-0 mr-4 mt-3"></div> 
+    @if (strlen($search) >= 2)
+        <div
+            class="z-50 absolute bg-white-800 text-sm rounded w-64 mt-4"
+            x-show.transition.opacity="isOpen"
+        >
+            @if ($searchResults->count() > 0)
+                <ul>
+                    @foreach ($searchResults as $result)
+                        <li class="border-b border-white-700">
+                            <a
+                                href="{{ route('webinars.show', $result['id']) }}" class="block hover:bg-gray-700 px-3 py-3 flex items-center transition ease-in-out duration-150"
+                                @if ($loop->last) @keydown.tab="isOpen = false" @endif
+                            >
+                            @if ($result['poster_path'])
+                                <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg{{ $result['poster_path'] }}" alt="poster" class="w-8">
+                            @else
+                                <img src="https://via.placeholder.com/50x75" alt="poster" class="w-8">
+                            @endif
+                            <span class="ml-4">{{ $result['title'] }}</span>
+                        </a>
+                        </li>
+                    @endforeach
 
-    <div class="absolute w-full mt-2">
-        <div class="w-full border border-gray-300  py-3 px-3 bg-white">
-            <div class="w-full grid grid-cols-5">
-                <div class="flex justify-center items-center">
-                    <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg"
-                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
-                        class="w-20 h-10 object-center object-cover">
-                </div>
-                <div class="col-span-3 flex items-center justify-center pl-3">
-                    
-                    <h3>
-                        <a href="#" class="text-sm"> </a>{{ $search }}
-                    </h3>
-                </div>
-            </div>
+                </ul>
+            @else
+                <div class="px-3 py-3">No results for "{{ $search }}"</div>
+            @endif
         </div>
-        <div class="w-full border border-gray-300  py-3 px-3 bg-white">
-            <div class="w-full grid grid-cols-5">
-                <div class="flex justify-center items-center">
-                    <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg"
-                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
-                        class="w-20 h-10 object-center object-cover">
-                </div>
-                <div class="col-span-3 flex items-center justify-center pl-3">
-                    <h3 class="text-sm"> Lorem Ipsum is simply dummy text of the ....</h3>
-                </div>
-            </div>
-        </div>
-        <div class="w-full border border-gray-300  py-3 px-3 bg-white">
-            <div class="w-full grid grid-cols-5">
-                <div class="flex justify-center items-center">
-                    <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg"
-                        alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
-                        class="w-20 h-10 object-center object-cover">
-                </div>
-                <div class="col-span-3 flex items-center justify-center pl-3">
-                    <h3 class="text-sm"> Lorem Ipsum is simply dummy text of the ....</h3>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endif      
+    
 </div>
