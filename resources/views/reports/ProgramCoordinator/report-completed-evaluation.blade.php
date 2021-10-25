@@ -61,7 +61,7 @@
 
     //---
     header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header("Content-Disposition: attachment; filename=filename=".carbon\carbon::now()->format('dmY_') ."report_completed_evaluation.xls");
+    header("Content-Disposition: attachment; filename=".carbon\carbon::now()->format('dmY_') ."report_completed_evaluation.xls");
     header("Pragma: no-cache");
     header("Expires: 0");
     //---
