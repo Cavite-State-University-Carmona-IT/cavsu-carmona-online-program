@@ -38,6 +38,7 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
                         Route::get('dashboard', Dashboard\DashboardIndex::class)->name('dashboard');
                         Route::get('collection', Collection\CollectionIndex::class)->name('collection');
                         Route::get('webinar', Webinar\WebinarIndex::class)->name('webinar');
+                        Route::get('advertisement', Advertisement\AdvertisementIndex::class)->name('advertisement');
 
                     });
                 });
