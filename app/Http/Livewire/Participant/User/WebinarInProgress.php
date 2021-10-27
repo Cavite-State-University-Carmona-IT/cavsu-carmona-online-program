@@ -16,6 +16,7 @@ class WebinarInProgress extends Component
     public $progressWebinars;
     public $extensionServiceName;
     public $buttonName = "See All";
+
     public function mount()
     {
         $this->progressWebinars = Webinar::query()
@@ -53,8 +54,7 @@ class WebinarInProgress extends Component
 
         $this->totalWebinars = $this->progressWebinars->count();
 
-        if($this->totalWebinars < 9){
-
+        if($this->totalWebinars <= 8){
             $this->btnIs = "hidden";
         }else
         {

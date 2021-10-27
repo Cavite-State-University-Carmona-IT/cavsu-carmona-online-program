@@ -46,14 +46,11 @@
                     @endforeach
               <!-- ARTICLES END-->
             </section>
-                <style>
-                    #container{
-                        text-align: right;
-                        visibility: {{$btnIs}};
-                    }
-                </style>
-            <div id="container">
-                <button class="relative p-2 md:h-90 lg:l-90 bg-transparent text-sm text-gray-800 hover:text-green-600"  wire:click="seeAll">{{$buttonName}}</button>
+            <div class="flex justify-end">
+                <button class="relative p-2 md:h-90 lg:l-90 bg-transparent text-sm text-gray-800 hover:text-green-600"  wire:click="seeAll" 
+                {{ $btnIs == 'hidden' ? 'hidden':'show' }}>
+                    {{$buttonName}}
+                </button>
             </div>
 
         </article>
