@@ -21,7 +21,7 @@
                 </div>
             </div>
             @if($webinars->count() == 0)
-                <div class="w-full px-14">
+                <div class="w-full h-screen px-14">
                     <div class="text-2xl font-bold ">Sorry, we couldn't find any results for {{ $search }}</div>
                     <br>
                     <div class="font-semibold text-md ">Try adjusting your search. Here are some ideas:</div>
