@@ -35,7 +35,7 @@
                 @foreach($webinars as $webinar)
                     <div class="p-3">
                         <div class="m-auto overflow-hidden transition duration-500 ease-in-out transform rounded-lg shadow-lg cursor-pointer hover:-translate-y-5 hover:shadow-2xl h-90 w-60 md:w-80">
-                            <a href="{{ url('program-coordinator/webinar',$webinar->link()) }}" class="block w-full h-full">
+                            <a href="{{ url('program-coordinator/webinar',strtolower($webinar->title)) }}" class="block w-full h-full">
                                 <img alt="blog photo" src="{{ asset('storage/image/webinars/'.$webinar->image) }}" class="object-cover w-full max-h-40"/>
                                 <div class="w-full p-4 bg-white">
                                     <p class="h-20 pt-1 font-medium text-indigo-500 line-clamp-3">

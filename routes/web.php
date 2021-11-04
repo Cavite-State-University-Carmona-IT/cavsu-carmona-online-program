@@ -40,6 +40,9 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
                         Route::get('webinar', Webinar\WebinarIndex::class)->name('webinar');
                         Route::get('advertisement', Advertisement\AdvertisementIndex::class)->name('advertisement');
 
+                        // Webinar details
+                        Route::get('webinar/{name}', Webinar\WebinarDetails::class);
+
                     });
                 });
             });

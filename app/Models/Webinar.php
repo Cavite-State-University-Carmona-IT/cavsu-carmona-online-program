@@ -34,11 +34,4 @@ class Webinar extends Model
     {
         return $this->hasMany(WebinarUserReview::class, 'webinar_id', 'id');
     }
-
-    public function link()
-    {
-        $lowercaseStr = strtolower($this->title);
-        $hyphenatedStr = str_replace(" ", "-", $lowercaseStr);
-        return $hyphenatedStr;
-    }
 }
