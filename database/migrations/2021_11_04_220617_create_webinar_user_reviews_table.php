@@ -18,7 +18,11 @@ class CreateWebinarUserReviewsTable extends Migration
             $table->integer('webinar_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->tinyInteger('rate')->comment('1-lowest 5-highest')->unsigned()->nullable();
-            $table->string('comment')->nullable();
+            $table->string('comment_title')->nullable();
+            $table->text('comment_body')->nullable();
+            $table->integer('likes')->unsigned()->nullable();
+            $table->integer('unlikes')->unsigned()->nullable();
+            $table->integer('shares')->unsigned()->nullable();
             $table->timestamps();
         });
     }
