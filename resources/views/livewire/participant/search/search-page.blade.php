@@ -14,7 +14,7 @@
                             </div>
                             <div class="col-span-4 flex items-center py-5">
                                 <div class="w-full pl-2">
-                                    <h3 class="text-sm font-semibold"> Lorem Ipsum is simply dummy text of the</h3>
+                                    <h3 class="text-sm font-semibold"> ex. Lorem Ipsum is simply dummy text of the</h3>
                                     <h5 class="text-gray-600 text-xs">Lorem Ipsum is simply dummy text of the</h5>
                                 </div>
                             </div>

@@ -13,14 +13,7 @@ class SearchDropdown extends Component
 {
     public $search = ''; 
 
-    public function mount()
-    {
-        $this->reset();
-    }
-    public function reset()
-    {
-        $this->$search = '';
-    }
+   
     public function render()
     {
        $searchResults = [];
