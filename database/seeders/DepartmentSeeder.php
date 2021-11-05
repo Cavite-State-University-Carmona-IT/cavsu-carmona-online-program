@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Department;
 
 class DepartmentSeeder extends Seeder
 {
@@ -13,6 +14,25 @@ class DepartmentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Department::truncate();
+        $data = [
+            [
+                'name' => 'Business Management',
+            ],
+            [
+                'name' => 'Test Developer',
+            ],
+            [
+                'name' => 'Developer Test',
+            ],
+            [
+                'name' => 'Information Computer Technology',
+            ],
+            [
+                'name' => 'Education',
+            ],
+        ];
+
+        Department::insert($data);
     }
 }

@@ -11,9 +11,9 @@ use App\Resources;
 
 class SearchDropdown extends Component
 {
-    public $search = ''; 
+    public $search = '';
 
-   
+
     public function render()
     {
        $searchResults = [];
@@ -23,7 +23,7 @@ class SearchDropdown extends Component
             ->where(function ($query) use ($search) {
                 return $query->where('title', 'like', '%'. $search .'%');
                     // /->orWhere('first_name', 'like', '%'. $search .'%')
-                   
+
             }) ->take(7)
                 ->get();
                 // ->json()['results'];
@@ -34,5 +34,10 @@ class SearchDropdown extends Component
             'searchResults' =>  $searchResults,
             // 'searchResults' => collect ($searchResults)->take(7),
         ]);
+    }
+
+    public function resetSearch()
+    {
+        $this->search = '';
     }
 }
