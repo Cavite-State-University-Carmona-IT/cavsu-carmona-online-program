@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-span-2 bg-white shadow-md rounded-xl">
                     <div class="videoWrapper">
-                        <iframe class="rounded-xl" width="560" height="349" src="https://www.youtube.com/embed/K3Qzzggn--s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="rounded-xl" width="560" height="349" src="https://www.youtube.com/embed/{{ $webinar->video_link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
 
                 </div>
