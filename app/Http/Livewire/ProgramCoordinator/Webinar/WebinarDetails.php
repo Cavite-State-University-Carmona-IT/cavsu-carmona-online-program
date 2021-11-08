@@ -10,13 +10,16 @@ use App\Models\Webinar;
 class WebinarDetails extends Component
 {
     public $webinar;
-    public $updateModalForm = "hide";
+    public $title;
+    public $test;
 
     public function mount(Request $request)
     {
         $this->webinar = Webinar::query()
         ->where('title', $request->name)
         ->first();
+
+        $this->title = $this->webinar->title;
     }
 
     public function render()
@@ -25,14 +28,12 @@ class WebinarDetails extends Component
         ->layout('layouts.layout-program-coordinator', ['menu' =>  'webinar']);
     }
 
-    public function updateModal()
+    public function update()
     {
-        if($this->updateModalForm == "show") {
-            $this->updateModalForm = "hide";
-        } else {
-            $this->updateModalForm = "show";
-        }
-
+        $webinar = $this->webinar;
+        $webinar->title = $this->title;
+        $webinar->save();
     }
+
 
 }
