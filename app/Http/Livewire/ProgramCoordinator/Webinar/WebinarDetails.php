@@ -10,6 +10,7 @@ use App\Models\Webinar;
 class WebinarDetails extends Component
 {
     public $webinar;
+    public $updateModalForm = "hide";
 
     public function mount(Request $request)
     {
@@ -22,6 +23,16 @@ class WebinarDetails extends Component
     {
         return view('livewire.program-coordinator.webinar.webinar-details')
         ->layout('layouts.layout-program-coordinator', ['menu' =>  'webinar']);
+    }
+
+    public function updateModal()
+    {
+        if($this->updateModalForm == "show") {
+            $this->updateModalForm = "hide";
+        } else {
+            $this->updateModalForm = "show";
+        }
+
     }
 
 }
