@@ -15,9 +15,9 @@
                     </div>
                 </div>
                 <div class="md:m-3">
-                    <button class="p-2 pl-5 pr-5 text-lg text-gray-100 transition-colors duration-700 transform bg-green-500 border-indigo-300 rounded-full hover:bg-blue-400 focus:border-4">
+                    <a href="{{ url('program-coordinator/new-webinar') }}" class="p-2 pl-5 pr-5 text-lg text-gray-100 transition-colors duration-700 transform bg-green-500 border-indigo-300 rounded-full hover:bg-blue-400 focus:border-4">
                         <i class="fas fa-plus"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
             @if($webinars->count() == 0)

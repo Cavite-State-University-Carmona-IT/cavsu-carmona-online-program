@@ -1,6 +1,6 @@
 <?php
 //Roland Elly B. Gacula 1501-00294
-//Crizaldy Derain 
+//Crizaldy Derain
 // webinar edit and delete
 namespace App\Http\Livewire\ProgramCoordinator\Webinar;
 
@@ -23,9 +23,6 @@ class WebinarDetails extends Component
     public $ecertificate_link;
     public $delete;
     public $test;
-    
-    
-    
 
     public function mount(Request $request)
     {
@@ -73,8 +70,8 @@ public function delete()
     $this->evaluation_link = "";
     $this->ecertificate_link = "";
     $this->webinar->delete();
-   
-    
+
+
 }
 
 }
