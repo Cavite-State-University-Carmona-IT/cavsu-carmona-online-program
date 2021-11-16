@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'App\Http\Livewire'], function() {
 
     Route::get('/', Participant\Home::class);
+    Route::get('extension-service/{name}', Participant\ExtensionService\ExtensionServiceIndex::class);
 
     // AUTH USER;
     Route::group(['middleware' => 'auth'], function () {
