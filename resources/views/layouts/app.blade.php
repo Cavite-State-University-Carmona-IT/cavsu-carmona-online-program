@@ -33,7 +33,12 @@
     <body class="font-sans antialiased" style="font-family: 'Open Sans', sans-serif;">
         <x-jet-banner />
 
-        @yield('content')
+        <div class="min-h-screen bg-gray-100">
+            @include('layouts.navigation.nav-component')
+            <main>
+                {{ $slot }}
+            </main>
+        </div>
 
         @stack('modals')
 

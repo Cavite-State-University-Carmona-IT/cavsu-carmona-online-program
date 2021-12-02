@@ -14,10 +14,10 @@ return [
     'roles_structure' => [
         'program_coordinator' => [
             'users' => 'c,r,u,d',
-            'profile' => 'r,u'
-        ],
-        'participant' => [
-            'users' => 'c,r,u,d',
+            'webinars' => 'c,r,u,d',
+            'headline' => 'c,r,u,d',
+            'reports' => 'c,r,u,d',
+            'topics' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
     ],

@@ -1,14 +1,9 @@
 <div>
     {{-- In work, do what you enjoy. --}}
-    @if(auth()->check())
-        @include('layouts.navigation.nav-component')
-    @else
-        @include('layouts.navigation.nav-guest-component')
-    @endif
 
     <div class="max-w-full">
         <div class="w-full">
-            <div class=" overflow-hidden">
+            <div class="overflow-hidden ">
                 {{-- HEADLINE --}}
                 @livewire('participant.headline-section')
 
@@ -28,7 +23,7 @@
 
                 {{-- FEATURED TOPICS --}}
                 @livewire('participant.featured-topics-section')
-              
+
             </div>
         </div>
     </div>
