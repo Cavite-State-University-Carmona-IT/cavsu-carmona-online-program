@@ -138,13 +138,13 @@
                     <div class="flex items-center ">
                         @if (Route::has('login'))
                             <div class="flex w-full">
-                                <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white rounded-sm hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
+                                <a href="{{ route('login') }}"    class="inline-flex items-center px-3 py-2 m-1 text-sm font-medium leading-4 text-gray-700 transition bg-transparent rounded-sm hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:bg-gray-100 active:bg-gray-100">
                                     Log in
                                 </a>
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="inline-flex items-center px-3 py-2 m-1 text-sm font-medium leading-4 text-white transition bg-gray-700 rounded-sm hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
-                                        Sign Up
-                                    </a>
+                                <a href="{{ route('register') }}" class="inline-flex items-center px-3 py-2 m-1 text-sm font-medium leading-4 text-white transition bg-green-600 rounded-sm hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:bg-gray-100 active:bg-gray-100">
+                                    Sign Up
+                                </a>
                                 @endif
                             </div>
                         @endif
