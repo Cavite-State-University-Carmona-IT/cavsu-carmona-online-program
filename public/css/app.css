@@ -1245,6 +1245,10 @@ select {
 	margin-top: 2.5rem;
 	margin-bottom: 2.5rem;
 }
+.mx-3 {
+	margin-left: 0.75rem;
+	margin-right: 0.75rem;
+}
 .mx-1 {
 	margin-left: 0.25rem;
 	margin-right: 0.25rem;
@@ -1260,10 +1264,6 @@ select {
 .mx-7 {
 	margin-left: 1.75rem;
 	margin-right: 1.75rem;
-}
-.mx-3 {
-	margin-left: 0.75rem;
-	margin-right: 0.75rem;
 }
 .ml-3 {
 	margin-left: 0.75rem;
