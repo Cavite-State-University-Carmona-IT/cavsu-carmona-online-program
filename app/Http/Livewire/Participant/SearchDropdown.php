@@ -22,8 +22,6 @@ class SearchDropdown extends Component
             $searchResults = Webinar::query()
             ->where(function ($query) use ($search) {
                 return $query->where('title', 'like', '%'. $search .'%');
-                    // /->orWhere('first_name', 'like', '%'. $search .'%')
-
             }) ->take(7)
                 ->get();
                 // ->json()['results'];

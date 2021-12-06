@@ -1,6 +1,5 @@
 <div>
     {{-- In work, do what you enjoy. --}}
-
     <div class="max-w-full">
         <div class="w-full">
             <div class="overflow-hidden ">
@@ -14,12 +13,13 @@
                 @livewire('participant.user.courses-inprogress-section')
 
                 @endif
+                {{-- EXTENSION SERVICE --}}
+                @livewire('participant.extension-services-section')
 
                 {{-- COURSES SUGGESTION --}}
                 @livewire('participant.courses-suggestion-section')
 
-                {{-- EXTENSION SERVICE --}}
-                @livewire('participant.extension-services-section')
+
 
                 {{-- FEATURED TOPICS --}}
                 @livewire('participant.featured-topics-section')
