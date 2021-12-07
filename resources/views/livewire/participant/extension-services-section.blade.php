@@ -5,11 +5,11 @@
             <h2 class="py-5 text-2xl font-semibold text-gray-900 lg:mb-5">Extension Services</h2>
             <section class="grid max-w-full grid-cols-1 gap-5 px-20 sm:px-8 sm:grid-cols-2 md:grid-cols-3 md:gap-2 lg:px-0 lg:grid-cols-5">
                 <article class="bg-white border">
-                    <div class="">
+                    <a href="{{ url('extension-service/barangay-entreprenyur') }}" class="">
                         <img src="{{ asset('storage/image/extension-services/BARANGAY_ENTREPRENYUR.png')}}"
                             alt="BARANGAY ENTREPRENYUR"
                             class="object-cover object-center w-full h-full">
-                    </div>
+                    </a>
                 </article>
                 <article class="bg-white border">
                     <div class="">

@@ -7,10 +7,7 @@
                 @livewire('participant.headline-section')
 
                 @if(auth()->check())
-                {{-- USER SECTION --}}
-
-                {{-- COURSES USER IN PROGRESS --}}
-                @livewire('participant.user.courses-inprogress-section')
+                    {{-- USER SECTION --}}
 
                 @endif
                 {{-- EXTENSION SERVICE --}}
