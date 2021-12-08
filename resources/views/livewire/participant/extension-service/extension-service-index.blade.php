@@ -1,16 +1,17 @@
 <div>
-    {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    @if(auth()->check())
-        @include('layouts.navigation.nav-component')
-    @else
-        @include('layouts.navigation.nav-guest-component')
-    @endif
-
+    {{-- In work, do what you enjoy. --}}
     <div class="max-w-full">
         <div class="w-full">
             <div class="overflow-hidden ">
                 {{-- HEADLINE --}}
-                {{ $this->extension_service_name }}
+                @livewire('participant.extension-service.headline-section')
+
+                {{-- COURSES SUGGESTION --}}
+                @livewire('participant.extension-service.webinar-section', ['extension_service_name' => $extension_service_name])
+
+                {{-- FEATURED TOPICS --}}
+                @livewire('participant.featured-topics-section')
+
             </div>
         </div>
     </div>

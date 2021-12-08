@@ -4,7 +4,7 @@
         <div class="w-full">
             <div class="overflow-hidden ">
                 {{-- HEADLINE --}}
-                @livewire('participant.headline-section')
+                @livewire('participant.headline.headline-section')
 
                 @if(auth()->check())
                     {{-- USER SECTION --}}

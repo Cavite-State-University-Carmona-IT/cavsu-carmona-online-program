@@ -17,7 +17,7 @@ class SearchDropdown extends Component
     public function render()
     {
        $searchResults = [];
-       $search = $this->search;$search = $this->search;
+       $search = $this->search;
         if (strlen($this->search) >= 2) {
             $searchResults = Webinar::query()
             ->where(function ($query) use ($search) {
@@ -32,6 +32,11 @@ class SearchDropdown extends Component
             'searchResults' =>  $searchResults,
             // 'searchResults' => collect ($searchResults)->take(7),
         ]);
+    }
+
+    public function querySearch()
+    {
+        return redirect()->route('webinarsearch', ['q' => $this->search]);
     }
 
     public function resetSearch()

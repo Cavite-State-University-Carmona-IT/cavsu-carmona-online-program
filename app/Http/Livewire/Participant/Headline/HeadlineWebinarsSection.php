@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Participant;
+namespace App\Http\Livewire\Participant\Headline;
 
 use Livewire\Component;
 use App\Models\Webinar;
@@ -24,7 +24,7 @@ class HeadlineWebinarsSection extends Component
 
     public function render()
     {
-        return view('livewire.participant.headline-webinars-section', [
+        return view('livewire.participant.headline.headline-webinars-section', [
             'upcoming_webinars' => $this->upcoming_webinars,
             'most_viewed_webinars' => $this->most_viewed_webinars,
         ]);

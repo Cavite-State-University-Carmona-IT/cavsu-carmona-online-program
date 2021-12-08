@@ -5,7 +5,7 @@
 
                 @if(auth()->check())
                     <div class="pt-32 sm:pt-0">
-                        @livewire('participant.headline-webinars-section')
+                        @livewire('participant.headline.headline-webinars-section')
                     </div>
                 @else
                     <div class="pt-32 sm:pt-0">
