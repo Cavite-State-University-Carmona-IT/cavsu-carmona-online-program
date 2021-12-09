@@ -3,14 +3,15 @@
 namespace App\Http\Livewire\Participant\Search;
 
 use Livewire\Component;
+use Illuminate\Http\Request;
 
 class SearchPage extends Component
 {
-    public $q;
+    public $searchValue;
 
-    public function mount()
+    public function mount(Request $request)
     {
-        $this->search = $this->q;
+        $this->searchValue = $request->q;
     }
 
     public function render()

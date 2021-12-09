@@ -1,4 +1,4 @@
-
+{{--
 <div class="max-w-full p-2 sm:px-5 sm:py-10">
    <div classw="w-11/12 border mx-auto">
         <div class="flex items-center justify-between w-full text-sm">
@@ -96,4 +96,39 @@
         </div>
         <!-- RESULT -->
    </div>
+</div> --}}
+
+<div>
+    {{-- In work, do what you enjoy. --}}
+    <div class="max-w-full">
+        <div class="w-full">
+            <div class="overflow-hidden ">
+                <div class="w-full">
+                    <section class="relative h-screen px-10 pt-20 header" style="max-height: 860px;">
+
+                        <div class="p-10 bg-white border-gray-400" style="border-width: 1px;">
+                            {{-- WITH SEARCH RESULTS --}}
+                            <p class="text-3xl font-bold">
+                                5,036 results for “{{ $searchValue }}“
+                            </p>
+                            {{-- WITHOUT SEARCH RESULTS --}}
+                            <div class="w-full">
+                                <div class="flex flex-col w-full">
+                                    <h1 class="text-xl font-bold">Sorry, we couldn’t find any results for “{{ $searchValue }}“</h1>
+                                    <h3 class="text-sm font-semibold font">Try adjusting your search. Here are some ideas:</h3>
+                                </div>
+                                <div class="w-full py-5 pl-8 text-sm">
+                                    <ul class="list-disc">
+                                        <li>Make sure all words are spelled correctly</li>
+                                        <li>Try different search term</li>
+                                        <li>Try more general search terms</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

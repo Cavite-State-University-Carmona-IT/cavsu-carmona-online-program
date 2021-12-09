@@ -1,4 +1,4 @@
-<nav class="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full px-2 py-3 bg-white shadow-lg">
+<nav class="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full px-6 py-3 mx-auto bg-white shadow-lg">
     <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
         <div class="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start">
             <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
@@ -15,6 +15,7 @@
                         </div>
                     </div>
                 </div>
+                @livewire('participant.categories-section')
             </div>
         </div>
         <div class="items-center flex-grow hidden lg:flex" id="example-navbar-danger">
@@ -148,4 +149,5 @@
             </ul>
         </div>
     </div>
+
 </nav>

@@ -14,7 +14,7 @@
                 @livewire('participant.extension-services-section')
 
                 {{-- COURSES SUGGESTION --}}
-                @livewire('participant.courses-suggestion-section')
+                {{-- @livewire('participant.courses-suggestion-section') --}}
 
 
 
