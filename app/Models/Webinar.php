@@ -34,4 +34,10 @@ class Webinar extends Model
     {
         return $this->hasMany(WebinarUserReview::class, 'webinar_id', 'id');
     }
+
+    public function link_name()
+    {
+        $data = strtolower(str_replace(" ","-", $this->title));
+        return $data;
+    }
 }

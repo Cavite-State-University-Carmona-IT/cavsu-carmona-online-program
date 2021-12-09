@@ -8,7 +8,7 @@
     <div class="relative flex flex-wrap justify-center m-3 mx-auto">
         <div class="gap-5 space-y-4 lg:px-32 md:px-4 md:grid md:grid-cols-3 sm:grid-cols-3 lg:grid-cols-4 md:space-y-0">
             @foreach($published_webinars as $published_webinar)
-                <div class="max-w-sm p-2 transition duration-500 transform bg-white shadow-md rounded-3xl hover:scale-105">
+                <a href="{{ url('webinar/'.$published_webinar->title) }}" class="max-w-sm p-2 transition duration-500 transform bg-white shadow-md rounded-3xl hover:scale-105">
                     <div class="relative">
                         <img class="w-full rounded-2xl" src="{{ asset('storage/image/webinars/'.$published_webinar->image) }}" alt="Colors" />
                     </div>
@@ -25,7 +25,7 @@
                             <p class="line-clamp-1">Speaker: {{ $published_webinar->speaker }}</p>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
     </div>
