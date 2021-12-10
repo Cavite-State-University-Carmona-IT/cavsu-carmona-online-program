@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class ExtensionServiceIndex extends Component
 {
     public $extension_service_name;
+    public $field_of_interest_name;
 
     public function mount(Request $request)
     {
@@ -15,6 +16,7 @@ class ExtensionServiceIndex extends Component
         // ->where('title', $request->name)
         // ->first();
         $this->extension_service_name = $request->name;
+        $this->field_of_interest_name = $request->fieldofinterest;
     }
     public function render()
     {

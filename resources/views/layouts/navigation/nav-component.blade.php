@@ -7,6 +7,7 @@
                     Tailwind Starter Kit
                 </a> --}}
                 <!-- Navigation Links -->
+                @livewire('participant.categories-section')
                 <div class="relative hidden sm:block sm:col-span-4 lg:col-span-3">
                     <div class="relative px-1 m-1 text-gray-600">
                         @livewire('participant.search-dropdown')
@@ -15,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                @livewire('participant.categories-section')
+
             </div>
         </div>
         <div class="items-center flex-grow hidden lg:flex" id="example-navbar-danger">

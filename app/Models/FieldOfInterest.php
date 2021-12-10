@@ -10,4 +10,10 @@ class FieldOfInterest extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function link_name()
+    {
+        $data = strtolower(str_replace(" ", "-", $this->name));
+        return $data;
+    }
 }

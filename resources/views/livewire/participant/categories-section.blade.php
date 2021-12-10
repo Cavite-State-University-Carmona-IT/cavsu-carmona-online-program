@@ -1,52 +1,92 @@
+@include('scripts.participant.categories-section')
 <div  class="relative max-w-full" x-data="{ open: false }" @mouseleave="open = false">
-    <button @mouseover="open = true" class="h-10 text-sm font-semibold text-gray-500 border-0 hover:underline">Category</button>
+    <button @mouseover="open = true" class="h-10 text-sm font-semibold text-gray-500 border-0 hover:text-green-500 px-2">Category</button>
     <div class="absolute z-50 w-full mt-0 "
         x-show.transition.opacity="open"
         @mouseover="open = true"
         style="display: none;"
     >
-        <div class="flex">
+        <div class="flex" @mouseleave="open = false">
             {{-- extension service --}}
-            <ul class="bg-white whitespace-nowrap flex-none" >
-                <li class="flex justify-between w-full px-3 py-2 hover:bg-green-100"
-                    wire:click="changeSubCategories(1)"
-                    >
-                    <p class="text-sm text-gray-700">Barangay Entreprenyur</p>
-                    <i class="pl-2 text-gray-400 fas fa-chevron-right"></i>
+            <ul>
+                <li class="text-sm text-gray-700 hover:text-green-600 hover:border-green-500 border-white border-r-2 flex justify-between w-full px-5 py-2 whitespace-nowrap bg-white" id="btnExt1">
+                    <a href="{{ url('extension-service/') }}" class="">
+                        <p>Barangay Entreprenyur</p>
+                    </a>
                 </li>
-                <li class="flex justify-between px-3 py-2 hover:bg-green-100"
-                    wire:click="changeSubCategories(2)"
-                    >
-                    <p class="text-sm text-gray-700">Basura Ko Ayos Ko</p>
-                    <i class="pl-2 text-gray-400 fas fa-chevron-right"></i>
+                <li class="text-sm text-gray-700 hover:text-green-600 hover:border-green-500 border-white border-r-2 flex justify-between w-full px-5 py-2 whitespace-nowrap bg-white" id="btnExt2">
+                    <a href="{{ url('extension-service/') }}" class="">
+                        <p>Basura Ko Ayos Ko</p>
+                    </a>
                 </li>
-                <li class="flex justify-between w-full px-3 py-2 hover:bg-green-100"
-                    wire:click="changeSubCategories(3)"
-                    >
-                    <p class="text-sm text-gray-700">Kakayahang Teknikal Tungo Sa Magandang Kinabukasan</p>
-                    <i class="pl-2 text-gray-400 fas fa-chevron-right"></i>
+                <li class="text-sm text-gray-700 hover:text-green-600 hover:border-green-500 border-white border-r-2 flex justify-between w-full px-5 py-2 bg-white" id="btnExt3">
+                    <a href="{{ url('extension-service/') }}" class="">
+                        <p>Kakayahang Teknikal Tungo Sa Magandang Kinabukasan</p>
+                    </a>
                 </li>
-                <li class="flex justify-between w-full px-3 py-2 hover:bg-green-100"
-                    wire:click="changeSubCategories(4)"
-                    >
-                    <p class="text-sm text-gray-700">Project Kompyuter</p>
-                    <i class="pl-2 text-gray-400 fas fa-chevron-right"></i>
+                <li class="text-sm text-gray-700 hover:text-green-600 hover:border-green-500 border-white border-r-2 flex justify-between w-full px-5 py-2 whitespace-nowrap bg-white" id="btnExt4">
+                    <a href="{{ url('extension-service/') }}" class="">
+                        <p>Project Kompyuter</p>
+                    </a>
                 </li>
-                <li class="flex justify-between w-full px-3 py-2 hover:bg-green-100"
-                    wire:click="changeSubCategories(5)"
-                    >
-                    <p class="text-sm text-gray-700">Project Pisara</p>
-                    <i class="pl-2 text-gray-400 fas fa-chevron-right"></i>
+                <li class="text-sm text-gray-700 hover:text-green-600 hover:border-green-500 border-white border-r-2 flex justify-between w-full px-5 py-2 whitespace-nowrap bg-white" id="btnExt5">
+                    <a href="{{ url('extension-service/') }}" class="">
+                        <p>Project Pisara</p>
+                    </a>
                 </li>
             </ul>
             {{-- topics --}}
-            <ul class="bg-white whitespace-nowrap flex-none">
-                @foreach($fieldOfInterests as $fieldOfInterest)
-                    <li class="w-full px-3 py-2 whitespace-nowrap hover:bg-green-100">
-                        <p class="text-sm text-gray-700">{{ $fieldOfInterest->name }}</p>
-                    </li>
-                @endforeach
-            </ul>
+                {{-- 1 --}}
+                <ul class=" whitespace-nowrap flex-none" hidden id="isOpenExt1">
+                    @foreach($ext1 as $value)
+                        <li class="w-full px-5 hover:text-green-600 text-gray-700 py-2 whitespace-nowrap bg-white">
+                            <a href="{{ url('extension-service/barangay-entreprenyur/'.$value->link_name()) }}">
+                                <p class="text-sm ">{{ $value->name }}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                {{-- 2 --}}
+                <ul class=" whitespace-nowrap flex-none" hidden id="isOpenExt2">
+                    @foreach($ext2 as $value)
+                        <li class="w-full px-5 hover:text-green-600 text-gray-700 py-2 whitespace-nowrap bg-white">
+                            <a href="{{ url('extension-service/basura-ko-ayos-ko/'.$value->link_name()) }}">
+                                <p class="text-sm ">{{ $value->name }}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                {{-- 3 --}}
+                <ul class=" whitespace-nowrap flex-none" hidden id="isOpenExt3">
+                    @foreach($ext3 as $value)
+                        <li class="w-full px-5 hover:text-green-600 text-gray-700 py-2 whitespace-nowrap bg-white">
+                            <a href="{{ url('extension-service/kakayahang-teknikal-tungo-sa-magandang-kinabukasan/'.$value->link_name()) }}">
+                                <p class="text-sm ">{{ $value->name }}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                {{-- 4 --}}
+                <ul class=" whitespace-nowrap flex-none" hidden id="isOpenExt4">
+                    @foreach($ext4 as $value)
+                        <li class="w-full px-5 hover:text-green-600 text-gray-700 py-2 whitespace-nowrap bg-white">
+                            <a href="{{ url('extension-service/project-kompyuter/'.$value->link_name()) }}">
+                                <p class="text-sm ">{{ $value->name }}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                {{-- 5 --}}
+                <ul class=" whitespace-nowrap flex-none" hidden id="isOpenExt5">
+                    @foreach($ext5 as $value)
+                        <li class="w-full px-5 hover:text-green-600 text-gray-700 py-2 whitespace-nowrap bg-white">
+                            <a href="{{ url('extension-service/project-pisara/'.$value->link_name()) }}">
+                                <p class="text-sm ">{{ $value->name }}</p>
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            {{--  --}}
         </div>
     </div>
 </div>

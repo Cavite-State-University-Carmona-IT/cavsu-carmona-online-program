@@ -27,9 +27,11 @@
 
         @stack('modals')
 
-        @yield('page-script')
+
 
         @include('layouts.partials.scripts')
+
+        @yield('page-script')
 
         @livewireScripts
 
