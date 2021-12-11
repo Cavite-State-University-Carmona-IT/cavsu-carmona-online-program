@@ -1,6 +1,6 @@
-<div class="max-w-full lg:py-20">
+<div class="max-w-full lg:py-5">
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-    <section class="w-full px-4 mt-12 mb-12 bg-transparent py-14 sm:px-6 lg:px-4">
+    <section class="w-full px-4 py-1 mb-12 bg-transparent sm:px-6 lg:px-4">
         <article class="max-w-full space-y-5">
             <h2 class="py-5 text-2xl font-semibold text-gray-900 lg:mb-5">Extension Services</h2>
             <section class="grid max-w-full grid-cols-1 gap-5 px-20 sm:px-8 sm:grid-cols-2 md:grid-cols-3 md:gap-2 lg:px-0 lg:grid-cols-5">
