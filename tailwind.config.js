@@ -21,6 +21,9 @@ module.exports = {
             'md': '900px',
             'lg': '1020px',
             'xl': '1400px',
+        },
+        colors: {
+            'dirtywhite': '#f7f5f2',
         }
     },
 
