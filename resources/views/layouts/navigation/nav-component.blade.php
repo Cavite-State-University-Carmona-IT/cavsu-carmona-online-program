@@ -1,16 +1,113 @@
-<nav class="fixed top-0 z-40 flex flex-wrap items-center justify-between w-full px-6 py-3 mx-auto bg-white shadow-lg">
-    <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
+<nav class="fixed top-0 z-40 flex flex-wrap items-center justify-between w-full py-3 mx-auto bg-white border-b-2 border-gray-200 md:px-6">
+    
+    {{-- mobile:menu --}}
+    <div x-data="{ isOpenMenu: false }">
+        <button class="px-5 border-0 focus:outline-none md:hidden" x-on:click="isOpenMenu = ! isOpenMenu; isOpenMenuContent = ! isOpenMenuContent">
+            <i class="fas fa-bars text-light-space-blue"></i>
+        </button>
+
+        {{-- mobile:menu --}}
+        <div  class="fixed top-0 z-40 w-96 md:hidden"
+            x-show="isOpenMenu" 
+            x-transition.duration.500ms
+            >
+            <div class="grid h-screen grid-cols-10">
+                {{-- close menu button --}}
+                <div class="z-50 flex justify-center w-full col-start-8 col-end-10 py-4 row-span-full">
+                    <button x-on:click="isOpenMenu = false" class="w-10 h-10 bg-white border border-gray-300 rounded-full shadow-lg focus:outline-none">
+                        <i class="w-5 fas fa-times text-light-space-blue"></i>
+                    </button>
+                </div>
+
+                {{-- main menu --}}
+                <div class="w-full col-span-8 col-start-1 bg-white border-r border-gray-200 shadow-sm drop-shadow-sm row-span-full"
+                    x-data="dataMenuOpen()"
+                    >
+                    {{-- menu:content --}}
+                    <div x-show="isOpenMenuContent" 
+                        class="flex flex-col h-screen p-3"
+                        >
+                        <div class="flex flex-col mb-auto" >
+                            {{-- profile --}}
+                            <div class="flex justify-between w-full pt-4 cursor-pointer" @click="isOpenProfileContent = ! isOpenProfileContent; isOpenMenuContent = false">
+                                <div class="flex flex-initial">
+                                    {{-- profile picture --}}
+                                    <img class="flex-none object-cover w-20 h-20 m-2 border border-gray-400 rounded-full shadow-lg" src="{{ asset('storage/image/users/cat1.jpg') }}"/>
+                                    {{-- user info --}}
+                                    <div class="m-2 ">
+                                        <p class="flex-initial font-semibold tracking-wide text-gray-800 line-clamp-2">Hi, Gezryl Clariz Beato Gallego Gallego Gallego</p>
+                                        <p class="flex-initial text-sm tracking-wide text-gray-400">@toffiegz</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center flex-none">
+                                    <button class="focus:outline-none">
+                                        <i class="w-5 fas fa-chevron-right text-light-space-blue"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            {{-- divider --}}
+                            <hr>
+                            <div class="">
+                                <p>Extension Services</p>
+                                <ul>
+                                    <li>Barangay Entreprenyur</li>
+                                    <li>Barangay Entreprenyur</li>
+                                    <li>Barangay Entreprenyur</li>
+                                    <li>Barangay Entreprenyur</li>
+                                </ul>
+                            </div>
+                        </div>
+                        {{-- menu:footer --}}
+                        @if (Route::has('login') || Route::has('register'))
+                            <div class="grid h-10 grid-cols-2 gap-4">
+                                @if (Route::has('login'))
+                                    <a href="{{ route('login') }}" class="flex justify-center w-full p-3 text-xs font-bold tracking-wide uppercase transition bg-transparent bg-white border text-light-space-blue border-light-space-blue hover:text-gray-100 hover:border-light-space-blue hover:bg-light-space-blue focus:outline-none focus:bg-gray-100 active:bg-gray-100">
+                                        Login
+                                    </a>
+                                @endif
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}"  class="flex justify-center w-full p-3 text-xs font-bold tracking-wide uppercase transition bg-transparent bg-white border text-light-space-blue border-light-space-blue hover:text-gray-100 hover:border-light-space-blue hover:bg-light-space-blue focus:outline-none focus:bg-gray-100 active:bg-gray-100">
+                                        Signup
+                                    </a>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
+
+                    {{-- profile:content --}}
+                    <div x-show="isOpenProfileContent" 
+                        class="flex flex-col h-screen p-3"
+                        >
+                        <div class="flex w-full p-3 cursor-pointer" @click="isOpenProfileContent = false; isOpenMenuContent = true">
+                            <div class="flex items-center flex-none">
+                            <i class="text-gray-600 p-auto fas fa-chevron-left"></i>
+                            </div>
+                            <p class="flex-initial ml-5 text-sm font-semibold tracking-wide text-gray-600">Back to Menu</p>
+                        </div>
+                        <hr>
+                    </div>
+
+
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    {{--  --}}
+    <div class="flex flex-wrap items-center justify-between px-4 mx-auto md:container">
         <div class="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start">
-            <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
-                <a href="{{ url('/') }}">
-                    <img src="{{asset('images/cvsulogo.png')}}" alt="" class="w-12 h-12 ">
-                </a>
-                {{-- <a class="inline-block py-2 mr-4 text-sm font-bold leading-relaxed uppercase whitespace-nowrap text-blueGray-700" href="/learning-lab/tailwind-starter-kit/presentation">
-                    Tailwind Starter Kit
-                </a> --}}
-                <!-- Navigation Links -->
-                @livewire('participant.categories-section')
-                <div class="relative hidden sm:block sm:col-span-4 lg:col-span-3">
+            <div class="container flex flex-wrap items-center justify-center px-4 mx-auto md:justify-between">
+                <div class="flex">
+                    <a href="{{ url('/') }}" class="flex-none">
+                        <img src="{{asset('images/cvsulogo.png')}}" alt="" class="w-12 h-12 ">
+                    </a>
+                    <div class="flex-none">
+                        @livewire('participant.categories-section')
+                    </div>
+                </div>
+                <div class="relative hidden md:block sm:col-span-4 lg:col-span-3">
                     <div class="relative px-1 m-1 text-gray-600">
                         @livewire('participant.search-dropdown')
                         <div class="absolute top-0 right-0 pt-2 mr-5 ">
@@ -153,4 +250,23 @@
         </div>
     </div>
 
+    {{-- mobile:search --}}
+    <div x-data="{ isOpenSearch: false }" class="md:hidden">
+        <button class="px-5 border-0 focus:outline-none " x-on:click="{ isOpenSearch: true }">
+            <i class="fas fa-search text-light-space-blue"></i>
+        </button>
+    </div>
+
 </nav>
+
+
+<script>
+    function dataMenuOpen() {
+        return {
+            isOpenMenuContent: true,
+            isOpenProfileContent: false,
+        }
+    }
+
+</script>
+    
