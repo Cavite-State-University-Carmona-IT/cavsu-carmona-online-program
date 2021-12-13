@@ -15,16 +15,29 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
 
     </head>
-    <body class="font-sans antialiased" style="font-family: 'Open Sans', sans-serif;">
+    <body class="font-sans antialiased" style="font-family: 'Open Sans', sans-serif;" x-data="setup()" x-init="$refs.loading.classList.add('hidden');" @resize.window="watchScreen()">
+        <!-- Loading screen -->
+        <div x-ref="loading" class="fixed inset-0 z-50 flex items-center justify-center" style="background-color: #F3F4F6;">
+            <div class="la-ball-spin-fade-rotating la-2x"  style="color: #006A39";>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
         <x-jet-banner />
 
-        <div class="min-h-screen bg-white">
+        <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation.nav-component')
             <main>
                 {{ $slot }}
             </main>
         </div>
-
+        @include('layouts.navigation.footer-component')
         @stack('modals')
 
 

@@ -23,7 +23,11 @@ module.exports = {
             'xl': '1400px',
         },
         colors: {
-            'dirtywhite': '#f7f5f2',
+            'dirty-white': '#f7f5f2',
+            'gray-dirty-white': '#D9D4CC',
+            'space-blue': '#111820',
+            'light-space-blue': '#2C3D52',
+            'custom-green': '#006A39',
         }
     },
 

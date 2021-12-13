@@ -21,7 +21,7 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
     Route::get('extension-service/{name}/', Participant\ExtensionService\ExtensionServiceIndex::class);
     Route::get('extension-service/{name}/{fieldofinterest}', Participant\ExtensionService\ExtensionServiceIndex::class);
     Route::get('webinars/search/', Participant\Search\SearchPage::class)->name('webinarsearch');
-    Route::get('webinar/{title}', Participant\Webinar\WebinarIndex::class)->name('webinarsearch');
+    Route::get('webinar/{title}', Participant\Webinar\WebinarIndex::class)->name('webinar');
 
     // AUTH USER;
     Route::group(['middleware' => 'auth'], function () {

@@ -1,8 +1,10 @@
-<nav class="fixed top-0 z-50 flex flex-wrap items-center justify-between w-full px-6 py-3 mx-auto bg-white shadow-lg">
+<nav class="fixed top-0 z-40 flex flex-wrap items-center justify-between w-full px-6 py-3 mx-auto bg-white shadow-lg">
     <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
         <div class="relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start">
             <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
-                <img src="{{asset('images/cvsulogo.png')}}" alt="" class="w-12 h-12 ">
+                <a href="{{ url('/') }}">
+                    <img src="{{asset('images/cvsulogo.png')}}" alt="" class="w-12 h-12 ">
+                </a>
                 {{-- <a class="inline-block py-2 mr-4 text-sm font-bold leading-relaxed uppercase whitespace-nowrap text-blueGray-700" href="/learning-lab/tailwind-starter-kit/presentation">
                     Tailwind Starter Kit
                 </a> --}}
@@ -141,7 +143,7 @@
                     @endif
                     @if (Route::has('register'))
                         <li class="nav-item ">
-                            <a href="{{ route('register') }}" class="inline-flex items-center p-3 mx-1 text-xs font-bold tracking-wide text-white uppercase transition bg-transparent bg-gray-600 rounded-sm hover:text-gray-500 download-button hover:bg-gray-100 focus:outline-none focus:bg-gray-100 active:bg-gray-100">
+                            <a href="{{ route('register') }}" class="inline-flex items-center p-3 mx-1 text-xs font-bold tracking-wide text-gray-100 uppercase transition rounded-sm bg-light-space-blue hover:text-gray-500 download-button hover:bg-gray-100 focus:outline-none focus:bg-gray-100 active:bg-gray-100">
                                 Signup
                             </a>
                         </li>

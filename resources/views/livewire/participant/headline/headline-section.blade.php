@@ -4,25 +4,31 @@
             <div class="w-full px-4 md:w-8/12 lg:w-6/12 xl:w-6/12">
 
                 @if(auth()->check())
-                    <div class="pt-32 sm:pt-0">
+                    <div class="pt-0 md:pt-32">
                         @livewire('participant.headline.headline-webinars-section')
                     </div>
                 @else
                     <div class="pt-32 sm:pt-0">
-                        <p class="text-4xl font-semibold text-blueGray-600 sm:text-3xl">
+                        <p class="text-2xl font-semibold md:text-4xl text-blueGray-600">
                             Cavite State University<br>
                             Extension Services
                         </p>
-                        <p class="mt-4 text-lg leading-relaxed text-blueGray-500">
+                        <p class="mt-4 text-base leading-relaxed md:text-lg text-blueGray-500">
                             CavSU is a web-based platform that offers free Open Online Learning such as short courses and webinars from Instructors and Professors of Cavite State University.
                         </p>
-                        <div class="inline-flex mt-12">
+                        <div class="inline-flex mt-12" wire:poll>
                             <a class="px-6 py-4 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-green-500 rounded-sm shadow outline-none whitespace-nowrap get-started focus:outline-none active:bg-green-600 hover:bg-gray-200 hover:text-gray-500" href="{{ route('register') }}">
                                 Register <span class="sm:hidden">for Free</span>
                             </a>
-                            <a class="px-6 py-4 mb-1 ml-1 mr-1 text-sm font-bold text-white uppercase bg-gray-700 rounded-sm shadow outline-none whitespace-nowrap focus:outline-none active:bg-gray-600 hover:bg-gray-200 hover:text-gray-500" href="#upcoming_webinars">
+                            @if($this->publishedUpcomingWebinars->count() > 0)
+                            <a class="px-6 py-4 mb-1 ml-1 mr-1 text-sm font-bold text-gray-100 uppercase rounded-sm shadow outline-none bg-light-space-blue whitespace-nowrap focus:outline-none active:bg-gray-600 hover:text-gray-500 hover:bg-gray-200" href="#upcoming_webinars">
                                 <span class="sm:hidden">See </span>Upcoming webinars
                             </a>
+                            @else
+                            <a class="px-6 py-4 mb-1 ml-1 mr-1 text-sm font-bold text-gray-100 uppercase rounded-sm shadow outline-none bg-light-space-blue whitespace-nowrap focus:outline-none active:bg-gray-600 hover:text-gray-500 hover:bg-gray-200" href="#upcoming_webinars">
+                                <span class="sm:hidden">See </span>Latest webinars
+                            </a>
+                            @endif
                         </div>
                     </div>
                 @endif

@@ -4,7 +4,7 @@
         <div class="w-full">
             <div class="overflow-hidden ">
                 {{-- HEADLINE --}}
-                @livewire('participant.extension-service.headline-section')
+                {{-- @livewire('participant.extension-service.headline-section') --}}
 
                 {{-- COURSES SUGGESTION --}}
                 @livewire('participant.extension-service.webinar-section', ['extension_service_name' => $extension_service_name])

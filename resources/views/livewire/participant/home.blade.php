@@ -16,11 +16,6 @@
                 {{-- COURSES SUGGESTION --}}
                 {{-- @livewire('participant.courses-suggestion-section') --}}
 
-
-
-                {{-- FEATURED TOPICS --}}
-                @livewire('participant.featured-topics-section')
-
             </div>
         </div>
     </div>
