@@ -49,13 +49,25 @@
     @if($webinar != null)
         <div class="max-w-full mt-16">
             <div class="grid w-full grid-cols-3 pt-2">
-                <div class="col-span-2 col-start-1 bg-white border-r-2 border-gray-300 p-7">
+
+                {{-- left panel --}}
+                <div class="col-span-2 col-start-1 border-r-2 border-gray-300 p-7 bg-white">
                     <div class="aspect-w-16 aspect-h-9">
                         <iframe src="https://www.youtube.com/embed/{{ $webinar->video_link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
+                    <div class="w-full pt-5 pb-3 border-b">
+                        <div class="flex px-5 text-sm space-x-7 lg:space-x-10 lg:px-0">
+                            <h3 class="font-semibold ">Objectives</h3>
+                            <h3 class="font-semibold text-gray-500">About</h3>
+                            <h3 class="font-semibold text-gray-500">Reviews</h3>
+                            <h3 class="font-semibold text-gray-500">Host</h3>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-span-1">
-                    webinar suggestion to (wip)
+
+                {{-- right panel --}}
+                <div class="col-span-1 p-2">
+                    @livewire('participant.webinar.webinar-suggestion')
                 </div>
             </div>
         </div>

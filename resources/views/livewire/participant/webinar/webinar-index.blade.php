@@ -1,4 +1,4 @@
-<div class="bg-white">
+<div class="bg-gray-100">
     @if($user_enrolled == true)
         @livewire('participant.webinar.webinar-play', ['webinar'=>$this->webinar])
     @else
