@@ -68,13 +68,15 @@
                                 ₱ {{ $webinar->price }}
                             @endif
                         </p>
-                        <button class="p-2 w-full text-sm  transition ease-in duration-200 focus:outline-none bg-green-600 text-white tracking-wide font-semibold">
+                        <a class="cursor-pointer p-3 font-bold tracking-wide w-full text-xs  transition ease-in duration-200 focus:outline-none bg-green-600 text-white "
+                            @if(auth()->user()) wire:click="register()" @else href="{{ route('register') }}" @endif
+                            >
                             @if($webinar->price == 0 || $webinar->price == null)
                                 REGISTER FOR FREE
                             @else
                                 ₱ {{ $webinar->price }}
                             @endif
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

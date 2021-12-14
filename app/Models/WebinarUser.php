@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class WebinarUser extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'webinar_id',
+        'user_id',
+    ];
+
 }
