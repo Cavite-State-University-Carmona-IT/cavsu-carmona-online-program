@@ -3,4 +3,16 @@
 <!-- JIT SUPPORT, for using peer-* below -->
 <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
 
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+@livewireScripts
+
+<script>
+    const setup = () => {
+    return {
+            isSidebarOpen: false,
+        }
+    }
+</script>
+
+@yield('page-script')
+
+

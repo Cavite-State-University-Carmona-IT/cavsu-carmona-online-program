@@ -37,16 +37,17 @@
                 {{ $slot }}
             </main>
         </div>
+
         @include('layouts.navigation.footer-component')
+
         @stack('modals')
+
 
 
 
         @include('layouts.partials.scripts')
 
-        @yield('page-script')
 
-        @livewireScripts
 
     </body>
 </html>
