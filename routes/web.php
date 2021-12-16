@@ -61,6 +61,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
 
     // AUTH USER;
     Route::group(['middleware' => 'auth'], function () {
+        Route::get('generate/e-certificate/{webinar_id}/{user_id}', 'Generate\EcertificateGenerate@index');
 
         // PROGRAM COORDINATOR
         Route::group(['middleware' => ['role:program_coordinator']], function() {

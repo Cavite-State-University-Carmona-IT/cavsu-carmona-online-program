@@ -3,13 +3,11 @@
     function dataWebinarInfo()
     {
         return {
-            isOpenObjectives: true,
-            isOpenAbout: false,
+            isOpenAbout: true,
             isOpenReviews: false,
             isOpenEvaluation: false,
 
         }
     }
-
 </script>
 @endsection

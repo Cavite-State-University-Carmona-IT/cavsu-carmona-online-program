@@ -22,7 +22,7 @@
                     @foreach ($searchResults as $result)
                         <li class="border-b border-white-700">
                             <a
-                                href="" class="flex items-center px-5 py-3 transition duration-150 ease-in-out bg-white hover:bg-green-100"
+                                href="{{ url('webinar/'.$result['title']) }}" class="flex items-center px-5 py-3 transition duration-150 ease-in-out bg-white hover:bg-green-100"
 
                                 @if ($loop->last) @keydown.tab="isOpen = false" @endif
                             >
