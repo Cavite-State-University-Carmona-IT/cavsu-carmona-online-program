@@ -28,6 +28,7 @@ class CreateWebinarsTable extends Migration
             $table->text('ecertificate_link')->nullable();
             $table->boolean('is_ecert_default')->unsigned()->nullable();
             $table->tinyInteger('status')->unsigned()->nullable();
+            $table->integer('ecertificate_property_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
