@@ -1,130 +1,99 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    <div class="grid w-full grid-cols-8">
-        <div class="col-span-6 col-start-2">
-            <main class="flex items-center justify-center">
-                <div class="text-2xl text-center">Webinars</div>
-            </main>
-            <div class="flex w-full mb-5">
-                <div class="relative w-full text-gray-600 md:m-3">
-                    <input wire:model="search" type="search" name="serch" placeholder="Search" class="w-full h-full px-5 pr-10 text-sm transition-shadow bg-white border-0 rounded-full focus:outline-none focus:ring-0 focus:shadow">
-                    <div class="absolute top-0 right-0 mt-3 mr-4">
-                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
-                        <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
-                    </svg>
+    <div class="container mx-auto px-4 sm:px-8 pt-16 mt-2">
+        <div class="py-8">
+            <div class="my-2 flex sm:flex-row flex-col">
+                <div class="flex flex-row mb-1 sm:mb-0">
+                    <div class="relative">
+                        <select wire:model="perPage"
+                            class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <select wire:model="status"
+                            class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                            <option value="0">All</option>
+                            <option value="1">Pending</option>
+                            <option value="2">Published</option>
+                            <option value="3">Deleted</option>
+                        </select>
                     </div>
                 </div>
-                <div class="md:m-3">
-                    <a href="{{ url('program-coordinator/new-webinar') }}" class="p-2 pl-5 pr-5 text-lg text-gray-100 transition-colors duration-700 transform bg-green-500 border-indigo-300 rounded-full hover:bg-blue-400 focus:border-4">
-                        <i class="fas fa-plus"></i>
-                    </a>
+                <div class="block relative">
+                    <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
+                        <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+                            <path
+                                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
+                            </path>
+                        </svg>
+                    </span>
+                    <input wire:model="search" placeholder="Search" class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
                 </div>
             </div>
-            @if($webinars->count() == 0)
-                <div class="w-full h-screen px-14">
-                    <div class="text-2xl font-bold ">Sorry, we couldn't find any results for {{ $search }}</div>
-                    <br>
-                    <div class="font-semibold text-md ">Try adjusting your search. Here are some ideas:</div>
-                    <div class="text-sm">Make sure all words are spelled correctly</div>
-                    <div class="text-sm">Try different search terms</div>
-                    <div class="text-sm">Try more general search terms</div>
-                <div>
-            @endif
-            <div class="grid grid-cols-1 md:grid-cols-3">
-                <!-- card -->
-                @foreach($webinars as $webinar)
-                    <div class="p-3">
-                        <div class="m-auto overflow-hidden transition duration-500 ease-in-out transform rounded-lg shadow-lg cursor-pointer hover:-translate-y-5 hover:shadow-2xl h-90 w-60 md:w-80">
-                            <a href="{{ url('program-coordinator/webinar',strtolower($webinar->title)) }}" class="block w-full h-full">
-                                <img alt="blog photo" src="{{ asset('storage/image/webinars/'.$webinar->image) }}" class="object-cover w-full max-h-40"/>
-                                <div class="w-full p-4 bg-white">
-                                    <p class="h-20 pt-1 font-medium text-indigo-500 line-clamp-3">
-                                        {{ $webinar->title }}
-                                    </p>
-                                    <p class="mb-2 text-sm font-medium text-gray-800 truncate">
-                                        {{ $webinar->speaker }}
-                                    </p>
-                                    <p class="text-sm font-light text-gray-600 text-md line-clamp-3">
-                                        {{ $webinar->about }}
-                                        {{-- <i class="mr-2 text-blue-500 fas fa-circle"></i>pending</td> --}}
-                                    </p>
-
-                                    <br>
-
-                                    <div class="flex justify-between pb-2">
-                                        <div>
-                                            <span class="text-xs text-gray-500">{{ Carbon\Carbon::parse($webinar->date)->format('Y M d') }}</span>
-                                        </div>
-                                        @if($webinar->status == 1)
-                                            <span class="inline-block px-2 py-1 mr-3 text-xs font-bold text-white bg-blue-500 rounded-full">
-                                                <i class="far fa-circle"></i>
-                                                pending
-                                            </span>
-                                        @elseif($webinar->status == 2)
-                                            <span class="inline-block px-2 py-1 mr-3 text-xs font-bold text-white bg-green-500 rounded-full">
-                                                <i class="fas fa-check-circle"></i>
-                                                published
-                                            </span>
-                                        @elseif($webinar->status ==3 )
-                                            <span class="inline-block px-2 py-1 mr-3 text-xs font-bold text-white bg-red-500 rounded-full">
-                                                <i class="fas fa-times-circle"></i>
-                                                deleted
-                                            </span>
-                                        @endif
-                                    </div>
-
-                                    <hr>
-
-                                    <div class="flex items-center justify-center w-full py-4 divide-x divide-gray-400 divide-solid">
-                                        <span class="px-2 text-center">
-                                            <span class="text-sm font-bold text-gray-700">{{ $webinar->enrolled()->count() }}</span>
-                                            <span class="text-xs text-gray-600"> enrolled</span>
+            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                    <table class="min-w-full leading-normal bg-white">
+                        <thead >
+                            <tr >
+                                <th class="px-5 py-3 border-b border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Title
+                                </th>
+                                <th class="px-5 py-3 border-b border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Extension Service
+                                </th>
+                                <th class="px-5 py-3 border-b border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Date
+                                </th>
+                                <th class="px-5 py-3 border-b border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Price
+                                </th>
+                                <th class="px-5 py-3 border-b border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Status
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($webinars as $webinar)
+                                <tr>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <a href="{{ url('program-coordinator/webinar/'.$webinar->id) }}" class="text-gray-900 font-semibold whitespace-no-wrap">{{ $webinar->title }}</a>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-800 whitespace-no-wrap">{{ ucwords(strtolower($webinar->extensionService()->name)) }}</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" nowrap>
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ carbon\carbon::parse($webinar->date)->format('d-m-Y') }}
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap font-bold">
+                                            @if($webinar->price > 0)
+                                                ₱{{ $webinar->price }}
+                                            @else
+                                                FREE
+                                            @endif
+                                        </p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <span
+                                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                            <span aria-hidden
+                                                class="absolute inset-0 bg-{{ $webinar->status_color() }}-200 opacity-50 rounded-full"></span>
+                                            <span class="relative text-xs font-bold text-{{ $webinar->status_color() }}-500">{{ $webinar->status_name() }}</span>
                                         </span>
-                                        <span class="px-2 text-center">
-                                            <span class="text-sm font-bold text-gray-700">{{ $webinar->completed()->count() }}</span>
-                                            <span class="text-xs text-gray-600"> completed</span>
-                                        </span>
-                                        <span class="px-2 text-center">
-                                            <span class="text-sm font-bold text-gray-700">{{ $webinar->review()->count() }}</span>
-                                            <span class="text-xs text-gray-600"> reviews</span>
-                                        </span>
-                                    </div>
-
-                                    {{-- <div class="flex flex-wrap items-center py-3 text-xs font-medium text-white border-b-2 justify-starts">
-                                        <span class="px-2 py-1 m-1 bg-indigo-500 rounded">
-                                            #online
-                                        </span>
-                                        <span class="px-2 py-1 m-1 bg-indigo-500 rounded">
-                                            #internet
-                                        </span>
-                                        <span class="px-2 py-1 m-1 bg-indigo-500 rounded">
-                                            #education
-                                        </span>
-                                    </div> --}}
-                                    {{-- <div class="flex items-center mt-2">
-                                        <img class='object-cover w-10 h-10 rounded-full' alt="{{ $webinar->extensionService()->name }} logo" src="{{ asset('storage/image/extension-services/'.$webinar->extensionService()->image) }}">
-
-                                        <div class="pl-3">
-                                            <p class="text-sm font-medium">
-                                                {{ $webinar->extensionService()->name }}
-                                            </p>
-                                            <div class="text-sm text-gray-600">
-                                                {{ $webinar->extensionService()->department()->name }}
-
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                </div>
-                            </a>
-                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row ">
+                        {{ $webinars->links() }}
                     </div>
-                @endforeach
-            </div>
-            <div class="flex justify-end">
-                <button class="relative p-2 text-sm text-gray-800 bg-transparent md:h-90 lg:l-90 hover:text-green-600"  wire:click="seeMore"
-                {{ $btnIs == 'hidden' ? 'hidden':'show' }}>
-                    {{ $btnName }}
-                </button>
+                </div>
             </div>
         </div>
     </div>

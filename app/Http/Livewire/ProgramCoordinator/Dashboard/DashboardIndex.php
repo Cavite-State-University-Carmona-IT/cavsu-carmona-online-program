@@ -9,6 +9,8 @@ class DashboardIndex extends Component
     public function render()
     {
         return view('livewire.program-coordinator.dashboard.dashboard-index')
-        ->layout('layouts.layout-program-coordinator', ['menu' =>  'dashboard']);
+        // ->layout('layouts.layout-program-coordinator', ['menu' =>  'dashboard']);
+        ->layout('layouts.app');
+
     }
 }

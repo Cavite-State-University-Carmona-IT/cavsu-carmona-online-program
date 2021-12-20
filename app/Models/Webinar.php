@@ -40,4 +40,40 @@ class Webinar extends Model
         $data = strtolower(str_replace(" ","-", $this->title));
         return $data;
     }
+
+    public function status_name()
+    {
+        switch($this->status){
+            case 1:
+                $value = "pending";
+                break;
+            case 2:
+                $value = "published";
+                break;
+            case 3:
+                $value = "deleted";
+                break;
+            default:
+                $value = "unknown";
+        }
+        return $value;
+    }
+
+    public function status_color()
+    {
+        switch($this->status){
+            case 1:
+                $value = "blue";
+                break;
+            case 2:
+                $value = "green";
+                break;
+            case 3:
+                $value = "red";
+                break;
+            default:
+                $value = "gray";
+        }
+        return $value;
+    }
 }

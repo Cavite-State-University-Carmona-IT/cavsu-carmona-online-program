@@ -26,9 +26,7 @@ class WebinarDetails extends Component
 
     public function mount(Request $request)
     {
-        $this->webinar = Webinar::query()
-        ->where('title', $request->name)
-        ->first();
+        $this->webinar = Webinar::find($request->id);
 
         $this->title = $this->webinar->title;
         $this->speaker = $this->webinar->speaker;

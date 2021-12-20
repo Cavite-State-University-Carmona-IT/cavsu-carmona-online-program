@@ -163,11 +163,11 @@
                                         {{-- Divider --}}
                                         <div class="mx-3 border-t border-gray-100"></div>
                                         {{-- Dashboard --}}
-                                        <x-jet-dropdown-link href="#">
+                                        <x-jet-dropdown-link href="{{ route('program-coordinator.dashboard') }}">
                                             {{ __('Dashboard') }}
                                         </x-jet-dropdown-link>
                                         {{-- Webinars --}}
-                                        <x-jet-dropdown-link href="#">
+                                        <x-jet-dropdown-link href="{{ route('program-coordinator.webinar') }}">
                                             {{ __('Webinars') }}
                                         </x-jet-dropdown-link>
                                         {{-- Reports --}}
