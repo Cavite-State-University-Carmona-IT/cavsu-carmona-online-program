@@ -6,7 +6,7 @@
                 <div class="flex flex-row mb-1 sm:mb-0">
                     <div class="relative">
                         <select wire:model="perPage"
-                            class="appearance-none h-full rounded-l border block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            class="appearance-none h-full rounded-l border block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                             <option>5</option>
                             <option>10</option>
                             <option>20</option>
@@ -14,7 +14,7 @@
                     </div>
                     <div class="relative">
                         <select wire:model="status"
-                            class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                            class=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                             <option value="0">All</option>
                             <option value="1">Pending</option>
                             <option value="2">Published</option>
@@ -81,8 +81,7 @@
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <span
                                             class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-{{ $webinar->status_color() }}-200 opacity-50 rounded-full"></span>
+                                            <span aria-hidden class="absolute inset-0 bg-{{ $webinar->status_color() }}-200 opacity-50 rounded-full"></span>
                                             <span class="relative text-xs font-bold text-{{ $webinar->status_color() }}-500">{{ $webinar->status_name() }}</span>
                                         </span>
                                     </td>

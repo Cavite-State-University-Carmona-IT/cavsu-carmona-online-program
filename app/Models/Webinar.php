@@ -9,11 +9,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\ExtensionService;
 use App\Models\WebinarUserReview;
 use App\Models\WebinarUser;
+use App\Models\User;
+use App\Models\FieldOfInterest;
 
 class Webinar extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    public function fieldOfInterests()
+    {
+        return $this->belongsToMany(FieldOfInterest::class, 'webinar_field_of_interests');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id')->first();
+    }
 
     public function extensionService()
     {
