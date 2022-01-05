@@ -11,25 +11,31 @@
                 margin: 0;
                 height: 8.27in;
                 width: 11.69in;
-                background-image:url('assets/template/ecertificate/{{ $properties->background_template }}');
+                background-image:url('storage/image/template/ecertificate/{{ $image }}');
                 background-size: 11.69in 8.27in; /* Not sure whether it works with DOMPDF. So, using a background of actual size. */
                 background-repeat: no-repeat;
             }
             .name {
                 position: fixed;
                 width: 100%;
-                {{ $properties->name }}
+                {{ $css_name }}
             }
             .date {
                 position: fixed;
                 width: 100%;
-                {{ $properties->date }}
+                {{ $css_date }}
             }
 
+            .title {
+                position: fixed;
+                width: 100%;
+                {{ $css_title }}
+            }
         </style>
 
     </head>
     <body>
+        <div class="title">{{ $title }}</div>
         <div class="name">{{ $name }}</div>
         <div class="date">{{ $date }}</div>
     </body>

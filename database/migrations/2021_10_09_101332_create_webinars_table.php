@@ -24,11 +24,11 @@ class CreateWebinarsTable extends Migration
             $table->text('video_link')->nullable();
             $table->smallInteger('duration')->nullable();
             $table->date('date')->nullable();
+            $table->text('registration_link')->nullable()->comment('no youtube links');
             $table->text('evaluation_link')->nullable();
+            $table->boolean('is_ecert_default')->default(true);
             $table->text('ecertificate_link')->nullable();
-            $table->boolean('is_ecert_default')->unsigned()->nullable();
             $table->tinyInteger('status')->unsigned()->nullable();
-            $table->integer('ecertificate_property_id')->unsigned()->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();

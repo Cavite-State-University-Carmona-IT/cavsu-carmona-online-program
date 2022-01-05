@@ -29,7 +29,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-10-23',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'As video streaming continues to expand in all markets, including for high-bandwidth premium services like 4K, subscribers increasingly look to broadband service providers to deliver exceptional service quality.
@@ -52,7 +51,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-10-14',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'For any startup founder looking for the next stage of growth, understanding why VCs say ‘no’ is as important as why they say ‘yes’.
@@ -81,7 +79,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-09-21',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'Throughout this year, financial forecasts have remained a moving target. With so much uncertainty still looming, how does your business continue to strategize for the future? What are the trends that are the most important to examine? And how are external factors impacting your business in ways that you can’t easily predict?
@@ -108,7 +105,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-10-14',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 '2020/2021 were the years of SaaS: from Zoom to Slack to Hopin, we couldnt get enough of the tools that made remote work work. And neither could VCs, pouring a record 11bn EUR into SaaS startups across Europe in 2020/2021.',
@@ -124,7 +120,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-10-14',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'Work has transformed more in the last 18 months than it has for over a decade. The shift to remote work was sudden and dramatic, yet the steady shift to hybrid work, where some workers are in the office and some remain at home, is catching many organizations unprepared as they head into 2022. This shift requires sustaining a connection between two different groups of workers that still maintains a common culture, a standard way of working that can be switched back and forth, and new collaborative regimes that bridge the gap, all while making sure that the place in which the work is done, wherever it is located, is safe, secure and enabling. Attendees of this Webinar will learn from a top digital workplace expert what the leading organizations in the world are doing -- along with the latest emerging best practices -- to create a new hybrid work environment that is flexible, resilience, and productive.',
@@ -141,7 +136,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2019-11-07',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'This lively session connects two of mankind’s greatest inventions: product management and world mythology. Enough with that newfangled stuff - boost your product leadership skills with learnings that are thousands of years old. How do mythological tales apply to delivering great product outcomes? LinkedIn fmr Product Lead, Prasad Gune’s, extensive experience in enterprise and consumer software means you’ll walk away with actionable insights for your PM toolkit (and maybe hear a new myth or two).
@@ -159,7 +153,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-09-09',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'Exact Sciences Global Product and Strategy Leader Vidya Venkatesh dives into what makes commercially successful and impactful healthcare products.',
@@ -175,7 +168,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-09-09',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'Remote sensing measures crop growth throughout the year so that the growers can analyze conditions based on the data and take action that will have a positive influence on the harvest outcome. But what exactly is remote sensing? The CIBO team will share an overview of remote sensing, ways to use the data and how remote sensing data can be used for decision-making among the agriculture and food security communities.',
@@ -191,7 +183,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-07-09',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'A live discussion featuring the data scientists at CIBO. We will be bringing awareness to the reasons people interested in data science should be watching agriculture and taking your questions!',
@@ -207,7 +198,6 @@ class SampleWebinarSeeder extends Seeder
                 'date' => '2021-01-28',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-                'ecertificate_property_id' => 1,
                 'created_by' => 1,
                 'about' =>
                 'Remote sensing measures crop growth throughout the year so that the growers can analyze conditions based on the data and take action that will have a positive influence on the harvest outcome. But what exactly is remote sensing? The CIBO team will share an overview of remote sensing, ways to use the data and how remote sensing data can be used for decision-making among the agriculture and food security communities.',

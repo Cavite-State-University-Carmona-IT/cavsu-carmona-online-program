@@ -17,6 +17,11 @@ class Webinar extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'is_ecert_default',
+        'ecertificate_link',
+    ];
+
     public function fieldOfInterests()
     {
         return $this->belongsToMany(FieldOfInterest::class, 'webinar_field_of_interests');
@@ -88,4 +93,5 @@ class Webinar extends Model
         }
         return $value;
     }
+
 }

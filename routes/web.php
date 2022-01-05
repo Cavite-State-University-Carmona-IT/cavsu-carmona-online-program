@@ -69,6 +69,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
             Route::get('program-coordinator/reports/registered-users', 'ProgramCoordinator\Reports\ReportController@download_report_registeredUser_evaluation');
             Route::get('program-coordinator/reports/active-inactive-users', 'ProgramCoordinator\Reports\ReportController@download_report_userActivity_evaluation');
             Route::get('program-coordinator/reports/completed-evaluation', 'ProgramCoordinator\Reports\ReportController@download_completed_evaluation');
+            
+            // Ecertificate Template
+            Route::get('program-coordinator/ecertificate-template/{id}',  'ProgramCoordinator\Ecertificate\TemplateController@view_format');
         });
     });
 

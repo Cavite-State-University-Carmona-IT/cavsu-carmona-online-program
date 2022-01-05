@@ -15,8 +15,10 @@ class CreateWebinarUserReviewsTable extends Migration
     {
         Schema::create('webinar_user_reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('webinar_id')->unsigned()->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('webinar_id')->unsigned();
+            $table->foreign('webinar_id')->unsigned()->references('id')->on('webinars');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->unsigned()->references('id')->on('users');
             $table->tinyInteger('rate')->comment('1-lowest 5-highest')->unsigned()->nullable();
             $table->string('comment_title')->nullable();
             $table->text('comment_body')->nullable();

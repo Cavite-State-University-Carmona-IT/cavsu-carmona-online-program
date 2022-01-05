@@ -71,4 +71,8 @@ class User extends Authenticatable
         return $this->first_name . " " . $this->middle_name[0] ." ". $this->last_name;
     }
 
+    public function webinarUserReviews()
+    {
+        return $this->hasMany('App\Models\WebinarUserReview');
+    }
 }
