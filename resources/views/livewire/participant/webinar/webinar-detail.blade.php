@@ -8,7 +8,7 @@
                     {{-- webinar basic details --}}
                     <div class=" md:col-span-2 col-span-3">
                         <p class="text-gray-100 text-xs text-left font-semibold tracking-wide mb-2">Extension Service: {{ ucwords(strtolower($webinar->extensionService()->name)) }}</i> </p>
-                        <p class=" text-white tracking-wide uppercase line-clamp-2 text-xl md:text-3xl font-bold text-left mb-2">{{ $webinar->title }}</p>
+                        <p class=" text-white tracking-wide line-clamp-2 text-xl md:text-3xl font-bold text-left mb-2">{{ $webinar->title }}</p>
                         <p class="text-gray-100 text-sm md:text-base line-clamp-1 text-left mb-2">{{ $webinar->speaker }}</p>
                         <p class="text-gray-200 text-sm font-semibold text-left mb-2">
                             Created By:

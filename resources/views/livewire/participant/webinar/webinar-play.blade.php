@@ -17,20 +17,20 @@
                     </div>
 
                     <div  x-data="dataWebinarInfo()">
-                        <div class="w-full pt-5 pb-3 border-b">
+                        <div class="w-full pt-5 pb-2 border-b">
                             <div class="flex px-5 text-sm space-x-7 lg:space-x-10 lg:px-0">
                                 <a class="font-semibold cursor-pointer tracking-wide hover:text-green-400"
-                                    :class="(isOpenAbout == true) ? 'text-space-blue' : 'text-gray-500'"
+                                    :class="(isOpenAbout == true) ? 'text-space-blue' : 'text-gray-400'"
                                     @click="isOpenAbout = true;
                                     isOpenObjectives = false;
                                     isOpenReviews = false;
                                     isOpenEvaluation = false;
                                     "
                                     >
-                                    About
+                                    Details
                                 </a>
                                 <a class="font-semibold cursor-pointer tracking-wide hover:text-green-400"
-                                    :class="(isOpenReviews == true) ? 'text-space-blue' : 'text-gray-500'"
+                                    :class="(isOpenReviews == true) ? 'text-space-blue' : 'text-gray-400'"
                                     @click="isOpenReviews = true;
                                     isOpenObjectives = false;
                                     isOpenAbout = false;
@@ -39,18 +39,17 @@
                                     >
                                     Reviews
                                 </a>
-                                @if(!$this->webinar_user->ecertificate_link)
-                                <a class="font-semibold cursor-pointer tracking-wide hover:text-green-400"
-                                    :class="(isOpenEvaluation == true) ? 'text-space-blue' : 'text-gray-500'"
-                                    @click="isOpenEvaluation = true;
-                                    isOpenObjectives = false;
-                                    isOpenAbout = false;
-                                    isOpenReviews = false;
-                                    "
-                                    >
-                                    Evaluation
-                                </a>
-
+                                @if(!$this->webinar_user->date_completed)
+                                    <a class="font-semibold cursor-pointer tracking-wide hover:text-green-400"
+                                        :class="(isOpenEvaluation == true) ? 'text-space-blue' : 'text-gray-400'"
+                                        @click="isOpenEvaluation = true;
+                                        isOpenObjectives = false;
+                                        isOpenAbout = false;
+                                        isOpenReviews = false;
+                                        "
+                                        >
+                                        Evaluation
+                                    </a>
                                 @else
                                     @if($webinar->is_ecert_default == true)
                                         <a href="{{ url('generate/e-certificate/'.$webinar->id.'/'.auth()->user()->id) }}" target="_blank" class=" text-gray-500 font-semibold cursor-pointer tracking-wide hover:text-green-400">
@@ -65,22 +64,51 @@
                             </div>
                         </div>
 
-                        {{-- about panel --}}
-                        <div x-show="isOpenAbout">
-                            about hehe
-                        </div>
 
                         {{-- about panel --}}
+                        <div x-show="isOpenAbout" class="my-4">
+                            <p class=" text-gray-600 tracking-wide text-xl md:text-3xl font-semibold text-left mb-2">{{ $webinar->title }}</p>
+                            <p class="text-gray-600 text-sm md:text-base text-left mb-2">{{ $webinar->speaker }}</p>    
+                            <p class="text-gray-500 text-sm text-left"><i class="fas fa-calendar-alt fa-sm"></i> Date: {{ carbon\carbon::parse($webinar->date)->format('M d, Y') }} | {{ $webinar->duration }} mins</p>
+                            
+                            {{-- about --}}
+                            <div class="text-sm font-medium tracking-wide my-4 leading-relaxed" x-data="{ about_seemore: false }">
+                                <p class="text-gray-600 line-clamp-6" :class="{ 'line-clamp-none': about_seemore }">
+                                    {{ $webinar->about }} 
+                                </p>
+                                <span class="text-blue-700 cursor-pointer" @click="about_seemore = !about_seemore">see 
+                                    <template x-if="about_seemore">
+                                        <span>less</span>
+                                    </template>
+                                    <template x-if="!about_seemore">
+                                        <span>more</span>
+                                    </template>
+                                </span>
+                            </div>
+                            <hr class="my-3">
+                            <div class="text-left md:text-sm text-xs my-4">
+                                <p class="text-gray-600 text-left mr-2 inline-block">Topic/s:</p>
+                                @foreach($webinar->fieldOfInterests as $val)
+                                    <a href="" class="text-gray-600 mr-2 underline">{{ $val->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        {{-- reviews panel --}}
                         <div x-show="isOpenReviews">
-                            Reviews lol
+                            @livewire('participant.webinar.webinar-review', ['webinar_id' => $webinar->id])
                         </div>
 
                         {{-- about panel --}}
-                        <div x-show="isOpenEvaluation">
-                            @if($webinar->evaluation_link && $this->webinar_user->date_completed != null)
+                        <div x-show="isOpenEvaluation" class="my-3">
+                            @if($this->webinar_user->date_completed == null && $webinar->evaluation_link)
                                 <div class="">
-                                    <a href="{{ $webinar->evaluation_link }}" target="_blank">Click Me!</a>
+                                    <a class="underline text-blue-400" href="{{ $webinar->evaluation_link }}" target="_blank">{{ $webinar->evaluation_link }}</a>
                                 </div>
+                            @else 
+                                <p class=" text-gray-600 tracking-wide text-base text-left my-4">
+                                    No Evaluation Link
+                                </p>
                             @endif
                         </div>
                     </div>

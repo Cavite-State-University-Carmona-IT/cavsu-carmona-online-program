@@ -11,6 +11,7 @@ use App\Models\WebinarUserReview;
 use App\Models\WebinarUser;
 use App\Models\User;
 use App\Models\FieldOfInterest;
+use App\Models\EcertificateTemplate;
 
 class Webinar extends Model
 {
@@ -97,6 +98,11 @@ class Webinar extends Model
     public function ratings()
     {
         return $this->review->count() == 0 ? 0 : ($this->review->sum('rate')) / $this->review->count();
+    }
+
+    public function ecertificateTemplate()
+    {
+        return $this->belongsToMany(EcertificateTemplate::class, 'ecertificate_template_webinars')->first();
     }
 
 }

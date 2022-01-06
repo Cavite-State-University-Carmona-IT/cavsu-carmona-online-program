@@ -31,11 +31,18 @@
                 width: 100%;
                 {{ $css_title }}
             }
+
+            .speaker {
+                position: fixed;
+                width: 100%;
+                {{ $css_title }}
+            }
         </style>
 
     </head>
     <body>
         <div class="title">{{ $title }}</div>
+        <div class="speaker">{{ $speaker }}</div>
         <div class="name">{{ $name }}</div>
         <div class="date">{{ $date }}</div>
     </body>

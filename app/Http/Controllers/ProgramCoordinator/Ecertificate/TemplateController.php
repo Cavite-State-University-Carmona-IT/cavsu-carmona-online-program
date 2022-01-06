@@ -18,16 +18,18 @@ class TemplateController extends Controller
         if($ecert_template)
         {
             $title = "Sample Title";
+            $speaker = "Sample Speaker";
             $name = "John A. Doe";
-            $date = "01/01/2020";
+            $date = "January 01, 2022";
 
             $image = $ecert_template->image;
             $css_title = $ecert_template->css_title;
             $css_name = $ecert_template->css_name;
             $css_date = $ecert_template->css_date;
 
-            $pdf = PDF::loadView('templateEcertificate.ecertificate-1', [
+            $pdf = PDF::loadView('templateEcertificate.ecertificate-generate', [
                 'title' => $title,
+                'speaker' => $speaker,
                 'name' => $name,
                 'date' => $date,
                 'css_title' => $css_title,

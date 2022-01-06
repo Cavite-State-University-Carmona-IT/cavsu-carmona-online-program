@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWebinarUserReviewsTable extends Migration
+class CreateReviewUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateWebinarUserReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('webinar_user_reviews', function (Blueprint $table) {
+        Schema::create('review_users', function (Blueprint $table) {
             $table->id();
-            $table->integer('webinar_id')->unsigned();
+            $table->integer('webinar_user_review_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->tinyInteger('rate')->comment('1-lowest 5-highest')->unsigned()->nullable();
-            $table->string('comment_title')->nullable();
-            $table->text('comment_body')->nullable();
+            $table->boolean('like')->comment('true = like, false = dislike');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateWebinarUserReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('webinar_user_reviews');
+        Schema::dropIfExists('review_users');
     }
 }
