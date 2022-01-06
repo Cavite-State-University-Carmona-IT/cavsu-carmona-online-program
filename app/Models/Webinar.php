@@ -94,4 +94,9 @@ class Webinar extends Model
         return $value;
     }
 
+    public function ratings()
+    {
+        return $this->review->count() == 0 ? 0 : ($this->review->sum('rate')) / $this->review->count();
+    }
+
 }
