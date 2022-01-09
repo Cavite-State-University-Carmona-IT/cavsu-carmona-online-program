@@ -171,7 +171,7 @@
                                             {{ __('Webinars') }}
                                         </x-jet-dropdown-link>
                                         {{-- Reports --}}
-                                        <x-jet-dropdown-link href="#">
+                                        <x-jet-dropdown-link href="{{ route('program-coordinator.report') }}">
                                             {{ __('Reports') }}
                                         </x-jet-dropdown-link>
                                         {{-- Others --}}

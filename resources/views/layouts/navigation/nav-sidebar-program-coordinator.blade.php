@@ -153,7 +153,7 @@
                         <img class="w-auto h-5"  src="{{ asset('storage/image/icons/advertisement.gif') }}" />
                             <span>Advertisement</span>
                         </a>
-                        <a href="{{ route('program-coordinator.reports') }}" class="flex items-center w-full p-2 space-x-2 border-l-2 border-transparent ">
+                        <a href="{{ route('program-coordinator.report') }}" class="flex items-center w-full p-2 space-x-2 border-l-2 border-transparent ">
                         <img class="w-auto h-5"  src="{{ asset('storage/image/icons/reports.gif') }}" />
                             <span>Reports</span>
                         </a>

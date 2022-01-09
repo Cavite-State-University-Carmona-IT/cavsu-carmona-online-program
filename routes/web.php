@@ -65,7 +65,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
 
         // PROGRAM COORDINATOR
         Route::group(['middleware' => ['role:program_coordinator']], function() {
-            Route::get('program-coordinator/reports','ProgramCoordinator\Reports\ReportController@index')->name('program-coordinator.reports');
+            Route::get('program-coordinator/reports','ProgramCoordinator\Reports\ReportController@index')->name('program-coordinator.report');
             Route::get('program-coordinator/reports/registered-users', 'ProgramCoordinator\Reports\ReportController@download_report_registeredUser_evaluation');
             Route::get('program-coordinator/reports/active-inactive-users', 'ProgramCoordinator\Reports\ReportController@download_report_userActivity_evaluation');
             Route::get('program-coordinator/reports/completed-evaluation', 'ProgramCoordinator\Reports\ReportController@download_completed_evaluation');
