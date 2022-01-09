@@ -15,10 +15,22 @@ use App\Models\EcertificateTemplate;
 
 class Webinar extends Model
 {
+    const UPDATED_AT = null;
+    //to turn off timestamp completely
+    public $timestamps = false;
+
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
+        'title',
+        'speaker',
+        'about',
+        'date',
+        'status',
+        'duration',
+        'price',
+        'image',
         'is_ecert_default',
         'ecertificate_link',
     ];
@@ -98,6 +110,11 @@ class Webinar extends Model
     public function ratings()
     {
         return $this->review->count() == 0 ? 0 : ($this->review->sum('rate')) / $this->review->count();
+    }
+
+    public function ecertificateTemplates()
+    {
+        return $this->belongsToMany(EcertificateTemplate::class, 'ecertificate_template_webinars');
     }
 
     public function ecertificateTemplate()

@@ -16,7 +16,7 @@ class CreateWebinarsTable extends Migration
         Schema::create('webinars', function (Blueprint $table) {
             $table->id();
             $table->double('price')->unsigned()->nullable();
-            $table->string('title')->nullable();
+            $table->string('title')->unique();
             $table->string('image')->nullable();
             $table->text('about')->nullable();
             $table->tinyInteger('extension_service_id')->unsigned()->nullable();
@@ -24,7 +24,9 @@ class CreateWebinarsTable extends Migration
             $table->text('video_link')->nullable();
             $table->smallInteger('duration')->nullable();
             $table->date('date')->nullable();
-            $table->text('registration_link')->nullable()->comment('no youtube links');
+            $table->boolean('is_redirect_link')->default(true)->comment('for registration_link and webinar_link');
+            $table->text('registration_link')->nullable();
+            $table->text('webinar_link')->nullable();
             $table->text('evaluation_link')->nullable();
             $table->boolean('is_ecert_default')->default(true);
             $table->text('ecertificate_link')->nullable();

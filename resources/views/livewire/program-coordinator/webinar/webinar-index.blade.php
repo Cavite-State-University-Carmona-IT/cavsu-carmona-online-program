@@ -1,28 +1,9 @@
 <div>
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
-    <div class="container mx-auto px-4 sm:px-8 pt-16 mt-2">
+    <div class="container max-w-full px-4 sm:px-8 pt-16 mt-2">
         <div class="py-8">
-            <div class="my-2 flex sm:flex-row flex-col">
-                <div class="flex flex-row mb-1 sm:mb-0">
-                    <div class="relative">
-                        <select wire:model="perPage"
-                            class="appearance-none h-full rounded-l border block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                            <option>5</option>
-                            <option>10</option>
-                            <option>20</option>
-                        </select>
-                    </div>
-                    <div class="relative">
-                        <select wire:model="status"
-                            class=" h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                            <option value="0">All</option>
-                            <option value="1">Pending</option>
-                            <option value="2">Published</option>
-                            <option value="3">Deleted</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="block relative">
+            <div class="my-2 flex flex-row">
+                <div class="block relative flex-auto">
                     <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                         <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
                             <path
@@ -30,12 +11,36 @@
                             </path>
                         </svg>
                     </span>
-                    <input wire:model="search" placeholder="Search" class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                    <input wire:model="search" placeholder="Search" class="appearance-none rounded-l-md border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                </div>
+                <div class="flex flex-row mb-1 sm:mb-0 flex-none">
+                    <div class="relative">
+                        <select wire:model="perPage"
+                            class="appearance-none h-full rounded-none border-0 border-b border-t block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <select wire:model="status"
+                            class="appearance-none h-full rounded-none border-0 border-b border-t block  w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <option value="0">All</option>
+                            <option value="1">Pending</option>
+                            <option value="2">Published</option>
+                            <option value="3">Deleted</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <a href="{{ url('program-coordinator/new-webinar') }}" class=" h-full rounded-r-md border-md block appearance-none w-full bg-blue-400 border-blue-400 text-white py-2 px-4 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-blue-500 focus:border-blue-500">
+                            <i class="fas fa-plus fa-sm"></i><span class="hidden ml-2 text-sm md:inline-block">New Webinar</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-                    <table class="min-w-full leading-normal bg-white">
+            <div class="bg-white overflow-x-auto shadow rounded-md">
+                <div class="inline-block min-w-full ">
+                    <table class="min-w-full leading-normal ">
                         <thead >
                             <tr >
                                 <th class="px-5 py-3 border-b border-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">

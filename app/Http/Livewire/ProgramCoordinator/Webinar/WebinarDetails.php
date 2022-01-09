@@ -25,6 +25,8 @@ class WebinarDetails extends Component
     public $date;
     public $evaluation_link;
     public $ecertificate_link;
+    public $registration_link;
+    public $webinar_link;
     public $delete;
 
     public $ecert_image;
@@ -35,35 +37,44 @@ class WebinarDetails extends Component
     public $new_field_of_interest_id;
     public $field_of_interests;
 
+    public $edit_option = false, $ecert_option, $redirect_registration_option;
+
     public function mount(Request $request)
     {
         $this->webinar = Webinar::find($request->id);
         
-        $this->title = $this->webinar->title;
-        $this->speaker = $this->webinar->speaker;
-        $this->about = $this->webinar->about;
-        $this->price = $this->webinar->price;
-        $this->status = $this->webinar->status;
-        $this->video_link = $this->webinar->video_link;
-        $this->date = $this->webinar->date;
-        $this->evaluation_link = $this->webinar->evaluation_link;
-        $this->ecertificate_link = $this->webinar->ecertificate_link;
+        if($this->webinar) {
+            $this->title = $this->webinar->title;
+            $this->speaker = $this->webinar->speaker;
+            $this->about = $this->webinar->about;
+            $this->price = $this->webinar->price;
+            $this->status = $this->webinar->status;
+            $this->video_link = $this->webinar->video_link;
+            $this->date = $this->webinar->date;
+            $this->evaluation_link = $this->webinar->evaluation_link;
+            $this->ecertificate_link = $this->webinar->ecertificate_link;
+            $this->registration_link = $this->webinar->registration_link;
+            $this->webinar_link = $this->webinar->webinar_link;
 
-        if($this->webinar->is_ecert_default == true) {
-            $ecertificate_template = EcertificateTemplateWebinar::where('webinar_id', $this->webinar->id)->latest()->first();
-            if($ecertificate_template)
-            {
-                $ecert_template = EcertificateTemplate::find($ecertificate_template->ecertificate_template_id);
-                $this->ecertificate_id = $ecert_template->id;
+            if($this->webinar->is_ecert_default == true) {
+                $ecertificate_template = EcertificateTemplateWebinar::where('webinar_id', $this->webinar->id)->latest()->first();
+                if($ecertificate_template)
+                {
+                    $ecert_template = EcertificateTemplate::find($ecertificate_template->ecertificate_template_id);
+                    $this->ecertificate_id = $ecert_template->id;
+                } 
             } else {
-                $this->ecert_image = "none.jpg";
-                $this->ecertificate_id = 1;
+                $this->ecertificate_id = null;
             }
-        } else {
-            $this->ecertificate_id = null;
-        }
 
-        $this->ecertificate_templates = EcertificateTemplate::all();
+            $this->ecertificate_templates = EcertificateTemplate::all();
+
+            $this->ecert_option = $this->webinar->is_ecert_default;
+            $this->redirect_registration_option = $this->webinar->is_redirect_link;
+        } else {
+            return abort(404);
+        }
+        
     }
 
     public function updateDate()
@@ -111,59 +122,6 @@ class WebinarDetails extends Component
         $this->dispatchBrowserEvent('close-modal-status');
     }
 
-    public function updateVideoLink()
-    {
-        $this->webinar->video_link = $this->video_link;
-        $this->webinar->save();
-        $this->dispatchBrowserEvent('close-modal-video-link');
-    }
-
-    public function updateEvalLink()
-    {
-        $this->webinar->evaluation_link = $this->evaluation_link;
-        $this->webinar->save();
-        $this->dispatchBrowserEvent('close-modal-eval-link');
-    }
-
-    public function updateEcert()
-    {
-        
-        // $this->validate([
-        //     'ecert_template' => 'nullable|image|max:2048|mimes:jpeg,jpg,png', // 1MB Max
-        // ]);
-
-        // $this->webinar->ecertificate_link = $this->ecertificate_link;
-
-        // if($this->ecert_template)
-        // {
-        //     $property = EcertificateProperty::firstOrNew(['background_template' => $this->ecert_template->getClientOriginalName(), 'name' => $this->ecert_css_name, 'date' => $this->ecert_css_date]);
-        //     $property->save();
-            
-        //     $this->ecert_template->storeAs('public/image/template/ecertificate', $this->ecert_template->getClientOriginalName());
-            
-        //     $this->webinar->ecertificate_property_id = $property->id;
-        // }
-        if($this->ecertificate_link == ""){
-            $this->validate([
-                'ecertificate_template_id' => 'required', // 2MB Max
-            ]);
-            $this->webinar->is_ecert_default = true;
-            $this->webinar->ecertificate_link = "";
-            $data = EcertificateTemplateWebinar::firstOrNew(['webinar_id' => $this->webinar->id, 'ecertificate_template_id' => $this->ecertificate_template_id]);
-            $data->save();
-
-            $this->ecertificate_id = $this->ecertificate_template_id;
-        }
-        else {
-            $this->webinar->is_ecert_default = false;
-            $this->webinar->ecertificate_link = $this->ecertificate_link;
-            $this->ecertificate_id = null;
-        }
-        $this->webinar->save();
-        
-        $this->dispatchBrowserEvent('close-modal-ecert-edit');
-    }
-
     public function updateImage()
     {
         $this->validate([
@@ -177,6 +135,33 @@ class WebinarDetails extends Component
         $this->dispatchBrowserEvent('close-modal-image');
     }
 
+    public function updateLinks()
+    {
+        $this->webinar->video_link = $this->video_link;
+        $this->webinar->evaluation_link = $this->evaluation_link;
+        $this->webinar->registration_link = $this->registration_link;
+        $this->webinar->webinar_link = $this->webinar_link;
+        $this->webinar->is_redirect_link = $this->redirect_registration_option;
+
+        if($this->ecert_option == false) {
+            $this->webinar->ecertificate_link = $this->ecertificate_link;
+        }
+
+        $this->webinar->save();
+
+        // save first before sync or attach
+        if($this->ecert_option == true) {
+            $this->webinar->ecertificateTemplates()->sync($this->ecertificate_id);
+        }
+
+        $this->edit_option = false;
+    }
+
+    public function closeEdit()
+    {
+        $this->edit_option = false;
+    }
+
     public function getWebinarFieldOfInterestsProperty()
     {
         return $this->webinar->fieldOfInterests;
@@ -185,6 +170,11 @@ class WebinarDetails extends Component
     public function getFieldofInterestsProperty()
     {
         return FieldOfInterest::where('extension_service_id', $this->webinar->extension_service_id)->get();
+    }
+
+    public function editOption()
+    {
+        $this->edit_option = true;
     }
 
     public function render()

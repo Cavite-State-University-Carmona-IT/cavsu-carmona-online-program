@@ -404,190 +404,173 @@
                     </div>
                 </div>
 
-                {{-- links --}}
-                <div>
+                {{-- webinar links --}}
+                <div class="flex justify-between">
                     <p class="text-sm font-bold tracking-wide text-gray-800 my-4">Webinar <span class="text-gray-500">Links</span></p>
+                    <a wire:click="editOption" class="justify-items-center flex justify-center items-center">
+                        <i class="fas fa-pen text-gray-400 fa-xs"></i>
+                    </a>
                 </div>
-                <div class="flex flex-col">
-                    {{-- video link --}}
-                    <div class="flex flex-initial w-full p-4 bg-gray-100 rounded-lg my-2" x-data="{ modalVideoLink: false}" @click.away="modalVideoLink = false">
-                        <div class="bg-green-400 flex-none justify-items-center rounded-lg w-10 h-10 flex justify-center pt-3">
-                            <i class="fab fa-youtube text-white"></i>
-                        </div>
-                        <div class="ml-4 flex-auto">
-                            <div class=" text-gray-700 flex items-center text-sm text-gray-800 tracking-wide font-semibold w-full rounded-md mb-0 mr-2">
-                                <div class="flex-grow">
-                                    <p class="bg-transparent outline-none text-sm border-0 text-gray-800 tracking-wide font-semibold w-full rounded-md mb-0 py-0 px-0 focus:ring-0">
-                                        https://youtu.be/{{ $webinar->video_link ? $webinar->video_link : ''}}
-                                    </p>
-                                </div>
-                            </div>
-                            <p class="text-xs tracking-wide text-gray-400">youtube link</p>
-                        </div>
-                        <a @click="modalVideoLink = !modalVideoLink" class="ml-3 bg-white flex-none justify-items-center rounded-full w-8 h-8 flex justify-center pt-2 mt-1">
-                            <i class="fas fa-pen text-gray-400 fa-sm"></i>
-                        </a>
-                        <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalVideoLink">
-                            <div class="border border-gray-200 rounded-lg shadow-lg  h-auto md:max-w-xl md:p-6 lg:p-8 p-4 bg-white" 
-                                x-show="modalVideoLink"  
-                                @click.away="modalVideoLink = false"
-                                x-on:close-modal-video-link.window="modalVideoLink = false"
-                                >
-                                <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">
-                                        Edit Video Link
-                                    </h3>
 
-                                    <hr class="my-4">
-                                    
-
-                                    <div class="mt-1 relative rounded-md shadow-sm mb-3">
-                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                          <span class="text-gray-700 leading-tight">
-                                            https://youtu.be/
-                                          </span>
-                                        </div>
-                                        <input class="block w-full pl-36 appearance-none bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                            placeholder="" type="text"
-                                            wire:model="video_link" 
-                                            wire:keydown.enter="updateVideoLink()"
-                                            >
-                                    </div>
-                                    
-                                    <div class="w-full">
-                                        <small class="text-blue-400">Press enter to save</small>
-                                    </div>
-                                </div>
-                            </div>
+                {{-- youtube link --}}
+                <div class="mb-4">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="video_link">
+                        Youtube Link
+                    </label> 
+                    <div class="relative rounded-md">
+                        <div class="absolute inset-y-0 left-0 pl-0 flex items-center pointer-events-none">
+                            <span class="text-gray-800 leading-tight text-sm pl-4">
+                                https://youtu.be/
+                            </span>
                         </div>
-                    </div>
+                        <input class="appearance-none block w-full bg-transparent focus:ring-0 focus:border-gray-100 focus:bg-gray-100 text-gray-700 border border-gray-300 rounded py-2 text-sm px-4 leading-tight focus:outline-none pl-32"
+                            placeholder="" type="text"
+                            wire:model="video_link"
+                            @if($edit_option == false)
+                            readonly
+                            @endif
+                        >
+                    </div>  
+                    @error('video_link')
+                        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                    {{-- evaluation link --}}
-                    <div class="flex flex-initial w-full p-4 bg-gray-100 rounded-lg my-2" x-data="{ modalEval: false}" @click.away="modalEval = false">
-                        <div class="bg-red-500 flex-none justify-items-center rounded-lg w-10 h-10 flex justify-center pt-3">
-                            <i class="fas fa-file-alt text-white"></i>
-                        </div>
-                        <div class="flex-auto ml-4 h-10">
-                            <p class="outline-none text-sm text-gray-800 tracking-wide font-semibold w-full rounded-md mb-0">
-                                {{ $webinar->evaluation_link ? $webinar->evaluation_link : 'N/A' }}
-                            </p>
-                            <p class="text-xs tracking-wide text-gray-400">evaluation link</p>
-                        </div>
-                        <a @click="modalEval = !modalEval" class="ml-3 bg-white flex-none justify-items-center rounded-full w-8 h-8 flex justify-center pt-2 mt-1">
-                            <i class="fas fa-pen text-gray-400 fa-sm"></i>
-                        </a>
-                        <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalEval">
-                            <div class="border border-gray-200 rounded-lg shadow-lg  h-auto md:max-w-xl md:p-6 lg:p-8 p-4 bg-white" 
-                                x-show="modalEval"  
-                                @click.away="modalEval = false"
-                                x-on:close-modal-eval-link.window="modalEval = false"
-                                >
-                                <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">
-                                        Edit Evaluation Link
-                                    </h3>
-
-                                    <hr class="my-4">
-
-                                    <div class="mb-3">
-                                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                                            Link
-                                        </label> 
-                                        <input class="mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                            wire:model="evaluation_link" 
-                                            wire:keydown.enter="updateEvalLink()"
-                                            type="text"
-                                        />
-                                    </div>
-                                    
-                                    <div class="w-full">
-                                        <small class="text-blue-400">Press enter to save</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- ecertificate link --}}
-                    <div class="flex flex-initial w-full p-4 bg-gray-100 rounded-lg my-2" x-data="{ modalEcertEdit: false }">
-                        <div class="bg-gray-800 flex-none justify-items-center rounded-lg w-10 h-10 flex justify-center pt-3">
-                            <i class="fas fa-certificate text-white"></i>
-                        </div>
-                        @if($ecertificate_id)
-                            <a target="_blank" href="{{ url('program-coordinator/ecertificate-template/'.$ecertificate_id) }}" class="flex-auto ml-4 h-10 cursor-pointer">
-                                <p class="text-sm text-gray-800 tracking-wide font-semibold w-full rounded-md mb-0">
-                                    Default <small class="text-gray-400">(Click to view template)</small>
-                                </p>
-                                <p class="text-xs tracking-wide text-gray-400">e-certificate link</p>
-                            </a>
-                        @else 
-                            <div class="flex-auto ml-4 h-10">
-                                <p class="text-sm text-gray-800 tracking-wide font-semibold w-full rounded-md mb-0">
-                                    {{ $webinar->ecertificate_link }}
-                                </p>
-                                <p class="text-xs tracking-wide text-gray-400">e-certificate link</p>
-                            </div>
+                {{-- evaluation link --}}
+                <div class="mb-4">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="evaluation_link">
+                        Evaluation Link
+                    </label> 
+                    <input class="appearance-none block w-full bg-transparent focus:ring-0 focus:border-gray-100 focus:bg-gray-100 text-gray-700 border border-gray-300 rounded py-2 text-sm px-4 leading-tight focus:outline-none"
+                        wire:model="evaluation_link" 
+                        id="evaluation_link"
+                        type="text"
+                        placeholder="https://"
+                        @if($edit_option == false)
+                        readonly
                         @endif
-                        <a @click="modalEcertEdit = !modalEcertEdit" class="ml-3 bg-white flex-none justify-items-center rounded-full w-8 h-8 flex justify-center pt-2 mt-1">
-                            <i class="fas fa-pen text-gray-400 fa-sm"></i>
-                        </a>
-                        {{-- Modal Ecert Edit --}}
-                        <div class=" mt-6 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalEcertEdit">
-                            <div class="border border-gray-200 rounded-lg shadow-lg w-auto  h-auto md:max-w-xl md:p-6 lg:p-8 p-4 bg-white" 
-                                x-show="modalEcertEdit"  
-                                @click.away="modalEcertEdit = false"
-                                x-on:close-modal-ecert-edit.window="modalEcertEdit = false"
-                                >
-                                <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">
-                                        Edit Ecertificate Link
-                                    </h3>
-                                    <hr class="my-4">
-                        
-                                    <div class="mt-2">
-                                        <div class="inline-block relative w-auto">
-                                            {{-- ecertificate link --}}
-                                            <div class="mb-3">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                                                    Link
-                                                </label>
-                                                <input class="mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                    wire:model="ecertificate_link" 
-                                                    wire:keydown.enter="updateEcert()"
-                                                    type="text"
-                                                />
-                                            </div>
-                                            <p class="text-gray-500 text-xs italic mb-3">Leave blank to set as default</p>
-                                            <div class="mb-3">
-                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                                                    Template
-                                                </label>
-                                                <select wire:model="ecertificate_template_id"class="mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                                    <option value="">- Select Template -</option>
-                                                    @foreach($this->ecertificate_templates as $ecertificate_template)
-                                                        <option value="{{ $ecertificate_template->id }}">{{ $ecertificate_template->name }}</option> --}}
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            @error('ecertificate_template_id')
-                                                <p class="text-red-500 text-xs italic mb-3">Template is required</p>
-                                            @enderror
-                                            <div class="flex flex-row-reverse">
-                                                <button class="px-4 py-2 uppercase tracking-wide text-xs font-bold rounded-lg bg-blue-500 text-white" 
-                                                    wire:click="updateEcert"
-                                                    wire:loading.attr="disabled" 
-                                                    >
-                                                    save
-                                                </button>
-                                            </div>      
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
+                    />
+                    @error('evaluation_link')
+                        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                    @enderror
                 </div>
+
+                @if($ecert_option == false)
+                    {{-- ecertificate link --}}
+                    <div class="mb-4">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="ecertificate_link">
+                            E-Certificate Link
+                        </label> 
+                        <input class="appearance-none block w-full bg-transparent focus:ring-0 focus:border-gray-100 focus:bg-gray-100 text-gray-700 border border-gray-300 rounded py-2 text-sm px-4 leading-tight focus:outline-none"
+                            wire:model="ecertificate_link" 
+                            id="ecertificate_link"
+                            type="text"
+                            placeholder="https://"
+                        />
+                        @error('ecertificate_link')
+                            <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                @else 
+                    {{-- ecertificate template --}}
+                    <div class="mb-4">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="ecertificate_link">
+                            E-Certificate Template @if($ecertificate_id) <a class="text-gray-300 ml-2" href="{{ url('program-coordinator/ecertificate-template/'.$ecertificate_id) }}" target="_blank">(Click to view template)</a> @endif
+                        </label> 
+                        <select class="appearance-none block w-full bg-transparent focus:ring-0 focus:border-gray-100 focus:bg-gray-100 text-gray-700 border border-gray-300 rounded py-2 text-sm px-4 leading-tight focus:outline-none"
+                            @if($edit_option == false)
+                            disabled
+                            @endif
+                            wire:model="ecertificate_id" 
+                            >
+                            <option value="">- Select Template -</option>
+                            @foreach($ecertificate_templates as $ecertificate_template)
+                                <option value="{{ $ecertificate_template->id }}">{{ $ecertificate_template->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('ecertificate_id')
+                            <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                        @enderror
+                    </div>
+                @endif
+
+                @if($edit_option == true)
+                    {{-- ecert checkbox --}}
+                    <div class="form-check mb-4">
+                        <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
+                            type="checkbox" value="" id="chkboxEcertTemplate"
+                            wire:model="ecert_option">
+                        <label class="form-check-label inline-block text-gray-800 text-sm" for="chkboxEcertTemplate">
+                            Use E-Certificate Template
+                        </label>
+                    </div>
+                @endif
+
+                {{-- registration link --}}
+                <div class="mb-4">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="registration_link">
+                        Registration Link
+                    </label> 
+                    <input class="appearance-none block w-full bg-transparent focus:ring-0 focus:border-gray-100 focus:bg-gray-100 text-gray-700 border border-gray-300 rounded py-2 text-sm px-4 leading-tight focus:outline-none"
+                        wire:model="registration_link" 
+                        id="registration_link"
+                        type="text"
+                        placeholder="https://"
+                        @if($edit_option == false)
+                        readonly
+                        @endif
+                        
+                    />
+                    @error('registration_link')
+                        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+                {{-- webinar link --}}
+                <div class="mb-4">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="webinar_link">
+                        Webinar Link
+                    </label> 
+                    <input class="appearance-none block w-full bg-transparent focus:ring-0 focus:border-gray-100 focus:bg-gray-100 text-gray-700 border border-gray-300 rounded py-2 text-sm px-4 leading-tight focus:outline-none"
+                        wire:model="webinar_link" 
+                        id="webinar_link"
+                        type="text"
+                        placeholder="https://"
+                        @if($edit_option == false)
+                        readonly
+                        @endif
+                    />
+                    @error('webinar_link')
+                        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+                {{-- registration and webinar checkbox --}}
+                @if($edit_option == true)
+                    <div class="form-check mb-4">
+                        <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" 
+                            type="checkbox" value="" id="chkboxRedirectRegistration"
+                            wire:model="redirect_registration_option">
+                        <label class="form-check-label inline-block text-gray-800 text-sm" for="chkboxRedirectRegistration">
+                            Redirect to Registration and Webinar Link
+                        </label>
+                    </div>
+                @endif
+
+                @if($edit_option == true)
+                    <div class="flex justify-between w-full">
+                        <button class="px-4 py-2 uppercase tracking-wide text-gray-700 text-sm font-bold border border-gray-700 rounded-lg bg-white" 
+                            wire:click="closeEdit"
+                            >
+                            Close
+                        </button>
+                        <button class="px-4 py-2 uppercase tracking-wide text-white text-sm font-bold  rounded-lg bg-blue-500" 
+                            wire:click="updateLinks"
+                            wire:loading.attr="disabled" 
+                            >
+                            Update Links
+                        </button>
+                    </div>
+                @endif
+
             </div>
 
 
@@ -626,11 +609,18 @@
                     </template>
 
                     {{-- image tab --}}
-                    <div x-data="{ modalImage: false }" @click.away="modalImage = false">
 
                     <template x-if="tab == 'image'">
                         <span>
-                            <img class="w-full object-cover h-auto rounded-lg" src="{{ asset('storage/image/webinars/'.$webinar->image) }}" alt="{{ $webinar->title }}">        
+                            {{-- <div class="relative pt-12 pb-1/4">
+                                <img class="absolute w-full object-cover h-full rounded-lg" src="{{ asset('storage/image/webinars/'.$webinar->image) }}" alt="{{ $webinar->title }}">        
+                            </div> --}}
+                            <div class="relative flex flex-col items-center justify-center pt-12 pb-2/4">
+
+                                <img  src="{{ asset('storage/image/webinars/'.$webinar->image) }}" alt="{{ $webinar->title }}"
+                                class="absolute rounded-lg w-full h-full object-cover inset-0">
+                                
+                            </div>
                         </span>
                     </template>
                 </div>
