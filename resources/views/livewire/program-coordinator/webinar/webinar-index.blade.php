@@ -4,7 +4,7 @@
             <section class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-x-6 gap-y-8">
                 <article class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200">
                     <div class="relative w-full h-80 md:h-64 lg:h-44">
-                        <img src="https://cdn.pixabay.com/photo/2021/07/24/01/42/zebra-dove-6488440_960_720.jpg"
+                        <img src="/resources/views/livewire/program-coordinator/webinar/img/BARANGAY_ENTREPRENYUR.png"
                             alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
                             class="w-full h-full object-center object-cover">
                     </div>
