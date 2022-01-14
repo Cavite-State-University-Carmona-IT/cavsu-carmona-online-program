@@ -3,18 +3,20 @@
     <div class="max-w-full">
         <div class="w-full">
             <div class="overflow-hidden ">
+
                 {{-- HEADLINE --}}
                 @livewire('participant.headline.headline-section')
 
-                @if(auth()->check())
-                    {{-- USER SECTION --}}
-
-                @endif
                 {{-- EXTENSION SERVICE --}}
                 @livewire('participant.extension-services-section')
 
-                {{-- COURSES SUGGESTION --}}
-                {{-- @livewire('participant.courses-suggestion-section') --}}
+                {{-- UPCOMING WEBINAR --}}
+                @livewire('participant.home.upcoming-webinars-section')
+                
+                {{-- LATEST WEBINAR --}}
+                @livewire('participant.home.latest-webinars-section')
+
+                
 
             </div>
         </div>

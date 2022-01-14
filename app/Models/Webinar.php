@@ -31,6 +31,7 @@ class Webinar extends Model
         'duration',
         'price',
         'image',
+        'is_redirect_link',
         'is_ecert_default',
         'ecertificate_link',
     ];
