@@ -42,6 +42,7 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
                         Route::get('dashboard', Dashboard\DashboardIndex::class)->name('dashboard');
                         Route::get('collection', Collection\CollectionIndex::class)->name('collection');
                         Route::get('webinar', Webinar\WebinarIndex::class)->name('webinar');
+                        Route::get('reports', Report\ReportIndex::class)->name('report');
                         Route::get('advertisement', Advertisement\AdvertisementIndex::class)->name('advertisement');
 
                         // Webinar details
@@ -65,10 +66,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function() {
 
         // PROGRAM COORDINATOR
         Route::group(['middleware' => ['role:program_coordinator']], function() {
-            Route::get('program-coordinator/reports','ProgramCoordinator\Reports\ReportController@index')->name('program-coordinator.report');
-            Route::get('program-coordinator/reports/registered-users', 'ProgramCoordinator\Reports\ReportController@download_report_registeredUser_evaluation');
-            Route::get('program-coordinator/reports/active-inactive-users', 'ProgramCoordinator\Reports\ReportController@download_report_userActivity_evaluation');
-            Route::get('program-coordinator/reports/completed-evaluation', 'ProgramCoordinator\Reports\ReportController@download_completed_evaluation');
+            // Route::get('program-coordinator/reports','ProgramCoordinator\Reports\ReportController@index')->name('program-coordinator.report');
+            // Route::get('program-coordinator/reports/registered-users', 'ProgramCoordinator\Reports\ReportController@download_report_registeredUser_evaluation');
+            // Route::get('program-coordinator/reports/active-inactive-users', 'ProgramCoordinator\Reports\ReportController@download_report_userActivity_evaluation');
+            // Route::get('program-coordinator/reports/completed-evaluation', 'ProgramCoordinator\Reports\ReportController@download_completed_evaluation');
             
             // Ecertificate Template
             Route::get('program-coordinator/ecertificate-template/{id}',  'ProgramCoordinator\Ecertificate\TemplateController@view_format');

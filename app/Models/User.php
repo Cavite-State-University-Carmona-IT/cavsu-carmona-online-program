@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
+use App\Models\Webinar;
+use App\Models\WebinarUser;
 
 class User extends Authenticatable
 {
@@ -71,8 +73,18 @@ class User extends Authenticatable
         return $this->first_name . " " . $this->middle_name[0] ." ". $this->last_name;
     }
 
-    public function webinarUserReviews()
+    public function webinars()
     {
-        return $this->hasMany('App\Models\WebinarUserReview');
+        return $this->belongsToMany(Webinar::class, 'webinar_users', 'user_id', 'webinar_id');
+    }
+
+    public function registeredWebinars()
+    {
+        return $this->hasMany(WebinarUser::class, 'user_id', 'id');
+    }
+
+    public function completedWebinars()
+    {
+        return $this->registeredWebinars()->where('date_completed','!=', null);
     }
 }

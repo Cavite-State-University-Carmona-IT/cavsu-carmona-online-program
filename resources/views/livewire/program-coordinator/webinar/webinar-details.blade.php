@@ -224,7 +224,7 @@
                                 </div>
                             </div>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 {{-- title --}}
                 <div class="flex flex-initial w-full my-4" x-data="{ modalTitle: false }" @click.away="modalTitle = false">

@@ -55,6 +55,11 @@ class Webinar extends Model
         return $this->hasMany(WebinarUser::class, 'webinar_id', 'id');
     }
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'webinar_users');
+    }
+
     public function completed()
     {
         return $this->enrolled()->where('date_completed','!=', null);

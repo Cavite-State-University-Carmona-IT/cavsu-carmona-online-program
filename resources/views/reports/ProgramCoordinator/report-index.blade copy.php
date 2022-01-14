@@ -1,61 +1,46 @@
 <x-app-layout-admin>
-    {{-- @include('scripts.report-index') --}}
+    @include('scripts.report-index')
     <div class="max-w-full pt-16 mt-2 bg-white h-screen">
 
-        <div  x-data="{ tab: 'registeredUser'}" class="grid grid-cols-3 w-full px-4 md:px-12 lg:px-40 pt-9">
-            {{-- left panel --}}
-            <div class="col-span-1 hidden md:block py-5 border-r border-gray-200">
-                <div class="w-full px-9">
+        <div class="flex w-full px-4 md:px-40 ">
+            <div class="w-1/3">
+                <div class="w-full px-9 pt-9">
                     <div class="text-gray-500 font-bold text-lg mb-2">Generate Reports</div>
                     <div class="text-gray-400 text-xs">Download report in Excel Format</div>
                 </div>
                 <hr class=" m-6">
-                <div class="pl-10">
-                    <div class="grid grid-rows-3 text-left text-sm">
-                        <div class="row-span-1 flex">
-                            <div class="bg-gray-200 w-1 flex-none py-5">
-                                <div class="w-full h-full" :class="tab === 'registeredUser' ? 'bg-green-400' : 'bg-gray-200'">
-                                </div>
-                            </div>
-                            <a id="buttonRegisteredUser" @click="tab = 'registeredUser'" class="outline-none p-6 cursor-pointer" :class="tab === 'registeredUser' ? 'text-gray-800 font-bold' : 'text-gray-500 font-semibold'">
-                                Registered User
-                            </a>
+                <div class="flex pl-10">
+                    <div class="grid grid-rows-3 bg-gray-200 h-full w-1">
+                        <div id="lineRegisteredUser" class="w-1 h-9 my-5 bg-green-300">
+
                         </div>
-                        <div class="row-span-1 flex">
-                            <div class="bg-gray-200 w-1 flex-none py-5">
-                                <div class="w-full h-full" :class="tab === 'activeInactiveUser' ? 'bg-green-400' : 'bg-gray-200'">
-                                </div>
-                            </div>
-                            <a id="buttonActiveInactiveUser" @click="tab = 'activeInactiveUser'" class="outline-none p-6 cursor-pointer" :class="tab === 'activeInactiveUser' ? 'text-gray-800 font-bold' : 'text-gray-500 font-semibold'">
-                                Active & Inactive User
-                            </a>
+                        <div id="lineActiveInactiveUser" class="w-1 h-9  my-5">
+
                         </div>
-                        <div class="row-span-1 flex">
-                            <div class="bg-gray-200 w-1 flex-none py-5">
-                                <div class="w-full h-full" :class="tab === 'completedEvaluation' ? 'bg-green-400' : 'bg-gray-200'">
-                                </div>
-                            </div>
-                            <a id="buttonCompletedEvaluation" @click="tab = 'completedEvaluation'" class="outline-none p-6 cursor-pointer" :class="tab === 'completedEvaluation' ? 'text-gray-800 font-bold' : 'text-gray-500 font-semibold'">
-                                Completed Evaluation
-                            </a>
+                        <div id="lineCompletedEvaluation" class="w-1 h-9  my-5">
+
                         </div>
+                    </div>
+                    <div class="grid grid-rows-3 w-60 text-gray-400 font-light">
+                        <button id="buttonRegisteredUser" class="h-10 my-4 mx-7 text-left text-gray-500 font-bold">
+                            Registered User
+                        </button>
+                        <button id="buttonActiveInactiveUser" class="h-10 my-4 mx-7 text-left">
+                            Active & Inactive User
+                        </button>
+                        <button id="buttonCompletedEvaluation" class="h-10 my-4 mx-7 text-left">
+                            Completed Evaluation
+                        </button>
                     </div>
                 </div>
             </div>
-            {{-- right panel --}}
-            <div class="md:col-span-2 col-span-3 py-5">
-                <div class="h-full bg-white w-full shadow-sm rounded-xl px-14">
+            <div class="w-2/3 p-5">
+                <div class="h-full w-full rounded-xl p-10 px-14">
 
                     {{-- Registered User --}}
-                    <div x-show="tab === 'registeredUser'" class="w-full h-full">
-                        <div class="w-full">
-                            <div class="text-gray-500 font-bold text-lg mb-2">Registered User</div>
-                            <div class="text-gray-400 text-xs">Users each webinar reports</div>
-                        </div>
-                        <hr class="my-6">
-
-                        {{-- <div class="text-gray-500 text-left font-bold">Registered User</div> --}}
-                        {{-- <hr class="my-4"> --}}
+                    <div id="divRegisteredUser" class="w-full h-full">
+                        <div class="text-gray-500 text-left font-bold">Registered User</div>
+                        <hr class="my-4">
                         <div class="text-gray-600">
 
                             {{-- start date and end date --}}
@@ -98,8 +83,8 @@
                     </div>
 
 
-                    {{-- active inactive user --}}           
-                    <div x-show="tab === 'activeInactiveUser'" class="w-full h-full">
+                    {{-- active inactive user --}}
+                    <div id="divActiveInactiveUser" hidden class="w-full h-full">
                         <div class="text-gray-500 text-left font-bold">Active & Inactive User</div>
                         <hr class="my-4">
                         <div class="text-gray-600">
@@ -142,11 +127,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>       
+                    </div>
 
 
                     {{-- completed evaluation --}}
-                    <div x-show="tab === 'completedEvaluation'" class="w-full h-full">
+                    <div id="divCompletedEvaluation" hidden class="w-full h-full">
                         <div class="text-gray-500 text-left font-bold">Completed Evaluation</div>
                         <hr class="my-4">
                         <div class="text-gray-600">
