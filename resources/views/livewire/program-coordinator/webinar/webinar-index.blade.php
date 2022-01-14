@@ -2,11 +2,13 @@
         <article>
             <h2 class="text-2xl font-extrabold text-gray-900 mt-20">Webinar Videos</h2>
             <section class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-3 gap-x-6 gap-y-8">
-                <article class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200">
-                    <div class="relative w-full h-80 md:h-64 lg:h-44">
-                        <img src="/resources/views/livewire/program-coordinator/webinar/img/BARANGAY_ENTREPRENYUR.png"
-                            alt="Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug."
-                            class="w-full h-full object-center object-cover">
+                <article class="bg-white group relative rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform duration-200">    
+                <div class="relative w-full h-80 md:h-64 lg:h-44">
+                <?php        
+                echo "<img src='/public/assets/img/BARANGAY_ENTREPRENYUR.png'  
+                    alt='Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.' 
+                    class='w-full h-full object-center object-cover'>";
+                ?>
                     </div>
                     <div class="px-3 py-4">
                         <h1 class="text-lg font-semibold text-black-500 pb-2">Video Title</h1>                  
