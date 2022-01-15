@@ -15,11 +15,11 @@ class CreateWebinarsTable extends Migration
     {
         Schema::create('webinars', function (Blueprint $table) {
             $table->id();
-            $table->double('price')->unsigned()->nullable();
+            $table->double('price')->unsigned()->default(0);
             $table->string('title')->unique();
             $table->string('image')->nullable();
             $table->text('about')->nullable();
-            $table->tinyInteger('extension_service_id')->unsigned()->nullable();
+            $table->tinyInteger('field_of_interest_id')->unsigned()->nullable();
             $table->string('speaker')->nullable();
             $table->text('video_link')->nullable();
             $table->smallInteger('duration')->nullable();

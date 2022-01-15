@@ -68,6 +68,21 @@
                     @enderror
                 </div>
 
+                {{-- topic --}}
+                <div class="mb-4">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="field_of_interest_id">
+                        Field of Interest
+                    </label> 
+                    <select class="appearance-none block w-full bg-transparent focus:ring-0 focus:border-gray-100 focus:bg-gray-100 text-gray-700 border border-gray-300 rounded py-2 text-sm px-4 leading-tight focus:outline-none"
+                        wire:model="field_of_interest_id"  id="field_of_interest_id"
+                        >
+                        <option value="">- Select Field Of Interest -</option>
+                        @foreach($field_of_interests as $field_of_interest)
+                            <option value="{{ $field_of_interest->id }}">{{ $field_of_interest->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 {{-- price and status --}}
                 <div class="mb-4 grid grid-cols-2 gap-2">
                     <div class="col-span-1">
@@ -151,64 +166,6 @@
                         </label>
                     </div>
                     @error('image')
-                        <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                {{-- topics --}}
-                <div class="mb-4">
-                    <div class="text-left text-xs tracking-wide font-semibold text-white pt-2" x-data="{ modalFieldOfInterest: false }">
-                        <p class="bg-blue-400 rounded-full px-2 py-1 inline-block mb-1 cursor-pointer" @click="modalFieldOfInterest = true">
-                            <i class="fas fa-plus fa-xs cursor-pointer"></i> Add Topic
-                        </p>
-                        @if($selected_topics)
-                            @foreach($this->selected_topics as $selected_topic)
-                                <p class="bg-blue-400 rounded-full px-2 py-1 inline-block mb-1">
-                                    {{ $selected_topic->name }}
-                                    <button wire:click="removeTopic({{ $selected_topic->id }})" wire:loading.attr="disabled"  class="focus:outline-none outline-none border-0">
-                                        <i class="fas fa-times ml-1 fa-xs cursor-pointer"></i>
-                                    </button>
-                                </p>
-                            @endforeach
-                        @endif
-                        
-
-                        <div class="mt-6 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalFieldOfInterest" >
-                            <div class="border border-gray-200 rounded-lg shadow-lg  h-auto md:max-w-xl md:p-6 lg:p-8 p-4 bg-white" @click.away="modalFieldOfInterest = false"
-                                x-show="modalFieldOfInterest"  
-                                x-on:close-modal-add-topic.window="modalFieldOfInterest = false"
-                                >
-                                <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">
-                                        Add Topic
-                                    </h3>
-                        
-                                    <div class="mt-2 mb-2">
-                                        <div class="inline-block relative w-64">
-                                            <select wire:model="selected_topic_id" class="mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                                <option value="">- Select Topic -</option>
-                                                @foreach($this->field_of_interests as $field_of_interest)
-                                                    <option value="{{ $field_of_interest->id }}">{{ $field_of_interest->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    @error('selected_topic_id')
-                                        <p class="text-red-500 text-xs italic mb-4">{{ $message }}</p>
-                                    @enderror
-                                    <div class="flex flex-row-reverse">
-                                        <button class="px-4 py-2 text-sm rounded-lg bg-blue-500" 
-                                            wire:click="addTopic"
-                                            wire:loading.attr="disabled" 
-                                            >
-                                            save
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @error('topic_ids')
                         <p class="text-red-500 text-xs italic mt-2">{{ $message }}</p>
                     @enderror
                 </div>

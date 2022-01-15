@@ -18,13 +18,14 @@ class WebinarCreate extends Component
     use WithFileUploads;
     public $extension_service, $title, $speaker, $about, $price, $status, $date, $duration, $image;
     public $video_link, $evaluation_link, $ecertificate_link, $registration_link, $webinar_link;
-    public $extension_services, $ecertificate_templates, $field_of_interests = [];
+    public $extension_services, $ecertificate_templates;
     public $extension_service_image = 'none.jpg';
 
     public $ecert_option = true, $redirect_registration_option = true;
 
     public $selected_ecert_template;
-    public $selected_topic_id, $topic_ids = [], $selected_topics = [];
+    public $field_of_interest_id;
+    public $field_of_interests = [];
 
     public function mount()
     {
@@ -46,41 +47,19 @@ class WebinarCreate extends Component
             $this->extension_service_image = 'none.jpg';
             $this->field_of_interests = [];
         }
-        $this->topic_ids = [];
-        $this->selected_topics = null;
-    }
-
-    public function addTopic()
-    {
-        $this->validate([
-            'selected_topic_id' => 'required', 
-        ]);
-        
-        $this->topic_ids[] = $this->selected_topic_id;
-        $this->selected_topics = FieldOfInterest::findMany($this->topic_ids);
-        // $this->dispatchBrowserEvent('close-modal-add-topic');
-
-    }
-
-    public function removeTopic($topic_id)
-    {
-        $this->topic_ids = array_diff($this->topic_ids, array($topic_id));
-        $this->selected_topics = FieldOfInterest::findMany($this->topic_ids);
     }
 
     public function submit()
     {
         $this->validate([
             "title" => "required|unique:webinars,title",
-            "extension_service" => "required|numeric", 
+            "field_of_interest_id" => "required|numeric", 
             "speaker" => "required", 
             "about" => "required", 
             "status" => "required|numeric", 
             "date" => "required|date", 
             "duration" => "nullable|numeric", 
-            "image" => "required|image|mimes:jpg,png,jpeg|max:2048",//2mb 
-            "topic_ids" => "required|array|min:1",
-            "topic_ids.*" => "required|numeric",
+            "image" => "required|image|mimes:jpg,png,jpeg|max:2048",//2mb
             "video_link" => "required_if:redirect_registration_option,false", 
             "evaluation_link" => "required", 
             "registration_link" => "required_if:redirect_registration_option,true",
@@ -96,7 +75,7 @@ class WebinarCreate extends Component
 
 
         $data = Webinar::firstOrNew(['title'=> $this->title]);
-        $data->extension_service_id = $this->extension_service;
+        $data->field_of_interest_id = $this->field_of_interest_id;
         $data->speaker = $this->speaker;
         $data->about = $this->about;
         $data->status = $this->status;
@@ -121,7 +100,6 @@ class WebinarCreate extends Component
         if($this->ecert_option == true) {
             $data->ecertificateTemplates()->sync($this->selected_ecert_template);
         }
-        $data->fieldOfInterests()->sync($this->topic_ids);
 
         return redirect('program-coordinator/webinar/'.$data->id);
     }
