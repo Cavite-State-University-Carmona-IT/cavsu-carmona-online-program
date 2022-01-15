@@ -15,32 +15,42 @@ class ExtensionServiceSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('extension_services')->delete();
+        DB::table('extension_services')->truncate();
         $data = [
             [
-                'name' => 'BARANGAY ENTREPRENYUR',
+                'name' => 'Barangay Entreprenyur',
+                'link_name' => 'barangay-entreprenyur',
                 'department_id' => 1,
-                'image' => 'BARANGAY_ENTREPRENYUR.png'
+                'image' => 'bw-BARANGAY_ENTREPRENYUR.png',
+                'details' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac rutrum mi. Ut eu tincidunt elit, a lobortis orci.',
             ],
             [
-                'name' => 'BASURA KO, AYOS KO',
+                'name' => 'Basura Ko, Ayos Ko',
+                'link_name' => 'basura-ko-ayos-ko',
                 'department_id' => 2,
-                'image' => 'BASURA_KO_AYOS_KO.png'
+                'image' => 'bw-BASURA_KO_AYOS_KO.png',
+                'details' => 'Proin imperdiet dolor at eros consequat maximus. Vestibulum blandit mi quis porta sagittis. Praesent sed dapibus ex.',
             ],
             [
-                'name' => 'KAKAYAHANG TEKNIKAL TUNGO SA MAGANDANG KINABUKASAN',
+                'name' => 'Kakayahang Teknikal Tungo sa Magandang Kinabukasan',
+                'link_name' => 'kakayahang-teknikal-tungo-sa-magandang-kinabukasan',
                 'department_id' => 3,
-                'image' => 'KAKAYAHANG_TEKNIKAL_TUNGO_SA_MAGANDANG_KINABUKASAN.png'
+                'image' => 'bw-KAKAYAHANG_TEKNIKAL_TUNGO_SA_MAGANDANG_KINABUKASAN.png',
+                'details' => 'Praesent non nunc id nulla fermentum tempus eu vitae massa. Mauris egestas nunc vel varius dapibus.',
             ],
             [
-                'name' => 'PROJECT KOMPYUTER',
+                'name' => 'Project Kompyuter',
+                'link_name' => 'project-kompyuter',
                 'department_id' => 4,
-                'image' => 'PROJECT_KOMPYUTER.png'
+                'image' => 'bw-PROJECT_KOMPYUTER.png',
+                'details' => 'Praesent non nunc id nulla fermentum tempus eu vitae massa. Mauris egestas nunc vel varius dapibus.',
             ],
             [
-                'name' => 'PROJECT PISARA',
+                'name' => 'Project Pisara',
+                'link_name' => 'project-pisara',
                 'department_id' => 5,
-                'image' => 'PROJECT_PISARA.png'
+                'image' => 'bw-PROJECT_PISARA.png',
+                'details' => 'Nullam efficitur euismod nulla, dignissim facilisis ex auctor quis. Nullam vestibulum ligula quis finibus egestas. ',
             ],
         ];
         ExtensionService::insert($data);

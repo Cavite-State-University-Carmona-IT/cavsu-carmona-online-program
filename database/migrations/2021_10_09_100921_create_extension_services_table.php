@@ -15,8 +15,9 @@ class CreateExtensionServicesTable extends Migration
     {
         Schema::create('extension_services', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->tinyInteger('department_id')->unsigned()->nullable();
+            $table->string('name')->unique();
+            $table->string('link_name')->unique();
+            $table->tinyInteger('department_id')->unsigned();
             $table->string('details')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
