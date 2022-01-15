@@ -7,11 +7,12 @@
                 {{-- extension service --}}
                 <div class="flex w-full p-4 bg-gray-100 rounded-lg">
                     <div class="flex-none">
-                        <img class="object-cover w-12 h-12 rounded-full" src="{{ asset('storage/image/extension-services/'.$webinar->extensionService()->image) }}">
+                        <img class="object-cover w-12 h-12 rounded-full" src="{{ asset('storage/image/extension-services/'.$webinar->fieldOfInterest->extensionService->image) }}">
                     </div>
-                    <div class="flex-auto ml-2">
-                        <p class="text-sm font-bold tracking-wide text-gray-800 line-clamp-2 mb-2">{{ ucwords(strtolower($webinar->extensionService()->name)) }}</p>
-                        <p class="text-sm font-semibold tracking-wide text-gray-600 line-clamp-2">{{ ucwords(strtolower($webinar->createdBy()->first_name . ' ' . $webinar->createdBy()->last_name)) }}</p>
+                    <div class="flex-auto ml-2" wire:poll>
+                        <p class="text-sm font-bold tracking-wide text-gray-800 line-clamp-2 mb-2">{{ ucwords(strtolower($webinar->fieldOfInterest->extensionService->name)) }}</p>
+                        <p class="text-sm font-semibold tracking-wide text-gray-600 line-clamp-2">{{ ucwords(strtolower($webinar->fieldOfInterest->name)) }}</p>
+                        {{-- <p class="text-sm font-semibold tracking-wide text-gray-600 line-clamp-2">{{ ucwords(strtolower($webinar->createdBy()->first_name . ' ' . $webinar->createdBy()->last_name)) }}</p> --}}
                     </div>
                     <div x-data="{ dropdownMenuOpen: false }" class="relative flex-none">
                         <button @click="dropdownMenuOpen = !dropdownMenuOpen" class="relative z-10 block p-2 text-gray-500 hover:text-gray-600 focus:outline-none focus:text-blue-500">
@@ -20,41 +21,57 @@
                     
                         <div x-show="dropdownMenuOpen" @click="dropdownMenuOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
                     
-                        <div x-show="dropdownMenuOpen" class="absolute right-0 mt-2 w-48 bg-white rounded-lg border border-gray-200 overflow-hidden shadow-xl z-20">
-                            <div x-data="{ modalStatus: false}" @click.away="modalStatus = false">
-                                <button @click="modalStatus = !modalStatus" class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-5 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">
-                                    Status <span class="text-gray-400 text-xs"> (Change)</span>
+                        <div x-show="dropdownMenuOpen" class="absolute right-0 mt-2 w-60 bg-white rounded-lg border border-gray-200 overflow-hidden shadow-xl z-20">
+                            <div x-data="{ modalFieldOfInterest: false}">
+                                <button @click="modalFieldOfInterest = !modalFieldOfInterest" class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-5 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">
+                                    Field of Interest <span class="text-gray-400 text-xs"> (Change)</span>
                                 </button>
                                 
-                                <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalStatus">
+                                <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalFieldOfInterest">
                                     <div class="border-1 border-gray-200 rounded-lg shadow-lg  h-auto md:max-w-xl md:p-6 lg:p-8 p-4 bg-white" 
-                                        x-show="modalStatus"  
-                                        @click.away="modalStatus = false"
-                                        x-on:close-modal-status.window="modalStatus = false"
+                                        x-show="modalFieldOfInterest"  
+                                        @click.away="modalFieldOfInterest = false"
+                                        x-on:close-modal-field-of-interest.window="modalFieldOfInterest = false"
                                         >
                                         <div class="mt-3 text-center sm:mt-0 sm:text-left">
                                             <h3 class="text-lg font-medium leading-6 text-gray-900">
-                                                Change Status
+                                                Change Field of Interest
                                             </h3>
         
                                             <hr class="my-4">
-        
                                             <div class="mb-3">
+                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                                    Extension Service
+                                                </label>
                                                 <select class="mb-2 w-64 appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                                    wire:model="status"
-                                                >
-                                                    <option value="">- Select Status -</option>
-                                                    <option value="1">Pending</option>
-                                                    <option value="2">Published</option>
+                                                    wire:model="extension_service_id"
+                                                    >
+                                                    <option>- Select Extension Service -</option>
+                                                    @foreach($extension_services as $extension_service)
+                                                        <option value="{{ $extension_service->id }}">{{ ucwords(strtolower($extension_service->name)) }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
-                                            @error('status')
+                                            <div class="mb-3">
+                                                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                                                    Field of Interest
+                                                </label>
+                                                <select class="mb-2 w-64 appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                    wire:model="field_of_interest_id"
+                                                    >
+                                                    <option>- Select Field of Interest -</option>
+                                                    @foreach($field_of_interests as $field_of_interest)
+                                                        <option value="{{ $field_of_interest->id }}">{{ $field_of_interest->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            @error('field_of_interest_id')
                                                 <p class="text-red-500 text-xs italic mb-3">{{ $message }}</p>
                                             @enderror
                                             
                                             <div class="flex flex-row-reverse">
                                                 <button class="px-4 py-2 uppercase tracking-wide text-xs font-bold rounded-lg bg-blue-500 text-white" 
-                                                    wire:click="updateStatus"
+                                                    wire:click="updateFieldOfInterest"
                                                     wire:loading.attr="disabled" 
                                                     >
                                                     save
@@ -64,7 +81,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div x-data="{ modalDate: false}" @click.away="modalDate = false">
+                            <div x-data="{ modalDate: false}">
                                 <button @click="modalDate = !modalDate" class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-5 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">
                                     Date <span class="text-gray-400 text-xs"> (Change)</span>
                                 </button>
@@ -103,7 +120,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div x-data="{ modalImage: false}" @click.away="modalImage = false">
+                            <div x-data="{ modalImage: false}" >
                                 <button @click="modalImage = !modalImage" class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-5 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">
                                     Image <span class="text-gray-400 text-xs"> (Change)</span>
                                 </button>
@@ -149,7 +166,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div x-data="{ modalPrice: false}" @click.away="modalPrice = false">
+                            <div x-data="{ modalPrice: false}" >
                                 <button @click="modalPrice = !modalPrice" class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-5 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">
                                     Price <span class="text-gray-400 text-xs"> (Change)</span>
                                 </button>
@@ -194,7 +211,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div x-data="{ modalDelete: false}" @click.away="modalDelete = false">
+                            <div x-data="{ modalDelete: false}">
                                 <a @click="modalDelete = !modalDelete" class="block px-5 py-3 text-sm text-red-500 border-b hover:bg-gray-100 border-gray-200">Delete</a>
                                 
                                 <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalDelete">
@@ -367,8 +384,9 @@
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
+                    {{-- price --}}
                     <div class="col-span-1">
-                        <p class="text-base font-bold">
+                        <p class="text-base font-black mb-0 pt-2">
                             @if($webinar->price)
                             ₱ {{ $webinar->price }}
                             @else 
@@ -376,10 +394,57 @@
                             @endif
                         </p>
                     </div>
+
+                    {{-- status --}}
                     <div class="col-span-1 text-right">
-                        <p class="bg-{{$webinar->status_color() }}-400 rounded-full px-2 py-1 inline-block mb-1 text-sm text-white font-semibold">
+                        <div x-data="{ modalStatus: false}" @click.away="modalStatus = false">
+                           
+                            <button @click="modalStatus = !modalStatus" class="outline-none focus:outline-none focus:ring-0 bg-{{$webinar->status_color() }}-400 rounded-full p-2 inline-block text-sm text-white font-semibold">
+                                <p class="px-2 inline-block">{{ ucwords($webinar->status_name()) }} </p>
+                                <i class="fas fa-pen text-white fa-xs px-2"></i>
+                            </button>
+                            
+                            <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalStatus">
+                                <div class="border-1 border-gray-200 rounded-lg shadow-lg  h-auto md:max-w-xl md:p-6 lg:p-8 p-4 bg-white" 
+                                    x-show="modalStatus"  
+                                    @click.away="modalStatus = false"
+                                    x-on:close-modal-status.window="modalStatus = false"
+                                    >
+                                    <div class="mt-3 text-center sm:mt-0 sm:text-left">
+                                        <h3 class="text-lg font-medium leading-6 text-gray-900">
+                                            Change Status
+                                        </h3>
+    
+                                        <hr class="my-4">
+    
+                                        <div class="mb-3">
+                                            <select class="mb-2 w-64 appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                wire:model="status"
+                                            >
+                                                <option value="">- Select Status -</option>
+                                                <option value="1">Pending</option>
+                                                <option value="2">Published</option>
+                                            </select>
+                                        </div>
+                                        @error('status')
+                                            <p class="text-red-500 text-xs italic mb-3">{{ $message }}</p>
+                                        @enderror
+                                        
+                                        <div class="flex flex-row-reverse">
+                                            <button class="px-4 py-2 uppercase tracking-wide text-xs font-bold rounded-lg bg-blue-500 text-white" 
+                                                wire:click="updateStatus"
+                                                wire:loading.attr="disabled" 
+                                                >
+                                                save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <p class="bg-{{$webinar->status_color() }}-400 rounded-full px-2 py-1 inline-block mb-1 text-sm text-white font-semibold">
                             {{ ucwords($webinar->status_name()) }}
-                        </p>
+                        </p> --}}
                     </div>
                 </div>
                 {{-- counts --}}
@@ -623,52 +688,6 @@
                             </div>
                         </span>
                     </template>
-                </div>
-
-                {{-- topics --}}
-                <div class="text-right text-xs tracking-wide font-semibold text-white pt-2" x-data="{ modalFieldOfInterest: false }" wire:poll>
-                    @foreach($this->webinar_field_of_interests as $value)
-                        <p class="bg-blue-400 rounded-full px-2 py-1 inline-block mb-1">
-                            {{ $value->name }}
-                            <button wire:click="removeTopic({{ $value->id }})" wire:loading.attr="disabled"  class="focus:outline-none outline-none border-0"><i class="fas fa-times ml-1 fa-xs cursor-pointer"></i></button>
-                        </p>
-                    @endforeach
-                    <p class="bg-blue-400 rounded-full px-2 py-1 inline-block cursor-pointer" @click="modalFieldOfInterest = true">
-                        <i class="fas fa-plus fa-xs cursor-pointer"></i>
-                    </p>
-
-                    <div class="mt-6 fixed top-0 left-0 w-full z-40 flex items-center justify-center" x-show="modalFieldOfInterest">
-                        <div class="border border-gray-200 rounded-lg shadow-lg  h-auto md:max-w-xl md:p-6 lg:p-8 p-4 bg-white" 
-                            x-show="modalFieldOfInterest"  
-                            @click.away="modalFieldOfInterest = false"
-                            x-on:close-modal-insert-topic.window="modalFieldOfInterest = false"
-                            >
-                            <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900">
-                                    Add Topic
-                                </h3>
-                    
-                                <div class="mt-2 mb-4">
-                                    <div class="inline-block relative w-64">
-                                        <select wire:model="new_field_of_interest_id" class="mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                            <option value="">- Select Topic -</option>
-                                            @foreach($this->fieldOfInterests as $fieldOfInterest)
-                                                <option value="{{ $fieldOfInterest->id }}">{{ $fieldOfInterest->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="flex flex-row-reverse">
-                                    <button class="px-4 py-2 text-sm rounded-lg {{ $new_field_of_interest_id != null ? 'bg-blue-500':'bg-gray-400 cursor-not-allowed' }}" 
-                                        wire:click="insertTopic" @if($new_field_of_interest_id == null) disabled @endif
-                                        wire:loading.attr="disabled" 
-                                        >
-                                        save
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 @livewire('program-coordinator.webinar.review-index', ['id' => $webinar->id])

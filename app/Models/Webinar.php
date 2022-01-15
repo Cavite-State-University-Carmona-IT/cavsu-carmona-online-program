@@ -36,9 +36,9 @@ class Webinar extends Model
         'ecertificate_link',
     ];
 
-    public function fieldOfInterests()
+    public function fieldOfInterest()
     {
-        return $this->belongsToMany(FieldOfInterest::class, 'webinar_field_of_interests');
+        return $this->belongsTo(FieldOfInterest::class, 'field_of_interest_id', 'id');
     }
 
     public function createdBy()
@@ -46,10 +46,6 @@ class Webinar extends Model
         return $this->belongsTo(User::class, 'created_by', 'id')->first();
     }
 
-    public function extensionService()
-    {
-        return $this->belongsTo(ExtensionService::class)->first();
-    }
 
     public function enrolled()
     {
