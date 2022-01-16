@@ -14,4 +14,9 @@ class ReviewUser extends Model
         'user_id',
         'like',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
