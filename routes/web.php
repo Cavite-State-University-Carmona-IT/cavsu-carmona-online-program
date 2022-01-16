@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace' => 'App\Http\Livewire'], function() {
 
     Route::get('/', Participant\Home::class);
-    Route::get('extension-service/{name}/', Participant\ExtensionService\ExtensionServiceIndex::class);
-    Route::get('extension-service/{name}/{fieldofinterest}', Participant\ExtensionService\ExtensionServiceIndex::class);
+    Route::get('extension-service/{extension_service_link_name}/', Participant\ExtensionService\ExtensionServiceIndex::class);
+    Route::get('extension-service/{extension_service_link_name}/{field_of_interest_link_name}', Participant\ExtensionService\ExtensionServiceIndex::class);
     Route::get('webinars/search/', Participant\Search\SearchPage::class)->name('webinarsearch');
     Route::get('webinar/{title}', Participant\Webinar\WebinarIndex::class)->name('webinar');
 
