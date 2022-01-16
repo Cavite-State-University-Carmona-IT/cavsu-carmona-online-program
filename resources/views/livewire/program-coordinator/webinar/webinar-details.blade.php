@@ -451,6 +451,8 @@
                 <div>
                     <p class="text-sm font-bold tracking-wide text-gray-800 my-4">Webinar <span class="text-gray-500">Achievements</span></p>
                 </div>
+
+                {{-- counts --}}
                 <div class="grid grid-cols-3 gap-4">
                     <div class="flex flex-col w-full p-4 bg-gray-100 rounded-lg">
                         <i class="fas fa-users fa-lg text-green-400 mb-4"></i>
@@ -462,7 +464,7 @@
                         <span class="text-lg font-bold text-gray-800 mb-2 text-center">{{ $webinar->completed()->count() }}</span>
                         <p class="text-xs font-semibold tracking-wide text-gray-500 text-center">Completed</p>
                     </div>
-                    <div class="flex flex-col w-full p-4 bg-gray-100 rounded-lg">
+                    <div  class="flex flex-col w-full p-4 bg-gray-100 rounded-lg">
                         <i class="fas fa-comments fa-lg text-purple-400 mb-4"></i>
                         <span class="text-lg font-bold text-gray-800 mb-2 text-center">{{ $webinar->review()->count() }}</span>
                         <p class="text-xs font-semibold tracking-wide text-gray-500 text-center">Reviews</p>
@@ -690,7 +692,10 @@
                     </template>
                 </div>
 
+                @livewire('program-coordinator.webinar.manage-registered-user', ['id' => $webinar->id])
+            
                 @livewire('program-coordinator.webinar.review-index', ['id' => $webinar->id])
+            
             </div>
         </div>
     </div>

@@ -171,8 +171,10 @@ class WebinarDetails extends Component
         $this->webinar->registration_link = $this->registration_link;
         $this->webinar->webinar_link = $this->webinar_link;
         $this->webinar->is_redirect_link = $this->redirect_registration_option;
+        $this->webinar->is_ecert_default = $this->ecert_option;
 
         if($this->ecert_option == false) {
+            
             $this->webinar->ecertificate_link = $this->ecertificate_link;
         }
 

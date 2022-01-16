@@ -67,7 +67,7 @@
                                         <a href="{{ url('program-coordinator/webinar/'.$webinar->id) }}" class="text-gray-900 font-semibold whitespace-no-wrap">{{ $webinar->title }}</a>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-800 whitespace-no-wrap">{{ ucwords(strtolower($webinar->extensionService()->name)) }}</p>
+                                        <p class="text-gray-800 whitespace-no-wrap">{{ ucwords(strtolower($webinar->fieldOfInterest->extensionService->name)) }}</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" nowrap>
                                         <p class="text-gray-900 whitespace-no-wrap">
