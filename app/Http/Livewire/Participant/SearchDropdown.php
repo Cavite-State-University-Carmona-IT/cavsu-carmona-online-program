@@ -20,6 +20,7 @@ class SearchDropdown extends Component
        $search = $this->search;
         if (strlen($this->search) >= 2) {
             $searchResults = Webinar::query()
+            ->where('status', 2)
             ->where(function ($query) use ($search) {
                 return $query->where('title', 'like', '%'. $search .'%');
             }) ->take(7)
