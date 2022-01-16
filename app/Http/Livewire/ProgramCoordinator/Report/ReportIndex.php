@@ -105,7 +105,13 @@ class ReportIndex extends Component
 
     public function getRuWebinarsQueryProperty()
     {
-        return Webinar::where('extension_service_id', $this->ru_extension_service_id)->get();
+        // return Webinar::where('extension_service_id', $this->ru_extension_service_id)->get();
+        return Webinar::query()
+        ->leftJoin('field_of_interests', 'webinars.field_of_interest_id', '=', 'field_of_interests.id')
+        ->leftJoin('extension_services', 'field_of_interests.extension_service_id', '=', 'extension_services.id')
+        ->select('webinars.*')
+        ->where('extension_services.id', $this->ru_extension_service_id)
+        ->get();
     }
 
     public function generateRegisteredUsers()
@@ -124,6 +130,8 @@ class ReportIndex extends Component
         $end_date = $this->ru_end_date;
 
         $webinars_per_extension = Webinar::query()
+        ->leftJoin('field_of_interests', 'webinars.field_of_interest_id', '=', 'field_of_interests.id')
+        ->leftJoin('extension_services', 'field_of_interests.extension_service_id', '=', 'extension_services.id')
         ->where(function ($query) use ($webinar_id) {
             if($webinar_id != "") {
                 return $query->where('webinars.id', $webinar_id);
@@ -131,10 +139,9 @@ class ReportIndex extends Component
         })
         ->where(function ($query) use ($extension_service_id) {
             if($extension_service_id != "") {
-                return $query->where('webinars.extension_service_id', $extension_service_id);
+                return $query->where('extension_services.id', $extension_service_id);
             }
         })
-        ->leftjoin('extension_services', 'webinars.extension_service_id', '=', 'extension_services.id')
         ->join('webinar_users', function($join) use ($type, $start_date, $end_date, $date, $specific_date) {
             $join->on('webinars.id', '=', 'webinar_users.webinar_id')
             ->where(function ($query) use ($type) {
@@ -219,12 +226,13 @@ class ReportIndex extends Component
         $end_date = $this->wd_end_date;
 
         $webinars = Webinar::query()
+        ->leftJoin('field_of_interests', 'webinars.field_of_interest_id', '=', 'field_of_interests.id')
+        ->leftJoin('extension_services', 'field_of_interests.extension_service_id', '=', 'extension_services.id')
         ->where(function ($query) use ($extension_service_id) {
             if($extension_service_id != "") {
-                return $query->where('webinars.extension_service_id', $extension_service_id);
+                return $query->where('extension_services.id', $extension_service_id);
             }
         })
-        ->leftjoin('extension_services', 'webinars.extension_service_id', '=', 'extension_services.id')
         ->where(function ($query) use ($specific_date, $date, $start_date, $end_date) {
             if($specific_date == true){
                 return $query->whereDate('webinars.created_at' , $date);
