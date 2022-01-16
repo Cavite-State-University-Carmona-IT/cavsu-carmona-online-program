@@ -191,10 +191,6 @@
                                         {{ __('Profile') }}
                                     </x-jet-dropdown-link>
 
-                                    {{-- My Learning --}}
-                                    <x-jet-dropdown-link href="#">
-                                        {{ __('My Learning') }}
-                                    </x-jet-dropdown-link>
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
