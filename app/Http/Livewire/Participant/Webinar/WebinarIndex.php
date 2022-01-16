@@ -15,23 +15,28 @@ class WebinarIndex extends Component
 
     public function mount()
     {
-        $hasEnrolled = null;
-        if(Auth::user()){
-            $hasEnrolled = WebinarUser::
-            where('webinar_id', $this->webinar->id)
-            ->where('user_id', Auth::user()->id)->first();
-        }
+        if($this->webinar) {
+            $hasEnrolled = null;
+            if(Auth::user()){
+                $hasEnrolled = WebinarUser::
+                where('webinar_id', $this->webinar->id)
+                ->where('user_id', Auth::user()->id)->first();
+            }
 
-        if($hasEnrolled) {
-            $this->user_enrolled = true;
+            if($hasEnrolled) {
+                $this->user_enrolled = true;
+            }
+        } else {
+            return abort(404);
         }
+        
     }
 
     public function getWebinarProperty(Request $request)
     {
         $rawTitle = $request->title;
         // $title = str_replace('-', '', $rawTitle);
-        return Webinar::where('title', $rawTitle)->first();
+        return Webinar::where('title', $rawTitle)->where('status', 2)->first();
     }
 
     public function render()

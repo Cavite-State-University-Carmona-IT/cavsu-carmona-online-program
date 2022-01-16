@@ -3,10 +3,10 @@
 
     @if($webinar != null)
         <div class="max-w-full mt-16">
-            <div class="grid w-full grid-cols-3 pt-2">
+            <div class="grid w-full grid-cols-3 pt-2 bg-white">
 
                 {{-- left panel --}}
-                <div class="lg:col-span-2 col-start-1 lg:border-r-2 md:border-gray-300 p-7 bg-white col-span-3">
+                <div class="lg:col-span-2 col-start-1 lg:border-r md:border-gray-300 p-7 col-span-3">
                     <div class="aspect-w-16 aspect-h-9">
                         {{-- <iframe width="560" height="315" src="https://www.youtube.com/embed/kJQP7kiw5Fk?&controls=0&amp;" modestbranding="0" autohide="2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
                         {{-- <iframe src="https://www.youtube.com/embed/{{ $webinar->video_link }}?autoplay=1&enablejsapi=1&rel=0;modestbranding=1&showsearch=0" allowfullscreen></iframe> --}}
@@ -56,7 +56,7 @@
                                             View E-Certificate
                                         </a>
                                     @else
-                                        <a href="{{ $this->webinar_user->ecertificate_link }}" target="_blank" class=" text-gray-500 font-semibold cursor-pointer tracking-wide hover:text-green-400">
+                                        <a href="{{ $this->webinar_user->ecertificate_link ? $this->webinar_user->ecertificate_link : $webinar->ecertificate_link }}" target="_blank" class=" text-gray-500 font-semibold cursor-pointer tracking-wide hover:text-green-400">
                                             View E-Certificate
                                         </a>
                                     @endif
@@ -86,12 +86,6 @@
                                 </span>
                             </div>
                             <hr class="my-3">
-                            <div class="text-left md:text-sm text-xs my-4">
-                                <p class="text-gray-600 text-left mr-2 inline-block">Topic/s:</p>
-                                @foreach($webinar->fieldOfInterests as $val)
-                                    <a href="" class="text-gray-600 mr-2 underline">{{ $val->name }}</a>
-                                @endforeach
-                            </div>
                         </div>
 
                         {{-- reviews panel --}}
@@ -117,7 +111,7 @@
 
                 {{-- right panel --}}
                 <div class="lg:col-span-1 p-2 col-span-3">
-                    @livewire('participant.webinar.webinar-suggestion')
+                    @livewire('participant.webinar.webinar-suggestion',['webinar_id'=>$webinar->id])
                 </div>
             </div>
         </div>

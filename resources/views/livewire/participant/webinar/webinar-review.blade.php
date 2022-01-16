@@ -111,21 +111,22 @@
                             {{ $review->comment_body }}
                         </p>
                     </div>
-                    <div class="flex justify-between">
+                    {{-- <div class="flex justify-between">
                         <div class="flex-auto">
                             <span class="text-sm text-gray-400 font-medium">{{ $review->likes->count() }} likes</span>
                             <span class="text-sm text-gray-400 font-medium ml-2">{{ $review->dislikes->count() }} dislikes</span>
-                            {{-- <span class="text-sm text-gray-400 font-medium">{{ $review->unlikes ? $review->unlikes : '0' }} unlikes</span> --}}
+                            <span class="text-sm text-gray-400 font-medium">{{ $review->unlikes ? $review->unlikes : '0' }} unlikes</span>
                         </div>
                         <div class="flex-none">
                             <button class="ml-2 focus:outline-none" wire:click="like_comment({{ $review->id }})">
                                 <i class="{{ $review->bool_like(auth()->user()->id)->like == true ? 'fas':'far' }} fa-thumbs-up fa-xs"></i>
+                                
                             </button>
                             <button class="ml-2 focus:outline-none" wire:click="dislike_comment({{ $review->id}})">
                                 <i class="{{ $review->bool_like(auth()->user()->id)->like == false ? 'fas':'far' }} fa-thumbs-down fa-xs"></i>
                             </button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         @endforeach 

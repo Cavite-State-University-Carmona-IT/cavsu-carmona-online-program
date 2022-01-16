@@ -5,10 +5,19 @@ namespace App\Http\Livewire\Participant\Webinar;
 use Livewire\Component;
 use App\Models\WebinarUser;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class WebinarPlay extends Component
 {
     public $webinar;
+
+    public function mount()
+    {
+        if($this->webinar->is_redirect_link == true) 
+        {
+            return Redirect::to($this->webinar->webinar_link);
+        }
+    }
 
     public function getWebinarUserProperty()
     {
