@@ -53,12 +53,12 @@ class WebinarCreate extends Component
     {
         $this->validate([
             "title" => "required|unique:webinars,title",
-            "field_of_interest_id" => "required|numeric", 
+            "field_of_interest_id" => "required|integer", 
             "speaker" => "required", 
             "about" => "required", 
-            "status" => "required|numeric", 
+            "status" => "required|integer", 
             "date" => "required|date", 
-            "duration" => "nullable|numeric", 
+            "duration" => "nullable|integer", 
             "image" => "required|image|mimes:jpg,png,jpeg|max:2048",//2mb
             "video_link" => "required_if:redirect_registration_option,false", 
             "evaluation_link" => "required", 
