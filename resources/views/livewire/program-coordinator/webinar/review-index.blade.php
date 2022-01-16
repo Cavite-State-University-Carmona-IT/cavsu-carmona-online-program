@@ -44,10 +44,10 @@
                     </p>
                 </div>
                 <div class="flex flex-row">
-                    <div class="flex-auto">
+                    {{-- <div class="flex-auto">
                         <span class="text-sm text-gray-400 font-medium">{{ $review->likes->count() }} likes</span>
                         <span class="text-sm text-gray-400 font-medium ml-2">{{ $review->dislikes->count() }} dislikes</span>
-                    </div>
+                    </div> --}}
                     {{-- <div class="flex-none" >
                         @if($review->deleted_at)
                             <i class="fas fa-trash-restore fa-xs text-gray-400"></i>

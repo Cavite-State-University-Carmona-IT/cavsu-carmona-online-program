@@ -20,8 +20,7 @@ class ReviewIndex extends Component
     {
         $sortBy = $this->sortBy;
         $rating = $this->rating;
-        $data = WebinarUserReview::query()
-        ->where('webinar_id', $this->webinar_id)
+        return WebinarUserReview::where('webinar_id', $this->webinar_id)
         ->where(function($query) use ($rating) {
             if($rating != "all") {
                 return $query->where('rate', $rating);
@@ -35,8 +34,6 @@ class ReviewIndex extends Component
         //     }
         // })
         ->get();
-        
-        return $data;
     }
 
     public function render()
