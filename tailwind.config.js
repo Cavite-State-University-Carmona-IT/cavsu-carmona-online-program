@@ -56,6 +56,8 @@ module.exports = {
             'space-blue': '#111820',
             'light-space-blue': '#2C3D52',
             'custom-green': '#006A39',
+            'custom-gray-background': '#f2f2f4',
+            'custom-light-gray-background': '#F4F6FC',
         }
     },
 
