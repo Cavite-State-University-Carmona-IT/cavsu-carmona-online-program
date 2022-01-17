@@ -4,11 +4,10 @@
             <div class="w-full px-4 md:w-8/12 lg:w-6/12 xl:w-6/12">
                 <div class="pt-32 sm:pt-0">
                     <p class="text-2xl font-semibold md:text-4xl text-blueGray-600">
-                        Cavite State University<br>
-                        Extension Services
+                        {{ $headline_header }}
                     </p>
                     <p class="mt-4 text-base leading-relaxed md:text-lg text-blueGray-500">
-                        CavSU is a web-based platform that offers free Open Online Learning such as short courses and webinars from Instructors and Professors of Cavite State University.
+                        {{ $headline_body }}
                     </p>
                     <div class="inline-flex mt-12" wire:poll>
                         @if(!auth()->user())
