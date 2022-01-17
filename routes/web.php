@@ -43,7 +43,7 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
                         Route::get('collection', Collection\CollectionIndex::class)->name('collection');
                         Route::get('webinar', Webinar\WebinarIndex::class)->name('webinar');
                         Route::get('reports', Report\ReportIndex::class)->name('report');
-                        Route::get('advertisement', Advertisement\AdvertisementIndex::class)->name('advertisement');
+                        Route::get('settings', Settings\SettingsIndex::class)->name('settings');
 
                         // Webinar details
                         Route::get('webinar/{id}', Webinar\WebinarDetails::class);
