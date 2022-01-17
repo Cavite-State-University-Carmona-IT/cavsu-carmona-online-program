@@ -175,8 +175,8 @@
                                             {{ __('Reports') }}
                                         </x-jet-dropdown-link>
                                         {{-- Others --}}
-                                        <x-jet-dropdown-link href="#">
-                                            {{ __('Others') }}
+                                        <x-jet-dropdown-link href="{{ route('program-coordinator.settings') }}">
+                                            {{ __('Settings') }}
                                         </x-jet-dropdown-link>
                                     @endif
 
