@@ -1,6 +1,6 @@
 <div>
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
-    <div class="w-full p-4 h-full">
+    <div class="w-full p-6 h-full rounded-lg bg-white shadow-xl mb-6">
         <div class="flex justify-between">
             <p class="font-bold text-base tracking-wide text-gray-800 pt-2">Company Information</p>
             @if($edit_option == true)
@@ -23,7 +23,7 @@
             <div class="col-span-full md:col-span-4">
                 {{-- name --}}
                 <div class="my-2">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">
+                    <label class="block text-sm font-bold tracking-wide text-gray-700 mb-1">
                         Company
                     </label> 
                     <input class="text-sm block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -37,7 +37,7 @@
                 </div>
                 {{-- address --}}
                 <div class="my-2">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">
+                    <label class="block text-sm font-bold tracking-wide text-gray-700 mb-1">
                         Address
                     </label> 
                     <textarea class="text-sm block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -52,7 +52,7 @@
                 </div>
                 {{-- phone --}}
                 <div class="my-2">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">
+                    <label class="block text-sm font-bold tracking-wide text-gray-700 mb-1">
                         Phone
                     </label> 
                     <input class="text-sm block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -68,7 +68,7 @@
             <div class="col-span-full md:col-span-4">
                 {{-- email --}}
                 <div class="my-2">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">
+                    <label class="block text-sm font-bold tracking-wide text-gray-700 mb-1">
                         Email
                     </label> 
                     <input class="text-sm block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -82,7 +82,7 @@
                 </div>
                 {{-- headline header --}}
                 <div class="my-2">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">
+                    <label class="block text-sm font-bold tracking-wide text-gray-700 mb-1">
                         Headline Header
                     </label> 
                     <input class="text-sm block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -96,7 +96,7 @@
                 </div>
                 {{-- headline body --}}
                 <div class="my-2">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">
+                    <label class="block text-sm font-bold tracking-wide text-gray-700 mb-1">
                         Headline Body
                     </label> 
                     <textarea class="text-sm block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-2 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -114,7 +114,7 @@
                 {{-- image --}}
                 <div class="mb-3">
                     <div class="w-full">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                        <label class="block text-sm font-bold tracking-wide text-gray-700 mb-2" for="grid-first-name">
                             Upload <small class="text-gray-400 ml-2">Image(jpg,png)</small>
                         </label> 
                         <label class="flex flex-col w-full hover:bg-gray-100">

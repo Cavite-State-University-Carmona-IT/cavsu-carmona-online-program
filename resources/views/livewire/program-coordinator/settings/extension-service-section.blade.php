@@ -1,7 +1,7 @@
 <div>
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     {{-- extension service --}}
-    <div class="w-full p-4 border border-gray-200 rounded-lg">
+    <div class="w-full p-4">
         <p class="font-bold text-base tracking-wide text-gray-800">Extension Services</p>
         @foreach($extension_services as $extension_service)
             <hr class="my-2">
