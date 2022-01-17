@@ -17,10 +17,7 @@
                     <tr class="text-sm font-bold tracking-wide text-gray-700 border-b border-gray-100">
                         {{-- <p class="text-sm font-bold tracking-wide text-gray-800 line-clamp-2 mb-2">Basura Ko, Ayos Ko</p> --}}
                         <td class="py-2">
-                            Last Name
-                        </td>
-                        <td class="py-2">
-                            First Name
+                            Name
                         </td>
                         <td class="py-2">
                             Email
@@ -32,10 +29,7 @@
                     @foreach($users as $user)
                         <tr class="text-gray-700 text-sm border-b border-gray-100">
                             <td class="py-2">
-                                {{ $user->last_name }}
-                            </td>
-                            <td class="py-2">
-                                {{ $user->first_name }}
+                                {{ $user->first_name . " " . $user->last_name }}
                             </td>
                             <td class="py-2">
                                 {{ $user->email }}

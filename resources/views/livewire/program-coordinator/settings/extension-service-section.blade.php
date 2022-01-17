@@ -62,24 +62,30 @@
         <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center">
             <div class="border border-gray-200 rounded-lg shadow-lg  h-auto md:w-96 p-6 lg:p-8 bg-white" 
                 x-show="modalFieldOfInterest"  
-                @click.away="modalFieldOfInterest = false"
                 x-on:close-modal-field-of-interest.window="modalFieldOfInterest = false"
                 x-on:open-modal-field-of-interest.window="modalFieldOfInterest = true" 
                 wire:ignore.self
                 >
                 <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">
-                        @if($selected_field_of_interest_edit) 
-                            Update 
-                            <span class="text-gray-500">
-                                {{ $selected_field_of_interest_edit ? $selected_field_of_interest_edit->name : '' }}
-                            </span>
-                        @else 
-                            New Field of Interest
-                        @endif
-                    </h3>
-
-                    <hr class="my-4">
+                    <!--Title-->
+                    <div class="flex justify-between items-center pb-3 border-b border-gray-200 mb-3">
+                        {{-- <p class="text-2xl font-bold">Simple Modal!</p> --}}
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">
+                            @if($selected_field_of_interest_edit) 
+                                Update 
+                                <span class="text-gray-500">
+                                    {{ $selected_field_of_interest_edit ? $selected_field_of_interest_edit->name : '' }}
+                                </span>
+                            @else 
+                                New Field of Interest
+                            @endif
+                        </h3>
+                        <div class="cursor-pointer" @click="modalFieldOfInterest = false">
+                            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                            </svg>
+                        </div>
+                    </div>
 
                     <div class="mb-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -132,17 +138,23 @@
         <div class="mt-20 fixed top-0 left-0 w-full z-40 flex items-center justify-center">
             <div class="border border-gray-200 rounded-lg shadow-lg  h-auto md:w-96 p-6 lg:p-8 bg-white" 
                 x-show="modalExtensionService"  
-                @click.away="modalExtensionService = false"
                 x-on:close-modal-extension-service.window="modalExtensionService = false"
                 x-on:open-modal-extension-service.window="modalExtensionService = true" 
                 wire:ignore.self
                 >
                 <div class="mt-3 text-center sm:mt-0 sm:text-left">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">
-                        Update <span class="text-gray-500">{{ ucwords($field_name) }}</span>
-                    </h3>
-
-                    <hr class="my-4">
+                    <!--Title-->
+                    <div class="flex justify-between items-center pb-3 border-b border-gray-200 mb-3">
+                        {{-- <p class="text-2xl font-bold">Simple Modal!</p> --}}
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">
+                            Update <span class="text-gray-500">{{ ucwords($field_name) }}</span>
+                        </h3>
+                        <div class="cursor-pointer" @click="modalExtensionService = false">
+                            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                            </svg>
+                        </div>
+                    </div>
 
                     @if($field_name == "name")
                         <div class="mb-3">
