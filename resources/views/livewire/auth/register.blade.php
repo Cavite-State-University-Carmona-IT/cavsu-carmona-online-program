@@ -1,249 +1,402 @@
 <div>
-  <form wire:submit.prevent='register'>
-    <div class="flex w-full px-40 mb-6 pt-14">
-        <div class="w-1/3">
-            <div class="w-full px-9 pt-9">
-                <div class="mb-2 text-lg font-bold text-gray-500">Registration Form</div>
-                <div class="text-xs text-gray-400">Create Account</div>
-            </div>
-            <hr class="m-6 ">
-            <div class="flex pl-10">
-                <div class="grid w-1 h-full grid-rows-3 bg-gray-200">
-                    @if($current_step == 1)
-                      <div class="w-1 my-5 bg-green-300 h-9">
+    {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
+    <div class="max-w-full pt-16 mt-2 bg-white">
+        <div class="grid grid-cols-3 w-full px-4 md:px-12 lg:px-40 py-0 md:py-9 h-full">
 
-                      </div>
-                      <div class="w-1 my-5 h-9">
-
-                      </div>
-                      <div class="w-1 my-5 h-9">
-
-                      </div>
-                    @endif
-                    @if($current_step == 2)
-                      <div class="w-1 my-5 h-9">
-
-                      </div>
-                      <div class="w-1 my-5 bg-green-300 h-9">
-
-                      </div>
-                      <div class="w-1 my-5 h-9">
-
-                      </div>
-                    @endif
-                    @if($current_step == 3)
-                      <div class="w-1 my-5 h-9">
-
-                      </div>
-                      <div class="w-1 my-5 h-9">
-
-                      </div>
-                      <div class="w-1 my-5 bg-green-300 h-9">
-
-                      </div>
-                    @endif
+            {{-- left panel --}}
+            <div class="col-span-1 hidden md:block py-5 border-r border-gray-200">
+                <div class="w-full px-9">
+                    <div class="text-gray-500 font-bold text-lg mb-2">Registration Form</div>
+                    <div class="text-gray-400 text-xs">Create Account</div>
                 </div>
-                <div class="grid grid-rows-3 font-light text-gray-400 w-60">
-                    @if($current_step == 1)
-                      <h1 class="h-10 my-4 font-bold text-left text-gray-500 mx-7">Personal Information</h1>
-                      <h1 class="h-10 my-4 text-left mx-7">
-                          Job Information
-                      </h1>
-                      <h1 class="h-10 my-4 text-left mx-7">
-                          Account
-                      </h1>
-                    @endif
-                    @if($current_step == 2)
-                      <h1 class="h-10 my-4 text-left mx-7">
-                          Personal Information
-                      </h1>
-                      <h1 class="h-10 my-4 font-bold text-left text-gray-500 mx-7">
-                          Job Information
-                      </h1>
-                      <h1 class="h-10 my-4 text-left mx-7">
-                          Account
-                      </h1>
-                    @endif
-                    @if($current_step == 3)
-                      <h1 class="h-10 my-4 text-left mx-7">
-                          Personal Information
-                      </h1>
-                      <h1 class="h-10 my-4 text-left mx-7">
-                          Job Information
-                      </h1>
-                      <h1 class="h-10 my-4 font-bold text-left text-gray-500 mx-7">
-                          Account
-                      </h1>
-                    @endif
+                <hr class=" m-6">
+                <div class="pl-10">
+                    <div class="grid grid-rows-3 text-left text-sm">
+                        <div class="row-span-1 flex">
+                            <div class="bg-gray-200 w-1 flex-none py-5">
+                                <div class="w-full h-full {{ $section_page == 0 ? 'bg-green-300':'bg-gray-200'}}">
+                                </div>
+                            </div>
+                            <p class="outline-none p-6 {{ $section_page == 0 ? 'text-gray-800 font-bold':'text-gray-500 font-semibold' }}">
+                                Personal Information
+                            </p>
+                        </div>
+
+                        <div class="row-span-1 flex">
+                            <div class="bg-gray-200 w-1 flex-none py-5">
+                                <div class="w-full h-full {{ $section_page == 1 ? 'bg-green-300':'bg-gray-200'}}">
+                                </div>
+                            </div>
+                            <p class="outline-none p-6 {{ $section_page == 1 ? 'text-gray-800 font-bold':'text-gray-500 font-semibold' }}">
+                                Field of Interest
+                            </p>
+                        </div>
+                        
+                        <div class="row-span-1 flex">
+                            <div class="bg-gray-200 w-1 flex-none py-5">
+                                <div class="w-full h-full {{ $section_page ==2  ? 'bg-green-300':'bg-gray-200'}}">
+                                </div>
+                            </div>
+                            <p class="outline-none p-6 {{ $section_page == 2 ? 'text-gray-800 font-bold':'text-gray-500 font-semibold' }}">
+                                Account
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="w-full p-5">
-            <div class="w-full h-full p-12 pb-20 bg-white shadow-sm rounded-xl px-14">
 
-                @if($current_step == 1)
-                  {{-- Personal Information --}}
-                  <div class="w-full h-full">
-                      <div class="font-bold text-left text-gray-500">Personal Information</div>
-                      <hr class="my-4">
-                      <div class="text-gray-600">
-
-                          {{-- Full Name --}}
-                          <div class="grid grid-cols-3 gap-2 mb-3">
-                              <div class="w-full mx-3 mb-5">
-                                  <label class="block text-sm font-medium">First Name</label>
-                                  <input type="text" placeholder="First name" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="first_name" wire:model="first_name"/>
-                                  <small class="font-bold text-red-500">@error('first_name'){{$message}}@enderror</small>
-                              </div>
-                              <div class="w-full mx-3 mb-5">
-                                  <label class="block text-sm font-medium">Middle Name</label>
-                                  <input type="text" placeholder="Middle name (Optional)" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="middle_name" wire:model="middle_name"/>
-                              </div>
-                              <div class="w-full mx-3 mb-5">
-                                  <label class="block text-sm font-medium">Last Name</label>
-                                  <input type="text" placeholder="Last name" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="last_name" wire:model="last_name"/>
-                                  <small class="font-bold text-red-500">@error('last_name'){{$message}}@enderror</small>
-                              </div>
-                          </div>
-                          <div class="w-full mx-3 mb-4 ">
-                              <label class="block text-sm font-medium">Address</label>
-                              <input type="text" placeholder="Address (Optional)" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="address" wire:model="address"/>
-                          </div>
-                          <div class="grid grid-cols-2 mb-3">
-                            <div class="flex mb-5">
-                                <div class="w-full mx-3">
-                                    <label class="block text-sm font-medium">Gender</label>
-                                    <select class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="gender" name="gender" wire:model="gender">
-                                      <option value="" selected>--Select Gender--</option>
-                                      <option value="0">Male</option>
-                                      <option value="1">Female</option>
+            {{-- right panel --}}
+            <div class="md:col-span-2 col-span-3 py-4 md:py-5 px-7">
+    
+                @if($section_page == 0)
+                    {{-- personal information --}}
+                    <div class="">
+                        <div class="flex justify-between border-b border-gray-200 mb-3">
+                            <div class="text-gray-700 font-bold text-lg mb-2">Personal Information</div>
+                            </div>
+                            {{-- content --}}
+                            <div class="">
+                
+                            {{-- full name --}}
+                            <div class="grid grid-cols-3 gap-4 mb-3">
+                                {{-- last name --}}
+                                <div class="col-span-full md:col-span-1">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Last Name
+                                    </label> 
+                                    <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        type="text" 
+                                        wire:model="last_name"
+                                    />
+                                    @error('last_name')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                {{-- first name --}}
+                                <div class="col-span-full md:col-span-1">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        First Name
+                                    </label> 
+                                    <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        type="text" 
+                                        wire:model="first_name"
+                                    />
+                                    @error('first_name')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                {{-- middle name --}}
+                                <div class="col-span-full md:col-span-1">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Middle Name
+                                    </label> 
+                                    <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        type="text" 
+                                        wire:model="middle_name"
+                                    />
+                                    @error('middle_name')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                    
+                            {{-- gender, bday, marital status --}}
+                            <div class="grid grid-cols-3 gap-4 mb-3">
+                                {{-- gender --}}
+                                <div class="col-span-full md:col-span-1">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Gender
+                                    </label> 
+                                    <select class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        wire:model="gender"
+                                        >
+                                        <option value="">- Select gender -</option>
+                                        @foreach(config('custom-user.gender') as $key => $value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
                                     </select>
-                                    <small class="font-bold text-red-500">@error('gender'){{$message}}@enderror</small>
+
+                                    @error('gender')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
                                 </div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-full mx-3 mb-5">
-                                    <label class="block text-sm font-medium">Birth Date</label>
-                                    <input type="date" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="birth_date" wire:model="birth_date"/>
-                                    <small class="font-bold text-red-500">@error('birth_date'){{$message}}@enderror</small>
-                                </div>
-                            </div>
-                          </div>
-                          <div class="grid grid-cols-2">
-                            <div class="flex mb-4">
-                                <div class="w-full mx-3 mb-5">
-                                    <label class="block text-sm font-medium">Marital Status</label>
-                                    <select class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="status" name="status" wire:model="status">
-                                      <option value="" selected>--Select Status--</option>
-                                      <option value="1">Single</option>
-                                      <option value="2">Married</option>
+                                {{-- marital status --}}
+                                <div class="col-span-full md:col-span-1">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Marital Status
+                                    </label> 
+                                    <select class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        wire:model="marital_status"
+                                        >
+                                        <option value="">- Select marital status -</option>
+                                        @foreach(config('custom-user.marital_status') as $key => $value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
                                     </select>
-                                    <small class="font-bold text-red-500">@error('status'){{$message}}@enderror</small>
+                                    @error('marital_status')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                {{-- middle name --}}
+                                <div class="col-span-full md:col-span-1">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Birth Date
+                                    </label> 
+                                    <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        type="date" 
+                                        wire:model="birth_date"
+                                    />
+                                    @error('birth_date')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="flex">
-                                <div class="w-full mx-3 mb-5">
-                                    <label class="block text-sm font-medium">Highest Educational Attainment</label>
-                                    <select class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="highest_educational_attainment" name="highest_educational_attainment" wire:model="highest_educational_attainment">
-                                      <option value="" selected>--Select Highest Educational Attainment--</option>
-                                      <option value="1">Highschool</option>
-                                      <option value="2">Bachelor</option>
+
+                            {{-- address --}}
+                            <div class="mb-3">
+                                <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                    Address
+                                </label> 
+                                <textarea class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    rows="2"
+                                    wire:model="address">
+                                </textarea>
+                                @error('address')
+                                    <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            {{-- highest educ attainment, employment status, incom --}}
+                            <div class="grid grid-cols-11 gap-4 mb-3">
+                                {{-- highest educational attainment --}}
+                                <div class="col-span-full md:col-span-5">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Highest Education Attainment
+                                    </label> 
+                                    <select class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        wire:model="highest_educational_attainment"
+                                        >
+                                        @foreach(config('custom-user.highest_educational_attainment') as $key => $value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
                                     </select>
-                                    <small class="font-bold text-red-500">@error('highest_educational_attainment'){{$message}}@enderror</small>
+
+                                    @error('highest_educational_attainment')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                {{-- employment status --}}
+                                <div class="col-span-full md:col-span-3">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Employment Status
+                                    </label> 
+                                    <select class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        wire:model="employment_status"
+                                        >
+                                        @foreach(config('custom-user.employment_status') as $key => $value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('employment_status')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                {{-- middle name --}}
+                                <div class="col-span-full md:col-span-3">
+                                    <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                        Income <span class="text-gray-400">(optional)</span>
+                                    </label> 
+                                    <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                        type="number" 
+                                        wire:model="income"
+                                    />
+                                    @error('income')
+                                        <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
-                          </div>
-                      </div>
-                  </div>
-                @endif
 
-                @if($current_step == 2)
-                  {{-- Job Information --}}
-                  <div class="w-full h-full">
-                      <div class="font-bold text-left text-gray-500">Job Information</div>
-                      <hr class="my-4">
-                      <div class="text-gray-600">
-                          <div class="grid grid-cols-2 gap-3">
-                              <div class="w-full mx-3">
-                                  <label class="block text-sm font-medium">Employment Status</label>
-                                  <select class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" name="employment_status" name="employment_status" wire:model="employment_status">
-                                    <option value="" selected>--Select Employment Status--</option>
-                                    <option value="0">Employed</option>
-                                    <option value="1">Student</option>
-                                  </select>
-                                  <small class="font-bold text-red-500">@error('employment_status'){{$message}}@enderror</small>
-                              </div>
-                              <div class="w-full mx-3">
-                                  <label class="block text-sm font-medium">Income</label>
-                                  <input type="number" name="income" placeholder="Income (Optional)" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" wire:model="income"/>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                @endif
+                            <div class="flex justify-end py-4 border-t border-gray-200">
+                                {{-- <button class="px-4 py-2 uppercase tracking-wide text-gray-500 text-sm font-bold  rounded-lg border border-gray-500" 
+                                    >
+                                    Back
+                                </button> --}}
 
-                @if($current_step == 3)
-                  {{-- Account --}}
-                  <div class="w-full h-full">
-                      <div class="font-bold text-left text-gray-500">Account</div>
-                      <hr class="my-4">
-                      <div class="mb-2 text-gray-600">
-                          <div>
-                            <div class="w-full mb-5">
-                                <label class="block text-sm font-medium">Username</label>
-                                <input type="text" name="username" placeholder="username" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" wire:model="username"/>
-                                <small class="font-bold text-red-500">@error('username'){{$message}}@enderror</small>
+                                <button class="ml-3 px-4 py-2 uppercase tracking-wide text-white text-sm font-bold  rounded-lg bg-blue-500" 
+                                    wire:click="validatePersonalInformation"
+                                    wire:loading.attr="disabled" 
+                                    >
+                                    Next
+                                </button>
                             </div>
-                            <div class="w-full mb-5">
-                                <label class="block text-sm font-medium">Email</label>
-                                <input type="email" name="email" placeholder="email" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" wire:model="email"/>
-                                <small class="font-bold text-red-500">@error('email'){{$message}}@enderror</small>
-                            </div>
-                            <div class="w-full mb-5">
-                                <label class="block text-sm font-medium">Password</label>
-                                <input type="password" name="password" placeholder="password" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" wire:model="password"/>
-                                <small class="font-bold text-red-500">@error('password'){{$message}}@enderror</small>
-                            </div>
-                            <div class="w-full">
-                                <label class="block text-sm font-medium">Confirm Password</label>
-                                <input type="password" name="password_confirmation" placeholder="confirm password" class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-100 focus:ring-4 focus:ring-offset-1 focus:border-gray-300 sm:text-sm" wire:model="password_confirmation"/>
-                                <small class="font-bold text-red-500">@error('password_confirmation'){{$message}}@enderror</small>
-                            </div>
-                          </div>
-                      </div>
-                  </div>
-                @endif
-                {{-- buttons --}}
-                <div class="">
-                    @if($current_step == 3)
-                      <div class="w-full mx-3">
-                          <button type="submit" class="float-right px-4 py-2 ml-3 text-sm font-medium text-gray-700 transition bg-yellow-400 border-0 rounded-md focus:outline-none focus:ring hover:bg-yellow-800 hover:text-white active:bg-gray-700 focus:ring-gray-300">Submit</button>
-                      </div>
-                    @endif
 
-                    @if($current_step < 3)
-                      <div class="w-full mx-3">
-                          <button type="button" wire:click="next()" class="float-right px-6 py-2 ml-3 text-sm font-medium text-white transition bg-gray-500 border-0 rounded-md focus:outline-none focus:ring hover:bg-gray-700 hover:text-gray-300 active:bg-gray-700 focus:ring-gray-300">Next</button>
-                      </div>
-                    @endif
+                        </div>
+                    </div>
+                @elseif($section_page == 1)
+                    {{-- field of interest --}}
+                    <div class="">
+                        <div class="flex justify-between border-b border-gray-200 mb-3">
+                            <div class="text-gray-700 font-bold text-lg mb-2">Field of Interests</div>
+                            </div>
+                            {{-- content --}}
+                            <div class="">
+                
+                            {{-- table --}}
 
-                    @if($current_step > 1)
-                      <div class="w-full mx-3">
-                          <button type="button" wire:click="back()" class="float-right px-6 py-2 text-sm font-medium text-white transition bg-red-500 border-0 rounded-md focus:outline-none focus:ring hover:bg-gray-700 hover:text-gray-300 active:bg-gray-700 focus:ring-gray-300">Back</button>
-                      </div>
-                    @endif
-                </div>
-                @if($current_step == 3)
-                  <div class="text-sm font-semibold text-gray-800">
-                    <label class="inline-flex items-center">
-                      <input class="mr-2 text-gray-400 border border-gray-700 rounded focus:ring-opacity-25" type="checkbox" wire:model="confirm" />
-                      Confirm all inputs are correct
-                    </label><br>
-                    <small class="font-bold text-red-500">@error('confirm'){{$message}}@enderror</small>
-                  </div>
+                            <div class="w-full my-2">
+                                @foreach($extension_services as $key => $field_of_interests)
+                                    <div class="flex justify-between">
+                                        <div class="w-full text-sm uppercase text-gray-700 font-semibold py-2 mb-2 border-b border-gray-200">{{ $key }}</div>
+                                        {{-- <div class="form-check">
+                                            <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" 
+                                            type="checkbox" 
+                                            value="{{ $field_of_interests[0]->extension_service_id }}"
+                                            wire:model="selected_group.{{ $field_of_interests[0]->extension_service_id }}"
+                                            >
+                                        </div> --}}
+                                    </div>
+                                    @foreach($field_of_interests as $field_of_interest)
+                                        <div class="flex justify-between border-b border-gray-100 py-2">
+                                            <div class="text-gray-700 text-sm ">
+                                                {{ $field_of_interest->name }}
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 my-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" 
+                                                type="checkbox" 
+                                                value="{{ $field_of_interest->id }}" 
+                                                wire:model="selected_ids"
+                                                >
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endforeach
+                            </div>
+                            <div class="flex justify-end py-4 border-t border-gray-200">
+                                <button class="px-4 py-2 uppercase tracking-wide text-gray-500 text-sm font-bold  rounded-lg border border-gray-500" 
+                                    wire:click="backToPersonalInformation"
+                                    >
+                                    Back
+                                </button>
+
+                                <button class="ml-3 px-4 py-2 uppercase tracking-wide text-white text-sm font-bold  rounded-lg bg-blue-500" 
+                                    wire:click="validateFieldOfInterest"
+                                    wire:loading.attr="disabled" 
+                                    >
+                                    Next
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                @elseif($section_page == 2)
+                    {{-- personal information --}}
+                    <div class="">
+                        <div class="flex justify-between border-b border-gray-200 mb-3">
+                            <div class="text-gray-700 font-bold text-lg mb-2">Account</div>
+                            </div>
+                            
+                            {{--  --}}
+                            <div class="card min-w-max">
+                            <!---->
+                                <div class="w-full card__media">
+                                    <div class="h-36 w-full bg-gray-100 rounded-lg"></div>
+                                    <div class="  card__media--aside "></div>
+                                    <div class="flex items-center">
+                                        <div class="relative flex flex-col items-center w-full">
+                                            <label class="w-40 h-40 rounded-full relative flex flex-col items-center justify-center avatar  text-purple-600 min-w-max -top-28 bg-purple-200 text-purple-100 text-purple-650 ring-1 ring-white">
+                                                <img class="h-40 w-40 object-cover rounded-full absolute inset-0" alt=""
+                                                    @if($image) src="{{ $image->temporaryUrl() }}" @else src="{{ asset('storage/image/icons/none.jpg') }}" @endif
+                                                    >
+                                                <input type="file" accept="image/*" class="opacity-0 h-40 w-40 rounded-full"
+                                                    wire:model="image" 
+                                                    />
+                                            </label>
+                                            @error('image')
+                                                <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                            @enderror
+                                            <div class="-mt-24 w-full">
+                                                {{-- username and email --}}
+                                                <div class="grid grid-cols-2 gap-4 mb-3">
+                                                    {{-- username --}}
+                                                    <div class="col-span-full md:col-span-1">
+                                                        <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                                            Username
+                                                        </label> 
+                                                        <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                            type="text" 
+                                                            wire:model="username"
+                                                        />
+                                                        @error('username')
+                                                            <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    {{-- first name --}}
+                                                    <div class="col-span-full md:col-span-1">
+                                                        <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                                            Email
+                                                        </label> 
+                                                        <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                            type="email" 
+                                                            wire:model="email"
+                                                        />
+                                                        @error('email')
+                                                            <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+            
+                                                {{-- password --}}
+                                                <div class="grid grid-cols-2 gap-4 mb-3">
+                                                    {{-- password --}}
+                                                    <div class="col-span-full md:col-span-1">
+                                                        <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                                            Password
+                                                        </label> 
+                                                        <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                            type="password" 
+                                                            wire:model="password"
+                                                        />
+                                                        @error('password')
+                                                            <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                    {{-- confirm password --}}
+                                                    <div class="col-span-full md:col-span-1">
+                                                        <label class="block text-xs uppercase font-semibold tracking-wide text-gray-700 mb-1">
+                                                            Confirm Password
+                                                        </label> 
+                                                        <input class="block appearance-none w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                                            type="password" 
+                                                            wire:model="confirm_password"
+                                                        />
+                                                        @error('confirm_password')
+                                                            <p class="text-red-500 text-xs italic my-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex justify-end py-4 border-t border-gray-200">
+                                <button class="px-4 py-2 uppercase tracking-wide text-gray-500 text-sm font-bold  rounded-lg border border-gray-500" 
+                                    wire:click="backToFieldOfInterest"
+                                    >
+                                    Back
+                                </button>
+                                <button class="ml-3 px-4 py-2 uppercase tracking-wide text-white text-sm font-bold  rounded-lg bg-blue-500" 
+                                    wire:click="validateAccount"
+                                    wire:loading.attr="disabled" 
+                                    >
+                                    Submit
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
                 @endif
+              {{--  --}}
             </div>
-        </div>
-    </div>
-  </form>
-</div>
