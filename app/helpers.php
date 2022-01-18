@@ -44,6 +44,9 @@ class Helper
             case 1:
                 $data = "Female";
                 break;
+            case 2:
+                $data = "Rather not say";
+                break;
             default:
                 $data = 'Unknown';
                 break;
@@ -72,8 +75,11 @@ class Helper
             case 6:
                 $data = "Retired";
                 break;
+            case 7:
+                $data = "N/A";
+                break;
             default:
-                $data = 'N/A';
+                $data = 'Unknown';
                 break;
         }
         return $data;
