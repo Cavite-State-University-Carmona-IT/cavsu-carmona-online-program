@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Laratrust\Traits\LaratrustUserTrait;
 use App\Models\Webinar;
 use App\Models\WebinarUser;
+use App\Models\FieldOfInterest;
 
 class User extends Authenticatable
 {
@@ -86,5 +87,10 @@ class User extends Authenticatable
     public function completedWebinars()
     {
         return $this->registeredWebinars()->where('date_completed','!=', null);
+    }
+
+    public function fieldOfInterests()
+    {
+        return $this->belongsToMany(FieldOfInterest::class, 'field_of_interest_users');
     }
 }

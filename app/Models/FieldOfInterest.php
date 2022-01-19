@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Webinar;
 use App\Models\ExtensionService;
+use App\Models\User;
 
 class FieldOfInterest extends Model
 {
@@ -29,5 +30,10 @@ class FieldOfInterest extends Model
     public function extensionService()
     {
         return $this->belongsTo(ExtensionService::class, 'extension_service_id', 'id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'field_of_interest_users');
     }
 }

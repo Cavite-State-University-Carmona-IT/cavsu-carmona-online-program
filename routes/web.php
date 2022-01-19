@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 // LIVEWIRE
 Route::group(['namespace' => 'App\Http\Livewire'], function() {
 
@@ -41,6 +40,7 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
 
                         Route::get('dashboard', Dashboard\DashboardIndex::class)->name('dashboard');
                         Route::get('collection', Collection\CollectionIndex::class)->name('collection');
+                        Route::get('advertisement', Collection\CollectionIndex::class)->name('advertisement');
                         Route::get('webinar', Webinar\WebinarIndex::class)->name('webinar');
                         Route::get('reports', Report\ReportIndex::class)->name('report');
                         Route::get('settings', Settings\SettingsIndex::class)->name('settings');

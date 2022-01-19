@@ -91,6 +91,7 @@ class Register extends Component
         $data->profile_photo_path = $imageFileName;
 
         $data->save();
+        $data->fieldOfInterests()->sync($this->selected_ids);
 
         return redirect('/');
     }
