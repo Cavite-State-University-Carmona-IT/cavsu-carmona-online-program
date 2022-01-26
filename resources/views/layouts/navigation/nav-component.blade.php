@@ -127,83 +127,96 @@
         <div class="items-center flex-grow hidden lg:flex" id="example-navbar-danger">
             <ul class="flex flex-col list-none lg:flex-row lg:ml-auto ">
                 @if(Auth::check())
-                <div class="hidden sm:col-span-2 sm:flex sm:justify-end"> <!-- SM TO LG -->
-                    <div class="flex items-center ">
-                        {{-- <div class="text-sm text-gray-500">
-                            <a href="">Completed</a>
-                        </div> --}}
-                        <!-- Settings Dropdown -->
-                        <div class="relative ml-3">
-                            <x-jet-dropdown align="right" width="48">
-                                <x-slot name="trigger">
-                                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                        <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                            <img class="object-cover w-8 h-8 rounded-full" src="{{ asset('storage/image/users/'.Auth::user()->profile_photo_path) }}" alt="{{ Auth::user()->profile_photo_path }}" />
-                                        </button>
-                                    @else
-                                        <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none">
-                                                {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
-
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    @endif
-                                </x-slot>
-
-                                <x-slot name="content">
-
-                                    @if(auth()->user()->hasRole('program_coordinator'))
-                                        {{-- Program Coordinator --}}
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
-                                            {{ __('Program Coordinator') }}
+                <div class="hidden sm:col-span-2 sm:flex sm:justify-end">
+                    <div class="flex items-center" x-data="{ userDropdown: false }">
+                        <button x-on:click="userDropdown = !userDropdown" class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                            <img class="object-cover w-8 h-8 rounded-full" src="{{ asset('storage/image/users/'.Auth::user()->profile_photo_path) }}" alt="{{ Auth::user()->profile_photo_path }}" />
+                        </button>
+                        <div class="relative">
+                            <div x-show="userDropdown" 
+                                x-transition:enter="transition ease-out duration-100" 
+                                x-transition:enter-start="transform opacity-0 scale-95" 
+                                x-transition:enter-end="transform opacity-100 scale-100" 
+                                x-transition:leave="transition ease-in duration-75" 
+                                x-transition:leave-start="transform opacity-100 scale-100" 
+                                x-transition:leave-end="transform opacity-0 scale-95" 
+                                class="absolute right-0 w-full mt-3 origin-top-right rounded-md shadow-lg md:w-52">
+                                <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                                    <a class="block px-4 py-2 mt-2 text-sm tracking-wide bg-transparent rounded-lg md:mt-0 hover:text-green-400 focus:text-green-400 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:shadow-outline" 
+                                        href="{{ route('program-coordinator.dashboard') }}">
+                                        Dashboard
+                                    </a>
+                                    <a class="block px-4 py-2 mt-2 text-sm tracking-wide bg-transparent rounded-lg md:mt-0 hover:text-green-400 focus:text-green-400 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:shadow-outline" 
+                                        href="{{ route('program-coordinator.webinar') }}">
+                                        Webinars
+                                    </a>
+                                    <a class="block px-4 py-2 mt-2 text-sm tracking-wide bg-transparent rounded-lg md:mt-0 hover:text-green-400 focus:text-green-400 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:shadow-outline" 
+                                        href="{{ route('program-coordinator.report') }}">
+                                        Reports
+                                    </a>
+                                    <div x-data="{ settingsDropdown: false }">
+                                        <a class="block px-4 py-2 mt-2 text-sm tracking-wide bg-transparent rounded-lg md:mt-0 hover:text-green-400 focus:text-green-400 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:shadow-outline" 
+                                            x-on:click="settingsDropdown = !settingsDropdown" >
+                                            Settings
+                                        </a>
+                                        <div x-show="settingsDropdown" class="rounded-lg bg-gray-50 my-2">
+                                            <a class="bg-transparent block px-4 py-3 tracking-wide mt-2 text-xs md:mt-0 hover:text-green-500 focus:outline-none focus:shadow-outline" 
+                                                href="{{ route('program-coordinator.roles-and-permissions') }}">
+                                                Roles & Permissions
+                                            </a>
+                                            <a class="bg-transparent block px-4 py-3 tracking-wide mt-2 text-xs md:mt-0 hover:text-green-500 focus:outline-none focus:shadow-outline" 
+                                                href="{{ route('program-coordinator.ecertificate-templates') }}">
+                                                E-Certificate Templates
+                                            </a>
+                                            <a class="bg-transparent block px-4 py-3 tracking-wide mt-2 text-xs md:mt-0 hover:text-green-500 focus:outline-none focus:shadow-outline" 
+                                                href="{{ route('program-coordinator.company-information') }}">
+                                                Company Information
+                                            </a>
                                         </div>
-                                        {{-- Divider --}}
-                                        <div class="mx-3 border-t border-gray-100"></div>
-                                        {{-- Dashboard --}}
-                                        <x-jet-dropdown-link href="{{ route('program-coordinator.dashboard') }}">
-                                            {{ __('Dashboard') }}
-                                        </x-jet-dropdown-link>
-                                        {{-- Webinars --}}
-                                        <x-jet-dropdown-link href="{{ route('program-coordinator.webinar') }}">
-                                            {{ __('Webinars') }}
-                                        </x-jet-dropdown-link>
-                                        {{-- Reports --}}
-                                        <x-jet-dropdown-link href="{{ route('program-coordinator.report') }}">
-                                            {{ __('Reports') }}
-                                        </x-jet-dropdown-link>
-                                        {{-- Others --}}
-                                        <x-jet-dropdown-link href="{{ route('program-coordinator.settings') }}">
-                                            {{ __('Settings') }}
-                                        </x-jet-dropdown-link>
-                                    @endif
-
-                                    <!-- Account Management -->
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Manage Account') }}
                                     </div>
-                                    {{-- Divider --}}
-                                    <div class="mx-3 border-t border-gray-100"></div>
-                                    {{-- Profile --}}
-                                    <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                        {{ __('Profile') }}
-                                    </x-jet-dropdown-link>
-
-                                    <!-- Authentication -->
+                                    <a class="block px-4 py-2 mt-2 text-sm tracking-wide bg-transparent rounded-lg md:mt-0 hover:text-green-400 focus:text-green-400 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:shadow-outline" 
+                                        href="#">
+                                        My Profile
+                                    </a>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-
-                                        <x-jet-dropdown-link href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                        this.closest('form').submit();">
-                                            {{ __('Log Out') }}
-                                        </x-jet-dropdown-link>
+                                        <a class="block px-4 py-2 mt-2 text-sm tracking-wide bg-transparent rounded-lg md:mt-0 hover:text-green-400 focus:text-green-400 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:shadow-outline" 
+                                            href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                            Log Out
+                                        </a>
                                     </form>
-                                </x-slot>
-                            </x-jet-dropdown>
+                                </div>
+                            </div>
                         </div>
+                        {{-- <div  x-show="userDropdown" class="relative">
+                            <div class="absolute right-0 mt-2 w-60 bg-white rounded-lg border border-gray-200 overflow-hidden shadow-xl z-20">
+                                <div class="px-4 border-b border-gray-200 py-3 ">
+                                    <p class="text-sm text-gray-400 font-semibold tracking-wider uppercase">
+                                        {{ auth()->user()->roles->first()->display_name }}
+                                    </p>
+                                </div>
+                                
+                                <div class="" x-data="{ settingsDropdown: false}">
+                                    <a href="{{ route('program-coordinator.dashboard') }}" class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-5 py-2 text-sm text-gray-800 hover:bg-gray-100">
+                                        Dashboard
+                                    </a>
+                                    <a x-on:click="settingsDropdown = !settingsDropdown" class="flex justify-between appearance-none outline-none ring-0 border-0 w-full focus:outline-none px-5 py-2 text-sm text-gray-800 hover:bg-gray-100">
+                                        Settings
+                                        <i class="fas fa-chevron-down fa-xs text-gray-300 pt-1"></i>
+                                    </a>
+                                    <div x-show="settingsDropdown">
+                                        <a class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-7 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">Extension Service</a>
+                                        <a class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-7 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">E-Certificate Templates</a>
+                                        <a class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-7 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">User Roles & Permission</a>
+                                        <a class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-7 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">Company Information</a>
+                                        <a class="text-left appearance-none outline-none ring-0 border-0 w-full focus:outline-none block px-7 py-3 text-sm text-gray-800 border-b hover:bg-gray-100 border-gray-200">Headlines</a>
+                                    </div>
+                                    <a class="text-xs tracking-wide text-gray-700 px-4 py-2 w-full cursor-pointer">Dashboard</a>
+                                </div>
+                            </div>
+                        </div> --}}
                     </div>
                     <!-- Hamburger -->
                     <div class="flex items-center justify-end sm:hidden">

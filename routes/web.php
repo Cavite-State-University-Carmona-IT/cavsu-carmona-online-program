@@ -39,11 +39,14 @@ Route::group(['namespace' => 'App\Http\Livewire'], function() {
                     Route::group(['middleware' => ['role:program_coordinator']], function() {
 
                         Route::get('dashboard', Dashboard\DashboardIndex::class)->name('dashboard');
-                        Route::get('collection', Collection\CollectionIndex::class)->name('collection');
-                        Route::get('advertisement', Collection\CollectionIndex::class)->name('advertisement');
                         Route::get('webinar', Webinar\WebinarIndex::class)->name('webinar');
                         Route::get('reports', Report\ReportIndex::class)->name('report');
-                        Route::get('settings', Settings\SettingsIndex::class)->name('settings');
+                        Route::get('settings/', Settings\SettingsIndex::class)->name('settings');
+                        Route::group(['prefix' => 'settings'], function() {
+                            Route::get('roles-and-permissions', Settings\SettingsIndex::class)->name('roles-and-permissions');
+                            Route::get('ecertificate-templates', Settings\SettingsIndex::class)->name('ecertificate-templates');
+                            Route::get('company-information', Settings\SettingsIndex::class)->name('company-information');
+                        });
 
                         // Webinar details
                         Route::get('webinar/{id}', Webinar\WebinarDetails::class);
