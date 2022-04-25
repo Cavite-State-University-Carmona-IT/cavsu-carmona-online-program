@@ -5,27 +5,29 @@
             <button class="w-8 h-8 md:hidden" x-on:click="openMobileSearch = !openMobileSearch">
                 <i class="text-base text-gray-700 fas fa-search"></i>
             </button>
-            <div  class="absolute top-0 z-40 w-96 md:hidden left-0"
-                x-show="openMobileSearch"
-                x-transition.duration.500ms
-                >
-                <div class="grid h-screen grid-cols-10">
-                    {{-- main menu --}}
-                    <div class="w-full col-span-8 col-start-1 bg-white border-r border-gray-200 shadow-sm drop-shadow-sm row-span-full">
-                        <div class="flex flex-col h-screen p-3 pt-0">
-                            <div class="flex flex-col mb-auto" >
-                                @livewire('participant.search.search-dropdown-mobile')
+            <div class="relative">
+                <div  class="absolute top-0 z-40 w-96 md:hidden left-0"
+                    x-show="openMobileSearch"
+                    x-transition.duration.500ms
+                    >
+                    <div class="grid h-screen grid-cols-10">
+                        {{-- main menu --}}
+                        <div class="w-full col-span-8 col-start-1 bg-white border-r border-gray-200 shadow-sm drop-shadow-sm row-span-full">
+                            <div class="flex flex-col h-screen p-3 pt-0">
+                                <div class="flex flex-col mb-auto" >
+                                    @livewire('participant.search.search-dropdown-mobile')
+                                </div>
                             </div>
                         </div>
+                        {{-- close menu button --}}
+                        <div class="z-50 flex justify-center w-full col-start-8 col-end-10 py-4 row-span-full">
+                            <button x-on:click="isOpenSearch = false" class="w-10 h-10 bg-white border border-gray-300 rounded-full shadow-lg focus:outline-none">
+                                <i class="w-5 fas fa-times text-light-space-blue"></i>
+                            </button>
+                        </div>
                     </div>
-                    {{-- close menu button --}}
-                    <div class="z-50 flex justify-center w-full col-start-8 col-end-10 py-4 row-span-full">
-                        <button x-on:click="isOpenSearch = false" class="w-10 h-10 bg-white border border-gray-300 rounded-full shadow-lg focus:outline-none">
-                            <i class="w-5 fas fa-times text-light-space-blue"></i>
-                        </button>
-                    </div>
-                </div>
 
+                </div>
             </div>
         </div>
         <div class="hidden md:block">
