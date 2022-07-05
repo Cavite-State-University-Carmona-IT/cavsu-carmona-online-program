@@ -219,7 +219,6 @@
                             <div class="flex-auto py-4">
                                 <p class="py-2 text-sm tracking-wide text-gray-400 uppercase bg-transparent">Extension Services</p>
                                 @livewire('partial.extension-service-dropdown-section')
-                                        
                             </div>
                         </div>
                     </div>

@@ -15,9 +15,7 @@
                 
                 {{-- LATEST WEBINAR --}}
                 @livewire('participant.home.latest-webinars-section')
-
                 
-
             </div>
         </div>
     </div>
